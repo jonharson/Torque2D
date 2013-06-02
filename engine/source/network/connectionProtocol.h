@@ -43,7 +43,7 @@ class ResizeBitStream;
 /// acknowledging the receipt (or failure to receive) of the last 32 packets.
 ///
 /// @see NetConnection, @ref NetProtocol
-class ConnectionProtocol
+class DLLEXPORTS ConnectionProtocol
 {
 protected:
    U32 mLastSeqRecvdAtSend[32];

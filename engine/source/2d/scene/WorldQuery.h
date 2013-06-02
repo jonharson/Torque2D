@@ -37,7 +37,7 @@ class Scene;
 
 ///-----------------------------------------------------------------------------
 
-class WorldQuery :
+class DLLEXPORTS WorldQuery :
     protected b2DynamicTree,
     public b2QueryCallback,
     public b2RayCastCallback,

@@ -34,7 +34,7 @@
 #endif
 
 // =========================================================
-class PlaneTransformer
+class DLLEXPORTS PlaneTransformer
 {
    MatrixF mTransform;
    Point3F mScale;

@@ -25,8 +25,8 @@
 
 //------------------------------------------------------------------------------
 
-extern S32 sgTimeManagerProcessInterval;
-struct TimeManager
+extern DLLEXPORTS S32 sgTimeManagerProcessInterval;
+struct DLLEXPORTS TimeManager
 {
    static void process();
 };

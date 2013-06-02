@@ -58,7 +58,7 @@ class SceneRenderRequest;
 
 //-----------------------------------------------------------------------------
 
-class BatchRender
+class DLLEXPORTS BatchRender
 {
 private:
     struct TriangleRun

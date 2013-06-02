@@ -33,12 +33,12 @@
 
 //-----------------------------------------------------------------------------
 
-class SimComponent : public SimObject
+class DLLEXPORTS SimComponent : public SimObject
 {
    typedef SimObject Parent;
 
 private:
-   VectorPtr<SimComponent *> mComponentList; ///< The Component List
+   VectorPtr<SimComponent*> mComponentList; ///< The Component List
    void *mMutex;                             ///< Component List Mutex
 
    SimObjectPtr<SimComponent> mOwner;        ///< The component which owns this one.

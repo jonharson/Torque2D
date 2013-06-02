@@ -25,7 +25,7 @@
 
 //-----------------------------------------------------------------------------
 
-class PhysicsProxy
+class DLLEXPORTS PhysicsProxy
 {
 public:
     PhysicsProxy() {}

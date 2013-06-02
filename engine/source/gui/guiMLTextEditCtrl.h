@@ -27,7 +27,7 @@
 #include "gui/guiMLTextCtrl.h"
 #endif
 
-class GuiMLTextEditCtrl : public GuiMLTextCtrl
+class DLLEXPORTS GuiMLTextEditCtrl : public GuiMLTextCtrl
 {
    typedef GuiMLTextCtrl Parent;
 

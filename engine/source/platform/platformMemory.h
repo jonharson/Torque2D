@@ -23,6 +23,8 @@
 #ifndef _PLATFORM_MEMORY_H_
 #define _PLATFORM_MEMORY_H_
 
+#include "torqueConfig.h"
+
 //------------------------------------------------------------------------------
 
 #define placenew(x) new(x)
@@ -32,48 +34,49 @@
 //------------------------------------------------------------------------------
 
 #if defined(TORQUE_OS_WIN32)
+//extern DLLEXPORTS void* FN_CDECL operator new(dsize_t size, void* ptr);
 extern void* FN_CDECL operator new(dsize_t size, void* ptr);
 #endif
 
 //------------------------------------------------------------------------------
 
-template <class T> inline T* constructInPlace(T* p)
+template <class T> inline DLLEXPORTS T* constructInPlace(T* p)
 {
    return new(p) T;
 }
 
 //------------------------------------------------------------------------------
 
-template <class T> inline T* constructInPlace(T* p, const T* copy)
+template <class T> inline DLLEXPORTS T* constructInPlace(T* p, const T* copy)
 {
    return new(p) T(*copy);
 }
 
 
 template< class T >
-inline T* constructArrayInPlace( T* p, U32 num )
+inline DLLEXPORTS T* constructArrayInPlace( T* p, U32 num )
 {
     return new ( p ) T[ num ];
 }
 
 //------------------------------------------------------------------------------
 
-template <class T> inline void destructInPlace(T* p)
+template <class T> inline DLLEXPORTS void destructInPlace(T* p)
 {
    p->~T();
 }
 
 //------------------------------------------------------------------------------
 
-extern void* dMalloc_r(dsize_t in_size, const char*, const dsize_t);
-extern void  dFree(void* in_pFree);
-extern void* dRealloc_r(void* in_pResize, dsize_t in_size, const char*, const dsize_t);
-extern void* dRealMalloc(dsize_t);
-extern void  dRealFree(void*);
+extern DLLEXPORTS void* dMalloc_r(dsize_t in_size, const char*, const dsize_t);
+extern DLLEXPORTS void  dFree(void* in_pFree);
+extern DLLEXPORTS void* dRealloc_r(void* in_pResize, dsize_t in_size, const char*, const dsize_t);
+extern DLLEXPORTS void* dRealMalloc(dsize_t);
+extern DLLEXPORTS void  dRealFree(void*);
 
-extern void* dMemcpy(void *dst, const void *src, dsize_t size);
-extern void* dMemmove(void *dst, const void *src, dsize_t size);
-extern void* dMemset(void *dst, int c, dsize_t size);
-extern int   dMemcmp(const void *ptr1, const void *ptr2, dsize_t size);
+extern DLLEXPORTS void* dMemcpy(void *dst, const void *src, dsize_t size);
+extern DLLEXPORTS void* dMemmove(void *dst, const void *src, dsize_t size);
+extern DLLEXPORTS void* dMemset(void *dst, int c, dsize_t size);
+extern DLLEXPORTS int   dMemcmp(const void *ptr1, const void *ptr2, dsize_t size);
 
 #endif // _PLATFORM_MEMORY_H_

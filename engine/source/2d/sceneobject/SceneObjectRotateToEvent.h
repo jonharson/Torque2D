@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class SceneObjectRotateToEvent : public SimEvent
+class DLLEXPORTS SceneObjectRotateToEvent : public SimEvent
 {
 public:
     SceneObjectRotateToEvent( const F32 targetAngle, const bool autoStop, const bool warpToTarget ) :

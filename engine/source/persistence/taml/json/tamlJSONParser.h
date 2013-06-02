@@ -33,7 +33,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlJSONParser : public TamlParser
+class DLLEXPORTS TamlJSONParser : public TamlParser
 {
 public:
     TamlJSONParser() {}

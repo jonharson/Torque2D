@@ -32,7 +32,7 @@
 #endif
 
 
-class GuiProgressCtrl : public GuiTextCtrl
+class DLLEXPORTS GuiProgressCtrl : public GuiTextCtrl
 {
 private:
    typedef GuiTextCtrl Parent;

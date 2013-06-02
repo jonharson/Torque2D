@@ -42,7 +42,7 @@ enum TypeReq {
 ///
 /// This is the base class for the nodes in the parse tree. There are a great many subclasses,
 /// each representing a different language construct.
-struct StmtNode
+struct DLLEXPORTS StmtNode
 {
    StmtNode *next;   ///< Next entry in parse tree.
 
@@ -80,7 +80,7 @@ struct StmtNode
    /// @}
 };
 
-struct BreakStmtNode : StmtNode
+struct DLLEXPORTS BreakStmtNode : StmtNode
 {
    static BreakStmtNode *alloc();
 
@@ -88,7 +88,7 @@ struct BreakStmtNode : StmtNode
    U32 compileStmt(U32 *codeStream, U32 ip, U32 continuePoint, U32 breakPoint);
 };
 
-struct ContinueStmtNode : StmtNode
+struct DLLEXPORTS ContinueStmtNode : StmtNode
 {
    static ContinueStmtNode *alloc();
    U32 precompileStmt(U32 loopCount);
@@ -96,7 +96,7 @@ struct ContinueStmtNode : StmtNode
 };
 
 /// A mathematical expression.
-struct ExprNode : StmtNode
+struct DLLEXPORTS ExprNode : StmtNode
 {
    U32 precompileStmt(U32 loopCount);
    U32 compileStmt(U32 *codeStream, U32 ip, U32 continuePoint, U32 breakPoint);
@@ -106,7 +106,7 @@ struct ExprNode : StmtNode
    virtual TypeReq getPreferredType() = 0;
 };
 
-struct ReturnStmtNode : StmtNode
+struct DLLEXPORTS ReturnStmtNode : StmtNode
 {
    ExprNode *expr;
 
@@ -115,7 +115,7 @@ struct ReturnStmtNode : StmtNode
    U32 compileStmt(U32 *codeStream, U32 ip, U32 continuePoint, U32 breakPoint);
 };
 
-struct IfStmtNode : StmtNode
+struct DLLEXPORTS IfStmtNode : StmtNode
 {
    ExprNode *testExpr;
    StmtNode *ifBlock, *elseBlock;
@@ -131,7 +131,7 @@ struct IfStmtNode : StmtNode
    U32 compileStmt(U32 *codeStream, U32 ip, U32 continuePoint, U32 breakPoint);
 };
 
-struct LoopStmtNode : StmtNode
+struct DLLEXPORTS LoopStmtNode : StmtNode
 {
    ExprNode *testExpr;
    ExprNode *initExpr;
@@ -149,14 +149,14 @@ struct LoopStmtNode : StmtNode
 };
 
 /// A binary mathematical expression (ie, left op right).
-struct BinaryExprNode : ExprNode
+struct DLLEXPORTS BinaryExprNode : ExprNode
 {
    S32 op;
    ExprNode *left;
    ExprNode *right;
 };
 
-struct FloatBinaryExprNode : BinaryExprNode
+struct DLLEXPORTS FloatBinaryExprNode : BinaryExprNode
 {
    static FloatBinaryExprNode *alloc(S32 op, ExprNode *left, ExprNode *right);
    U32 precompile(TypeReq type);
@@ -164,7 +164,7 @@ struct FloatBinaryExprNode : BinaryExprNode
    TypeReq getPreferredType();
 };
 
-struct ConditionalExprNode : ExprNode
+struct DLLEXPORTS ConditionalExprNode : ExprNode
 {
    ExprNode *testExpr;
    ExprNode *trueExpr;
@@ -176,7 +176,7 @@ struct ConditionalExprNode : ExprNode
    virtual TypeReq getPreferredType();
 };
 
-struct IntBinaryExprNode : BinaryExprNode
+struct DLLEXPORTS IntBinaryExprNode : BinaryExprNode
 {
    TypeReq subType;
    U32 operand;
@@ -207,7 +207,7 @@ struct StrcatExprNode : BinaryExprNode
    TypeReq getPreferredType();
 };
 
-struct CommaCatExprNode : BinaryExprNode
+struct DLLEXPORTS CommaCatExprNode : BinaryExprNode
 {
    static CommaCatExprNode *alloc(ExprNode *left, ExprNode *right);
 
@@ -216,7 +216,7 @@ struct CommaCatExprNode : BinaryExprNode
    TypeReq getPreferredType();
 };
 
-struct IntUnaryExprNode : ExprNode
+struct DLLEXPORTS IntUnaryExprNode : ExprNode
 {
    S32 op;
    ExprNode *expr;
@@ -228,7 +228,7 @@ struct IntUnaryExprNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct FloatUnaryExprNode : ExprNode
+struct DLLEXPORTS FloatUnaryExprNode : ExprNode
 {
    S32 op;
    ExprNode *expr;
@@ -250,7 +250,7 @@ struct VarNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct IntNode : ExprNode
+struct DLLEXPORTS IntNode : ExprNode
 {
    S32 value;
    U32 index; // if it's converted to float/string
@@ -261,7 +261,7 @@ struct IntNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct FloatNode : ExprNode
+struct DLLEXPORTS FloatNode : ExprNode
 {
    F64 value;
    U32 index;
@@ -272,7 +272,7 @@ struct FloatNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct StrConstNode : ExprNode
+struct DLLEXPORTS StrConstNode : ExprNode
 {
    char *str;
    F64 fVal;
@@ -286,7 +286,7 @@ struct StrConstNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct ConstantNode : ExprNode
+struct DLLEXPORTS ConstantNode : ExprNode
 {
    StringTableEntry value;
    F64 fVal;
@@ -298,7 +298,7 @@ struct ConstantNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct AssignExprNode : ExprNode
+struct DLLEXPORTS AssignExprNode : ExprNode
 {
    StringTableEntry varName;
    ExprNode *expr;
@@ -311,14 +311,14 @@ struct AssignExprNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct AssignDecl
+struct DLLEXPORTS AssignDecl
 {
    S32 token;
    ExprNode *expr;
    bool integer;
 };
 
-struct AssignOpExprNode : ExprNode
+struct DLLEXPORTS AssignOpExprNode : ExprNode
 {
    StringTableEntry varName;
    ExprNode *expr;
@@ -333,7 +333,7 @@ struct AssignOpExprNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct TTagSetStmtNode : StmtNode
+struct DLLEXPORTS TTagSetStmtNode : StmtNode
 {
    StringTableEntry tag;
    ExprNode *valueExpr;
@@ -344,7 +344,7 @@ struct TTagSetStmtNode : StmtNode
    U32 compileStmt(U32 *codeStream, U32 ip, U32 continuePoint, U32 breakPoint);
 };
 
-struct TTagDerefNode : ExprNode
+struct DLLEXPORTS TTagDerefNode : ExprNode
 {
    ExprNode *expr;
 
@@ -354,7 +354,7 @@ struct TTagDerefNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct TTagExprNode : ExprNode
+struct DLLEXPORTS TTagExprNode : ExprNode
 {
    StringTableEntry tag;
 
@@ -364,7 +364,7 @@ struct TTagExprNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct FuncCallExprNode : ExprNode
+struct DLLEXPORTS FuncCallExprNode : ExprNode
 {
    StringTableEntry funcName;
    StringTableEntry nameSpace;
@@ -382,14 +382,14 @@ struct FuncCallExprNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct SlotDecl
+struct DLLEXPORTS SlotDecl
 {
    ExprNode         *object;
    StringTableEntry slotName;
    ExprNode         *array;
 };
 
-struct SlotAccessNode : ExprNode
+struct DLLEXPORTS SlotAccessNode : ExprNode
 {
    ExprNode *objectExpr, *arrayExpr;
    StringTableEntry slotName;
@@ -400,14 +400,14 @@ struct SlotAccessNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct InternalSlotDecl
+struct DLLEXPORTS InternalSlotDecl
 {
    ExprNode         *object;
    ExprNode         *slotExpr;
    bool             recurse;
 };
 
-struct InternalSlotAccessNode : ExprNode
+struct DLLEXPORTS InternalSlotAccessNode : ExprNode
 {
    ExprNode *objectExpr, *slotExpr;
    bool recurse;
@@ -418,7 +418,7 @@ struct InternalSlotAccessNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct SlotAssignNode : ExprNode
+struct DLLEXPORTS SlotAssignNode : ExprNode
 {
    ExprNode *objectExpr, *arrayExpr;
    StringTableEntry slotName;
@@ -430,7 +430,7 @@ struct SlotAssignNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct SlotAssignOpNode : ExprNode
+struct DLLEXPORTS SlotAssignOpNode : ExprNode
 {
    ExprNode *objectExpr, *arrayExpr;
    StringTableEntry slotName;
@@ -445,7 +445,7 @@ struct SlotAssignOpNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct ObjectDeclNode : ExprNode
+struct DLLEXPORTS ObjectDeclNode : ExprNode
 {
    ExprNode *classNameExpr;
    StringTableEntry parentObject;
@@ -466,13 +466,13 @@ struct ObjectDeclNode : ExprNode
    TypeReq getPreferredType();
 };
 
-struct ObjectBlockDecl
+struct DLLEXPORTS ObjectBlockDecl
 {
    SlotAssignNode *slots;
    ObjectDeclNode *decls;
 };
 
-struct FunctionDeclStmtNode : StmtNode
+struct DLLEXPORTS FunctionDeclStmtNode : StmtNode
 {
    StringTableEntry fnName;
    VarNode *args;
@@ -488,11 +488,11 @@ struct FunctionDeclStmtNode : StmtNode
    void setPackage(StringTableEntry packageName);
 };
 
-extern StmtNode *statementList;
-extern void createFunction(const char *fnName, VarNode *args, StmtNode *statements);
-extern ExprEvalState gEvalState;
-extern bool lookupFunction(const char *fnName, VarNode **args, StmtNode **statements);
+extern DLLEXPORTS StmtNode *statementList;
+extern DLLEXPORTS void createFunction(const char *fnName, VarNode *args, StmtNode *statements);
+extern DLLEXPORTS ExprEvalState gEvalState;
+extern DLLEXPORTS bool lookupFunction(const char *fnName, VarNode **args, StmtNode **statements);
 typedef const char *(*cfunc)(S32 argc, char **argv);
-extern bool lookupCFunction(const char *fnName, cfunc *f);
+extern DLLEXPORTS bool lookupCFunction(const char *fnName, cfunc *f);
 
 #endif

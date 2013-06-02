@@ -23,7 +23,7 @@
 #ifndef _CONSOLE_TYPE_VALIDATORS_H_
 #define _CONSOLE_TYPE_VALIDATORS_H_
 
-class ConsoleTypeValidator
+class DLLEXPORTS ConsoleTypeValidator
 {
    public:
    
@@ -47,7 +47,7 @@ class ConsoleTypeValidator
 
 
 /// Floating point min/max range validator
-class FRangeValidator : public ConsoleTypeValidator
+class DLLEXPORTS FRangeValidator : public ConsoleTypeValidator
 {
    F32 minV, maxV;
 public:
@@ -60,7 +60,7 @@ public:
 };
 
 /// Signed integer min/max range validator
-class IRangeValidator : public ConsoleTypeValidator
+class DLLEXPORTS IRangeValidator : public ConsoleTypeValidator
 {
    S32 minV, maxV;
 public:
@@ -76,7 +76,7 @@ public:
 ///
 /// @note This should NOT be used on a field that gets exported -
 /// the field is only validated once on initial assignment
-class IRangeValidatorScaled : public ConsoleTypeValidator
+class DLLEXPORTS IRangeValidatorScaled : public ConsoleTypeValidator
 {
    S32 minV, maxV;
    S32 factor;

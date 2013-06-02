@@ -37,7 +37,7 @@
 
 //-----------------------------------------------------------------------------
 
-class DebugDraw
+class DLLEXPORTS DebugDraw
 {
 public:
     DebugDraw() {}

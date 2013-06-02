@@ -82,7 +82,7 @@ typedef const char* StringTableEntry;
 /*  Platform dependent file date-time structure.  The defination of this structure
   * will likely be different for each OS platform.
   */
-struct FileTime
+struct DLLEXPORTS FileTime
 {
    U32 v1;
    U32 v2;

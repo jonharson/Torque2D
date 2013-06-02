@@ -46,7 +46,7 @@
 #endif
 
 
-class GuiImageList : public SimObject
+class DLLEXPORTS GuiImageList : public SimObject
 {
   private:
    typedef SimObject Parent;

@@ -21,11 +21,13 @@
 
 #include <Box2D/Collision/Shapes/b2Shape.h>
 
+#include "torqueConfig.h"
+
 /// A convex polygon. It is assumed that the interior of the polygon is to
 /// the left of each edge.
 /// Polygons have a maximum number of vertices equal to b2_maxPolygonVertices.
 /// In most cases you should not need many vertices for a convex polygon.
-class b2PolygonShape : public b2Shape
+class DLLEXPORTS b2PolygonShape : public b2Shape
 {
 public:
 	b2PolygonShape();

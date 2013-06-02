@@ -31,7 +31,7 @@ class TamlVisitor;
 
 //-----------------------------------------------------------------------------
 
-class TamlParser
+class DLLEXPORTS TamlParser
 {
 public:
     TamlParser() :

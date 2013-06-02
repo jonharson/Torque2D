@@ -27,7 +27,7 @@
 #ifndef _WINFONT_H_
 #define _WINFONT_H_
 
-class WinFont : public PlatformFont
+class DLLEXPORTS WinFont : public PlatformFont
 {
 private:
     HFONT mFont;

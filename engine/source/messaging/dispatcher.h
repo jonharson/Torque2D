@@ -64,7 +64,7 @@ namespace Dispatcher
 ///
 /// @see ScriptMsgListener
 //////////////////////////////////////////////////////////////////////////
-class IMessageListener
+class DLLEXPORTS IMessageListener
 {
 protected:
    /// List of queues this listener is registered with.
@@ -125,7 +125,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 /// @brief Internal class for tracking message queues
 //////////////////////////////////////////////////////////////////////////
-struct MessageQueue
+struct DLLEXPORTS MessageQueue
 {
    StringTableEntry mQueueName;
    VectorPtr<IMessageListener *> mListeners;
@@ -171,7 +171,7 @@ struct MessageQueue
 /// @return true if the queue is registered, false otherwise
 /// @see registerMessageQueue(), unregisterMessageQueue()
 //////////////////////////////////////////////////////////////////////////
-extern bool isQueueRegistered(const char *name);
+extern DLLEXPORTS bool isQueueRegistered(const char *name);
 
 //////////////////////////////////////////////////////////////////////////
 /// @brief Register a message queue
@@ -179,7 +179,7 @@ extern bool isQueueRegistered(const char *name);
 /// @param name The name of the message queue to register
 /// @see isQueueRegistered(), unregisterMessageQueue()
 //////////////////////////////////////////////////////////////////////////
-extern void registerMessageQueue(const char *name);
+extern DLLEXPORTS void registerMessageQueue(const char *name);
 
 //////////////////////////////////////////////////////////////////////////
 /// @brief Unregister a message queue
@@ -187,7 +187,7 @@ extern void registerMessageQueue(const char *name);
 /// @param name The name of the message queue
 /// @see registerMessageQueue(), isQueueRegistered()
 //////////////////////////////////////////////////////////////////////////
-extern void unregisterMessageQueue(const char *name);
+extern DLLEXPORTS void unregisterMessageQueue(const char *name);
 
 //////////////////////////////////////////////////////////////////////////
 /// @brief Register a listener with a queue to receive messages
@@ -197,7 +197,7 @@ extern void unregisterMessageQueue(const char *name);
 /// @return true for success, false otherwise
 /// @see unregisterMessageListener()
 //////////////////////////////////////////////////////////////////////////
-extern bool registerMessageListener(const char *queue, IMessageListener *listener);
+extern DLLEXPORTS bool registerMessageListener(const char *queue, IMessageListener *listener);
 
 //////////////////////////////////////////////////////////////////////////
 /// @brief Unregister a listener with a queue
@@ -206,7 +206,7 @@ extern bool registerMessageListener(const char *queue, IMessageListener *listene
 /// @param listener The listener interface that was passed to registerMessageListener()
 /// @see registerMessageListener()
 //////////////////////////////////////////////////////////////////////////
-extern void unregisterMessageListener(const char *queue, IMessageListener *listener);
+extern DLLEXPORTS void unregisterMessageListener(const char *queue, IMessageListener *listener);
 
 // @}
 
@@ -222,7 +222,7 @@ extern void unregisterMessageListener(const char *queue, IMessageListener *liste
 /// @return true for success, false for failure
 /// @see dispatchMessageObject()
 //////////////////////////////////////////////////////////////////////////
-extern bool dispatchMessage(const char *queue, const char *msg, const char *data);
+extern DLLEXPORTS bool dispatchMessage(const char *queue, const char *msg, const char *data);
 
 //////////////////////////////////////////////////////////////////////////
 /// @brief Dispatch a message object to a queue
@@ -232,7 +232,7 @@ extern bool dispatchMessage(const char *queue, const char *msg, const char *data
 /// @return true for success, false for failure
 /// @see dispatchMessage()
 //////////////////////////////////////////////////////////////////////////
-extern bool dispatchMessageObject(const char *queue, Message *msg);
+extern DLLEXPORTS bool dispatchMessageObject(const char *queue, Message *msg);
 
 // @}
 
@@ -248,13 +248,13 @@ extern bool dispatchMessageObject(const char *queue, Message *msg);
 /// @return true for success, false for failure
 /// @see unlockDispatcherMutex()
 //////////////////////////////////////////////////////////////////////////
-extern bool lockDispatcherMutex();
+extern DLLEXPORTS bool lockDispatcherMutex();
 
 //////////////////////////////////////////////////////////////////////////
 /// @brief Internal function: Unlock the dispatcher mutex.
 /// @see lockDispatcherMutex()
 //////////////////////////////////////////////////////////////////////////
-extern void unlockDispatcherMutex();
+extern DLLEXPORTS void unlockDispatcherMutex();
 
 //////////////////////////////////////////////////////////////////////////
 /// @brief Internal function: obtain message queue. Dispatcher mutex must be locked.
@@ -263,7 +263,7 @@ extern void unlockDispatcherMutex();
 /// @return Message queue
 /// @see lockDispatcherMutex(), unlockDispatcherMutex()
 //////////////////////////////////////////////////////////////////////////
-extern MessageQueue *getMessageQueue(const char *name);
+extern DLLEXPORTS MessageQueue *getMessageQueue(const char *name);
 
 // @}
 

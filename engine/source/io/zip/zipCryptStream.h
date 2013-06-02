@@ -27,7 +27,7 @@
 #include "io/filterStream.h"
 #endif
 
-class ZipCryptRStream : public FilterStream
+class DLLEXPORTS ZipCryptRStream : public FilterStream
 {
    typedef FilterStream Parent;
 

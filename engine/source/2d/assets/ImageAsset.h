@@ -45,7 +45,7 @@ DefineConsoleType( TypeImageAssetPtr )
 
 //-----------------------------------------------------------------------------
 
-class ImageAsset : public AssetBase
+class DLLEXPORTS ImageAsset : public AssetBase
 {
 private:
     typedef AssetBase Parent;
@@ -293,6 +293,6 @@ protected:
 
 //-----------------------------------------------------------------------------
 
-extern ImageAsset::FrameArea BadFrameArea;
+extern DLLEXPORTS ImageAsset::FrameArea BadFrameArea;
 
 #endif // _IMAGE_ASSET_H_

@@ -32,12 +32,12 @@ struct Vector2;
 #endif
 
 /// Creates orientation matrix from a direction vector.  Assumes ( 0 0 1 ) is up.
-MatrixF createOrientFromDir( Point3F &direction );
+DLLEXPORTS MatrixF createOrientFromDir( Point3F &direction );
 
 /// Creates random direction given angle parameters similar to the particle system.
 ///
 /// The angles are relative to the specified axis. Both phi and theta are in degrees.
-Point3F randomDir( Point3F &axis, F32 thetaAngleMin, F32 thetaAngleMax, F32 phiAngleMin = 0.0, F32 phiAngleMax = 360.0 );
+DLLEXPORTS Point3F randomDir( Point3F &axis, F32 thetaAngleMin, F32 thetaAngleMax, F32 phiAngleMin = 0.0, F32 phiAngleMax = 360.0 );
 
 /// Returns yaw and pitch angles from a given vector.
 ///
@@ -48,7 +48,7 @@ Point3F randomDir( Point3F &axis, F32 thetaAngleMin, F32 thetaAngleMax, F32 phiA
 /// The range of yaw is 0 - 2PI.  The range of pitch is -PI/2 - PI/2.
 ///
 /// <b>ASSUMES Z AXIS IS UP</b>
-void    getAnglesFromVector( VectorF &vec, F32 &yawAng, F32 &pitchAng );
+DLLEXPORTS void    getAnglesFromVector( VectorF &vec, F32 &yawAng, F32 &pitchAng );
 
 /// Returns vector from given yaw and pitch angles.
 ///
@@ -59,13 +59,13 @@ void    getAnglesFromVector( VectorF &vec, F32 &yawAng, F32 &pitchAng );
 /// The range of yaw is 0 - 2PI.  The range of pitch is -PI/2 - PI/2.
 ///
 /// <b>ASSUMES Z AXIS IS UP</b>
-void    getVectorFromAngles( VectorF &vec, F32 &yawAng, F32 &pitchAng );
+DLLEXPORTS void    getVectorFromAngles( VectorF &vec, F32 &yawAng, F32 &pitchAng );
 
 /// Returns a point on the given line ab that is closest to 'point'.  2D version.
 /// @param a The start of the line.
 /// @param b The end of the line.
 /// @param point The point to test with
 /// @return A Point2F of the nearest point that lies on the line
-Point2F getClosestPointOnLine( Point2F &a, Point2F &b, Point2F &point);
+DLLEXPORTS Point2F getClosestPointOnLine( Point2F &a, Point2F &b, Point2F &point);
 
 #endif // _MATHUTILS_H_

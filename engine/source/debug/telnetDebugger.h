@@ -36,7 +36,7 @@ class CodeBlock;
 /// the debugger GUI to connect to the server with the right port and password.
 ///
 /// @see http://www.planettribes.com/tribes2/editing.shtml for more thorough discussion.
-class TelnetDebugger
+class DLLEXPORTS TelnetDebugger
 {
    S32 mAcceptPort;
    NetSocket mAcceptSocket;
@@ -128,7 +128,7 @@ public:
    void processConsoleLine(const char *consoleLine);
 };
 
-extern TelnetDebugger *TelDebugger;
+extern DLLEXPORTS TelnetDebugger *TelDebugger;
 
 #endif
 

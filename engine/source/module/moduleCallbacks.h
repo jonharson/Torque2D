@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ModuleCallbacks
+class DLLEXPORTS ModuleCallbacks
 {
     friend class ModuleManager;
 

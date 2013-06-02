@@ -65,7 +65,7 @@ struct ProfilerRootData;
 /// //possibly some code here
 /// PROFILE_END();
 /// @endcode
-class Profiler
+class DLLEXPORTS Profiler
 {
    enum {
       MaxStackDepth = 256,
@@ -107,9 +107,9 @@ public:
    void enableMarker(const char *marker, bool enabled);
 };
 
-extern Profiler *gProfiler;
+extern DLLEXPORTS Profiler *gProfiler;
 
-struct ProfilerRootData
+struct DLLEXPORTS ProfilerRootData
 {
    const char *mName;
    U32 mNameHash;
@@ -125,7 +125,7 @@ struct ProfilerRootData
    ProfilerRootData(const char *name);
 };
 
-struct ProfilerData
+struct DLLEXPORTS ProfilerData
 {
    ProfilerRootData *mRoot; ///< link to root node.
    ProfilerData *mNextForRoot; ///< links together all ProfilerData's for a particular root
@@ -156,7 +156,7 @@ if(gProfiler) gProfiler->hashPush(& pdata##name##obj )
 #undef PROFILE_END
 #define PROFILE_END() if(gProfiler) gProfiler->hashPop()
 
-class ScopedProfiler {
+class DLLEXPORTS ScopedProfiler {
 public:
    ScopedProfiler(ProfilerRootData *data) {
       if (gProfiler) gProfiler->hashPush(data);

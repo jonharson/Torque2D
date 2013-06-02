@@ -31,7 +31,7 @@
 #endif
 
 
-class GuiMouseEventCtrl : public GuiControl
+class DLLEXPORTS GuiMouseEventCtrl : public GuiControl
 {
    private:
       typedef  GuiControl     Parent;

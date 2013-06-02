@@ -37,7 +37,7 @@ class NetObject;
 
 //-----------------------------------------------------------------------------
 
-struct CameraScopeQuery
+struct DLLEXPORTS CameraScopeQuery
 {
    NetObject *camera;       ///< Pointer to the viewing object.
    Point3F pos;             ///< Position in world space
@@ -217,7 +217,7 @@ struct GhostInfo;
 /// the documentation on AbstractClassRep for more details.
 ///
 /// @nosubgrouping
-class NetObject: public SimObject
+class DLLEXPORTS NetObject: public SimObject
 {
    // The Ghost Manager needs read/write access
    friend class  NetConnection;

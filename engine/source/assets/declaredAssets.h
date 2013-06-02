@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class DeclaredAssets : public SimObject
+class DLLEXPORTS DeclaredAssets : public SimObject
 {
     friend class AssetManager;
 

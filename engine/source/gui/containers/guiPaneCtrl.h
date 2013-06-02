@@ -42,7 +42,7 @@
 /// (from the GuiControlProfile) that contains two images - the first is
 /// displayed when the control is expanded and the second is displayed when
 /// it is collapsed. The header is sized based off of the first image.
-class GuiPaneControl : public GuiControl
+class DLLEXPORTS GuiPaneControl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

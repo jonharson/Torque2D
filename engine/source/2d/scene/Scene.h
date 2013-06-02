@@ -77,7 +77,7 @@
 
 //-----------------------------------------------------------------------------
 
-extern EnumTable jointTypeTable;
+extern DLLEXPORTS EnumTable jointTypeTable;
 
 ///-----------------------------------------------------------------------------
 
@@ -86,7 +86,7 @@ class SceneWindow;
 
 ///-----------------------------------------------------------------------------
 
-struct tDeleteRequest
+struct DLLEXPORTS tDeleteRequest
 {
     SimObjectId     mObjectId;
     SceneObject*    mpSceneObject;
@@ -95,7 +95,7 @@ struct tDeleteRequest
 
 ///-----------------------------------------------------------------------------
 
-struct TickContact
+struct DLLEXPORTS TickContact
 {
     TickContact()
     {
@@ -157,7 +157,7 @@ struct TickContact
 
 ///-----------------------------------------------------------------------------
 
-class Scene :
+class DLLEXPORTS Scene :
     public BehaviorComponent,
     public TamlChildren,
     public PhysicsProxy,
@@ -729,7 +729,7 @@ public:
 
 //-----------------------------------------------------------------------------
 
-extern void findObjectsCallback(SceneObject* pSceneObject, void* storage);
-extern void findLayeredObjectsCallback(SceneObject* pSceneObject, void* storage);
+extern void DLLEXPORTS findObjectsCallback(SceneObject* pSceneObject, void* storage);
+extern void DLLEXPORTS findLayeredObjectsCallback(SceneObject* pSceneObject, void* storage);
 
 #endif // _SCENE_H_

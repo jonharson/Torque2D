@@ -28,7 +28,7 @@
 #endif
 
 /// Manage a vector of bits of arbitrary size.
-class BitVector
+class DLLEXPORTS BitVector
 {
    U8*   mBits;
    U32   mByteSize;

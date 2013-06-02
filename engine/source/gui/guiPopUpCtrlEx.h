@@ -59,7 +59,7 @@
 class GuiPopUpMenuCtrlEx;
 class GuiPopupTextListCtrlEx;
 
-class GuiPopUpBackgroundCtrlEx : public GuiControl
+class DLLEXPORTS GuiPopUpBackgroundCtrlEx : public GuiControl
 {
 protected:
    GuiPopUpMenuCtrlEx *mPopUpCtrl;
@@ -69,7 +69,7 @@ public:
    void onMouseDown(const GuiEvent &event);
 };
 
-class GuiPopupTextListCtrlEx : public GuiTextListCtrl
+class DLLEXPORTS GuiPopupTextListCtrlEx : public GuiTextListCtrl
 {
    private:
       typedef GuiTextListCtrl Parent;
@@ -93,7 +93,7 @@ class GuiPopupTextListCtrlEx : public GuiTextListCtrl
       void onRenderCell(Point2I offset, Point2I cell, bool selected, bool mouseOver);
 };
 
-class GuiPopUpMenuCtrlEx : public GuiTextCtrl
+class DLLEXPORTS GuiPopUpMenuCtrlEx : public GuiTextCtrl
 {
    typedef GuiTextCtrl Parent;
 

@@ -38,7 +38,7 @@
 
 //--------------------------------------------------------------------------
 
-class AudioEnvironment : public SimDataBlock
+class DLLEXPORTS AudioEnvironment : public SimDataBlock
 {
    typedef SimDataBlock Parent;
 
@@ -73,7 +73,7 @@ class AudioEnvironment : public SimDataBlock
 DECLARE_CONSOLETYPE(AudioEnvironment)
 
 //--------------------------------------------------------------------------
-class AudioSampleEnvironment : public SimDataBlock
+class DLLEXPORTS AudioSampleEnvironment : public SimDataBlock
 {
    typedef SimDataBlock Parent;
 

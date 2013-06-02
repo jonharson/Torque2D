@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class IFactoryObjectReset
+class DLLEXPORTS IFactoryObjectReset
 {
 public:
     virtual void resetState( void ) = 0;
@@ -38,7 +38,7 @@ public:
 //-----------------------------------------------------------------------------
 
 template<class T>
-class FactoryCache : private Vector<T*>
+class DLLEXPORTS FactoryCache : private Vector<T*>
 {
 public:
     FactoryCache()

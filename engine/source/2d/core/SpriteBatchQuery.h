@@ -34,10 +34,7 @@ class SpriteBatchItem;
 
 ///-----------------------------------------------------------------------------
 
-class SpriteBatchQuery :
-    protected b2DynamicTree,
-    public b2QueryCallback,
-    public b2RayCastCallback
+class DLLEXPORTS SpriteBatchQuery : protected b2DynamicTree, public b2QueryCallback, public b2RayCastCallback
 {
 public:
     SpriteBatchQuery( SpriteBatch* pSpriteBatch );

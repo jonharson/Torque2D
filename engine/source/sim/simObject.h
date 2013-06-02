@@ -35,6 +35,8 @@
 #include "persistence/taml/tamlCallbacks.h"
 #endif
 
+#include "collection/template.h"
+
 //-----------------------------------------------------------------------------
 
 typedef U32 SimObjectId;
@@ -227,7 +229,7 @@ class SimGroup;
 /// set automatically by the console constructor code.
 ///
 /// @nosubgrouping
-class SimObject: public ConsoleObject, public TamlCallbacks
+class DLLEXPORTS SimObject: public ConsoleObject, public TamlCallbacks
 {
     typedef ConsoleObject Parent;
 
@@ -733,5 +735,7 @@ public:
     virtual bool handlesConsoleMethod(const char * fname, S32 * routingId) { return false; }
     DECLARE_CONOBJECT(SimObject);
 };
+
+template class DLLEXPORTS Vector<SimObject*>;
 
 #endif // _SIM_OBJECT_H_

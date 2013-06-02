@@ -38,7 +38,7 @@ class Namespace;
 /// Indicates that warnings about undefined script variables should be displayed.
 ///
 /// @note This is set and controlled by script.
-extern bool gWarnUndefinedScriptVariables;
+extern DLLEXPORTS bool gWarnUndefinedScriptVariables;
 
 enum StringTableConstants
 {
@@ -46,7 +46,7 @@ enum StringTableConstants
 };
 
 /// Represents an entry in the log.
-struct ConsoleLogEntry
+struct DLLEXPORTS ConsoleLogEntry
 {
    /// This field indicates the severity of the log entry.
    ///
@@ -100,7 +100,7 @@ struct ConsoleLogEntry
 /// to expose enumerations to the scripting language. It
 /// acts to relate named constants to integer values, just
 /// like an enum in C++.
-struct EnumTable
+struct DLLEXPORTS EnumTable
 {
    /// Number of enumerated items in the table.
    S32 size;
@@ -220,17 +220,17 @@ namespace Con
    ///   - Calls AbstractClassRep::init() to initialize Torque's class database.
    ///   - Registers some basic global script functions that couldn't usefully
    ///     be defined anywhere else.
-   void init();
+   DLLEXPORTS void init();
 
    /// Shuts down the console.
    ///
    /// This performs the following steps:
    ///   - Closes the console log file.
    ///   - Calls Namespace::shutdown() to shut down the scripting namespace hierarchy.
-   void shutdown();
+   DLLEXPORTS void shutdown();
 
    /// Is the console active at this time?
-   bool isActive();
+   DLLEXPORTS bool isActive();
 
    /// @}
 
@@ -260,8 +260,8 @@ namespace Con
    /// @see ConsoleLogger
    ///
    /// @{
-   void addConsumer(ConsumerCallback cb);
-   void removeConsumer(ConsumerCallback cb);
+   DLLEXPORTS void addConsumer(ConsumerCallback cb);
+   DLLEXPORTS void removeConsumer(ConsumerCallback cb);
    /// @}
 
    /// @name Miscellaneous
@@ -272,7 +272,7 @@ namespace Con
    /// @note It does this in-place, so be careful! It may
    ///       potentially blast data if you're not careful.
    ///       When in doubt, make a copy of the string first.
-   void stripColorChars(char* line);
+   DLLEXPORTS void stripColorChars(char* line);
 
    /// Convert from a relative path to an absolute path.
    ///
@@ -292,27 +292,27 @@ namespace Con
    /// @param  pDstPath    Pointer to string buffer to fill with absolute path.
    /// @param  size        Size of buffer pointed to by pDstPath.
    /// @param  pSrcPath    Original, possibly relative path.
-   bool expandPath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL, const bool ensureTrailingSlash = false );
-   void collapsePath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL );
-   bool isBasePath( const char* SrcPath, const char* pBasePath );
-   void ensureTrailingSlash( char* pDstPath, const char* pSrcPath );
-   bool stripRepeatSlashes( char* pDstPath, const char* pSrcPath, S32 dstSize );
+   DLLEXPORTS bool expandPath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL, const bool ensureTrailingSlash = false );
+   DLLEXPORTS void collapsePath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL );
+   DLLEXPORTS bool isBasePath( const char* SrcPath, const char* pBasePath );
+   DLLEXPORTS void ensureTrailingSlash( char* pDstPath, const char* pSrcPath );
+   DLLEXPORTS bool stripRepeatSlashes( char* pDstPath, const char* pSrcPath, S32 dstSize );
 
-   void addPathExpando( const char* pExpandoName, const char* pPath );
-   void removePathExpando( const char* pExpandoName );
-   bool isPathExpando( const char* pExpandoName );
-   StringTableEntry getPathExpando( const char* pExpandoName );
-   U32 getPathExpandoCount( void );
-   StringTableEntry getPathExpandoKey( U32 expandoIndex );
-   StringTableEntry getPathExpandoValue( U32 expandoIndex );
+   DLLEXPORTS void addPathExpando( const char* pExpandoName, const char* pPath );
+   DLLEXPORTS void removePathExpando( const char* pExpandoName );
+   DLLEXPORTS bool isPathExpando( const char* pExpandoName );
+   DLLEXPORTS StringTableEntry getPathExpando( const char* pExpandoName );
+   DLLEXPORTS U32 getPathExpandoCount( void );
+   DLLEXPORTS StringTableEntry getPathExpandoKey( U32 expandoIndex );
+   DLLEXPORTS StringTableEntry getPathExpandoValue( U32 expandoIndex );
 
-   StringTableEntry getModNameFromPath(const char *path);
+   DLLEXPORTS StringTableEntry getModNameFromPath(const char *path);
 
    /// Returns true if fn is a global scripting function.
    ///
    /// This looks in the global namespace. It also checks to see if fn
    /// is in the StringTable; if not, it returns false.
-   bool isFunction(const char *fn);
+   DLLEXPORTS bool isFunction(const char *fn);
 
    /// This is the basis for tab completion in the console.
    ///
@@ -331,7 +331,7 @@ namespace Con
    ///                         is capped by MaxCompletionBufferSize.
    /// @param  forwardTab      Should we go forward to next match or backwards to previous
    ///                         match? True indicates forward.
-   U32 tabComplete(char* inputBuffer, U32 cursorPos, U32 maxResultLength, bool forwardTab);
+   DLLEXPORTS U32 tabComplete(char* inputBuffer, U32 cursorPos, U32 maxResultLength, bool forwardTab);
 
    /// @}
 
@@ -348,13 +348,13 @@ namespace Con
    /// @param type    The type of the C++ variable; see the ConsoleDynamicTypes enum for a complete list.
    /// @param pointer Pointer to the variable.
    /// @see ConsoleDynamicTypes
-   bool addVariable(const char *name, S32 type, void *pointer);
+   DLLEXPORTS bool addVariable(const char *name, S32 type, void *pointer);
 
    /// Remove a console variable.
    ///
    /// @param name   Global console variable name to remove
    /// @return       true if variable existed before removal.
-   bool removeVariable(const char *name);
+   DLLEXPORTS bool removeVariable(const char *name);
 
    /// Assign a string value to a locally scoped console variable
    ///
@@ -363,7 +363,7 @@ namespace Con
    ///
    /// @param name   Local console variable name to set
    /// @param value  String value to assign to name
-   void setLocalVariable(const char *name, const char *value);
+   DLLEXPORTS void setLocalVariable(const char *name, const char *value);
 
    /// Retrieve the string value to a locally scoped console variable
    ///
@@ -371,7 +371,7 @@ namespace Con
    ///       by the currently executing code.
    ///
    /// @param name   Local console variable name to get
-   const char* getLocalVariable(const char* name);
+   DLLEXPORTS const char* getLocalVariable(const char* name);
 
    /// @}
 
@@ -380,39 +380,39 @@ namespace Con
    /// Assign a string value to a global console variable
    /// @param name   Global console variable name to set
    /// @param value  String value to assign to this variable.
-   void setVariable(const char *name, const char *value);
+   DLLEXPORTS void setVariable(const char *name, const char *value);
 
    /// Retrieve the string value of a global console variable
    /// @param name   Global Console variable name to query
    /// @return       The string value of the variable or "" if the variable does not exist.
-   const char* getVariable(const char* name);
+   DLLEXPORTS const char* getVariable(const char* name);
 
    /// Same as setVariable(), but for bools.
-   void setBoolVariable (const char* name,bool var);
+   DLLEXPORTS void setBoolVariable (const char* name,bool var);
 
    /// Same as getVariable(), but for bools.
    ///
    /// @param  name  Name of the variable.
    /// @param  def   Default value to supply if no matching variable is found.
-   bool getBoolVariable (const char* name,bool def = false);
+   DLLEXPORTS bool getBoolVariable (const char* name,bool def = false);
 
    /// Same as setVariable(), but for ints.
-   void setIntVariable  (const char* name,S32 var);
+   DLLEXPORTS void setIntVariable  (const char* name,S32 var);
 
    /// Same as getVariable(), but for ints.
    ///
    /// @param  name  Name of the variable.
    /// @param  def   Default value to supply if no matching variable is found.
-   S32  getIntVariable  (const char* name,S32 def = 0);
+   DLLEXPORTS S32  getIntVariable  (const char* name,S32 def = 0);
 
    /// Same as setVariable(), but for floats.
-   void setFloatVariable(const char* name,F32 var);
+   DLLEXPORTS void setFloatVariable(const char* name,F32 var);
 
    /// Same as getVariable(), but for floats.
    ///
    /// @param  name  Name of the variable.
    /// @param  def   Default value to supply if no matching variable is found.
-   F32  getFloatVariable(const char* name,F32 def = .0f);
+   DLLEXPORTS F32  getFloatVariable(const char* name,F32 def = .0f);
 
    /// @}
 
@@ -426,12 +426,12 @@ namespace Con
    /// @param usage     Documentation for this function. @ref console_autodoc
    /// @param minArgs   Minimum number of arguments this function accepts
    /// @param maxArgs   Maximum number of arguments this function accepts
-   void addCommand(const char *name, StringCallback cb, const char *usage, S32 minArgs, S32 maxArgs);
+   DLLEXPORTS void addCommand(const char *name, StringCallback cb, const char *usage, S32 minArgs, S32 maxArgs);
 
-   void addCommand(const char *name, IntCallback    cb,    const char *usage, S32 minArgs, S32 maxArg); ///< @copydoc addCommand(const char *, StringCallback, const char *, S32, S32)
-   void addCommand(const char *name, FloatCallback  cb,  const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char *, StringCallback, const char *, S32, S32)
-   void addCommand(const char *name, VoidCallback   cb,   const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char *, StringCallback, const char *, S32, S32)
-   void addCommand(const char *name, BoolCallback   cb,   const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char *, StringCallback, const char *, S32, S32)
+   DLLEXPORTS void addCommand(const char *name, IntCallback    cb,    const char *usage, S32 minArgs, S32 maxArg); ///< @copydoc addCommand(const char *, StringCallback, const char *, S32, S32)
+   DLLEXPORTS void addCommand(const char *name, FloatCallback  cb,  const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char *, StringCallback, const char *, S32, S32)
+   DLLEXPORTS void addCommand(const char *name, VoidCallback   cb,   const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char *, StringCallback, const char *, S32, S32)
+   DLLEXPORTS void addCommand(const char *name, BoolCallback   cb,   const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char *, StringCallback, const char *, S32, S32)
    /// @}
 
    /// @name Namespace Function Registration
@@ -446,11 +446,11 @@ namespace Con
    /// @param usage     Documentation for this function. @ref console_autodoc
    /// @param minArgs   Minimum number of arguments this function accepts
    /// @param maxArgs   Maximum number of arguments this function accepts
-   void addCommand(const char *nameSpace, const char *name,StringCallback cb, const char *usage, S32 minArgs, S32 maxArgs);
-   void addCommand(const char *nameSpace, const char *name,IntCallback cb,    const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char*, const char *, StringCallback, const char *, S32, S32)
-   void addCommand(const char *nameSpace, const char *name,FloatCallback cb,  const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char*, const char *, StringCallback, const char *, S32, S32)
-   void addCommand(const char *nameSpace, const char *name,VoidCallback cb,   const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char*, const char *, StringCallback, const char *, S32, S32)
-   void addCommand(const char *nameSpace, const char *name,BoolCallback cb,   const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char*, const char *, StringCallback, const char *, S32, S32)
+   DLLEXPORTS void addCommand(const char *nameSpace, const char *name,StringCallback cb, const char *usage, S32 minArgs, S32 maxArgs);
+   DLLEXPORTS void addCommand(const char *nameSpace, const char *name,IntCallback cb,    const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char*, const char *, StringCallback, const char *, S32, S32)
+   DLLEXPORTS void addCommand(const char *nameSpace, const char *name,FloatCallback cb,  const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char*, const char *, StringCallback, const char *, S32, S32)
+   DLLEXPORTS void addCommand(const char *nameSpace, const char *name,VoidCallback cb,   const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char*, const char *, StringCallback, const char *, S32, S32)
+   DLLEXPORTS void addCommand(const char *nameSpace, const char *name,BoolCallback cb,   const char *usage, S32 minArgs, S32 maxArgs); ///< @copydoc addCommand(const char*, const char *, StringCallback, const char *, S32, S32)
    /// @}
 
    /// @name Special Purpose Registration
@@ -462,12 +462,12 @@ namespace Con
    ///
    /// @{
 
-   void markCommandGroup (const char * nsName, const char *name, const char* usage=NULL);
-   void beginCommandGroup(const char * nsName, const char *name, const char* usage);
-   void endCommandGroup  (const char * nsName, const char *name);
+   DLLEXPORTS void markCommandGroup (const char * nsName, const char *name, const char* usage=NULL);
+   DLLEXPORTS void beginCommandGroup(const char * nsName, const char *name, const char* usage);
+   DLLEXPORTS void endCommandGroup  (const char * nsName, const char *name);
 
    /// @deprecated
-   void addOverload      (const char * nsName, const char *name, const char *altUsage);
+   DLLEXPORTS void addOverload      (const char * nsName, const char *name, const char *altUsage);
 
    /// @}
 
@@ -482,42 +482,42 @@ namespace Con
 
    /// @param _format   A stdlib printf style formatted out put string
    /// @param ...       Variables to be written
-   void printf(const char *_format, ...);
+   DLLEXPORTS void printf(const char *_format, ...);
 
    /// @note The console window colors warning text as LIGHT GRAY.
    /// @param _format   A stdlib printf style formatted out put string
    /// @param ...       Variables to be written
-   void warnf(const char *_format, ...);
+   DLLEXPORTS void warnf(const char *_format, ...);
 
    /// @note The console window colors warning text as RED.
    /// @param _format   A stdlib printf style formatted out put string
    /// @param ...       Variables to be written
-   void errorf(const char *_format, ...);
+   DLLEXPORTS void errorf(const char *_format, ...);
 
    /// @note The console window colors warning text as LIGHT GRAY.
    /// @param type      Allows you to associate the warning message with an internal module.
    /// @param _format   A stdlib printf style formatted out put string
    /// @param ...       Variables to be written
    /// @see Con::warnf()
-   void warnf(ConsoleLogEntry::Type type, const char *_format, ...);
+   DLLEXPORTS void warnf(ConsoleLogEntry::Type type, const char *_format, ...);
 
    /// @note The console window colors warning text as RED.
    /// @param type      Allows you to associate the warning message with an internal module.
    /// @param _format   A stdlib printf style formatted out put string
    /// @param ...       Variables to be written
    /// @see Con::errorf()
-   void errorf(ConsoleLogEntry::Type type, const char *_format, ...);
+   DLLEXPORTS void errorf(ConsoleLogEntry::Type type, const char *_format, ...);
 
    /// Prints a separator to the console.
-   inline void printSeparator( void ) { printf("--------------------------------------------------------------------------------"); }
+   inline DLLEXPORTS void printSeparator( void ) { printf("--------------------------------------------------------------------------------"); }
 
    /// Prints a separator to the console.
-   inline void printBlankLine( void ) { printf(""); }
+   inline DLLEXPORTS void printBlankLine( void ) { printf(""); }
 
    /// @}
 
    /// Returns true when called from the main thread, false otherwise
-   bool isMainThread();
+   DLLEXPORTS bool isMainThread();
 
 
    /// @name Console Execution
@@ -536,10 +536,10 @@ namespace Con
    /// char* argv[] = {"abs", "-9"};
    /// char* result = execute(2, argv);
    /// @endcode
-   const char *execute(S32 argc, const char* argv[]);
+   DLLEXPORTS const char *execute(S32 argc, const char* argv[]);
 
    /// @see execute(S32 argc, const char* argv[])
-   const char *executef(S32 argc, ...);
+   DLLEXPORTS const char *executef(S32 argc, ...);
 
    /// Call a Torque Script member function of a SimObject from C/C++ code.
    /// @param object    Object on which to execute the method call.
@@ -555,22 +555,22 @@ namespace Con
    /// @endcode
    // [neo, 5/10/2007 - #3010]
    // Added flag thisCallOnly to bypass dynamic method calls
-   const char *execute(SimObject *object, S32 argc, const char *argv[], bool thisCallOnly = false);
+   DLLEXPORTS const char *execute(SimObject *object, S32 argc, const char *argv[], bool thisCallOnly = false);
 
    /// @see execute(SimObject *, S32 argc, const char *argv[])
-   const char *executef(SimObject *, S32 argc, ...);
+   DLLEXPORTS const char *executef(SimObject *, S32 argc, ...);
 
    /// Evaluate an arbitrary chunk of code.
    ///
    /// @param  string   Buffer containing code to execute.
    /// @param  echo     Should we echo the string to the console?
    /// @param  fileName Indicate what file this code is coming from; used in error reporting and such.
-   const char *evaluate(const char* string, bool echo = false, const char *fileName = NULL);
+   DLLEXPORTS const char *evaluate(const char* string, bool echo = false, const char *fileName = NULL);
 
    /// Evaluate an arbitrary line of script.
    ///
    /// This wraps dVsprintf(), so you can substitute parameters into the code being executed.
-   const char *evaluatef(const char* string, ...);
+   DLLEXPORTS const char *evaluatef(const char* string, ...);
 
    /// @}
 
@@ -584,32 +584,32 @@ namespace Con
    /// @{
 
    ///
-   char *getReturnBuffer(U32 bufferSize);
-   char *getReturnBuffer(const char *stringToCopy);
+   DLLEXPORTS char *getReturnBuffer(U32 bufferSize);
+   DLLEXPORTS char *getReturnBuffer(const char *stringToCopy);
 
-   char *getArgBuffer(U32 bufferSize);
-   char *getFloatArg(F64 arg);
-   char *getIntArg  (S32 arg);
-   char* getBoolArg(bool arg);
+   DLLEXPORTS char *getArgBuffer(U32 bufferSize);
+   DLLEXPORTS char *getFloatArg(F64 arg);
+   DLLEXPORTS char *getIntArg  (S32 arg);
+   DLLEXPORTS char* getBoolArg(bool arg);
    /// @}
 
    /// @name Namespaces
    /// @{
 
-   Namespace *lookupNamespace(const char *nsName);
-   bool linkNamespaces(const char *parentName, const char *childName);
-   bool unlinkNamespaces(const char *parentName, const char *childName);
+   DLLEXPORTS Namespace *lookupNamespace(const char *nsName);
+   DLLEXPORTS bool linkNamespaces(const char *parentName, const char *childName);
+   DLLEXPORTS bool unlinkNamespaces(const char *parentName, const char *childName);
 
    /// @note This should only be called from consoleObject.h
-   bool classLinkNamespaces(Namespace *parent, Namespace *child);
+   DLLEXPORTS bool classLinkNamespaces(Namespace *parent, Namespace *child);
    /// @}
 
    /// @name Logging
    /// @{
 
-   void getLockLog(ConsoleLogEntry * &log, U32 &size);
-   void unlockLog(void);
-   void setLogMode(S32 mode);
+   DLLEXPORTS void getLockLog(ConsoleLogEntry * &log, U32 &size);
+   DLLEXPORTS void unlockLog(void);
+   DLLEXPORTS void setLogMode(S32 mode);
 
    /// @}
 
@@ -625,14 +625,14 @@ namespace Con
    const char *getTypeName(S32 type);
    bool isDatablockType( S32 type ); */
 
-   void setData(S32 type, void *dptr, S32 index, S32 argc, const char **argv, EnumTable *tbl = NULL, BitSet32 flag = 0);
-   const char *getData(S32 type, void *dptr, S32 index, EnumTable *tbl = NULL, BitSet32 flag = 0);
+   DLLEXPORTS void setData(S32 type, void *dptr, S32 index, S32 argc, const char **argv, EnumTable *tbl = NULL, BitSet32 flag = 0);
+   DLLEXPORTS const char *getData(S32 type, void *dptr, S32 index, EnumTable *tbl = NULL, BitSet32 flag = 0);
    /// @}
 };
 
-extern void expandEscape(char *dest, const char *src);
-extern bool collapseEscape(char *buf);
-extern S32 HashPointer(StringTableEntry ptr);
+extern DLLEXPORTS void expandEscape(char *dest, const char *src);
+extern DLLEXPORTS bool collapseEscape(char *buf);
+extern DLLEXPORTS S32 HashPointer(StringTableEntry ptr);
 
 /// This is the backend for the ConsoleMethod()/ConsoleFunction() macros.
 ///
@@ -640,7 +640,7 @@ extern S32 HashPointer(StringTableEntry ptr);
 ///
 /// @see @ref console_autodoc
 /// @nosubgrouping
-class ConsoleConstructor
+class DLLEXPORTS ConsoleConstructor
 {
 public:
    /// @name Entry Type Fields

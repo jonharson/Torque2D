@@ -27,7 +27,7 @@
 #include "gui/guiTextCtrl.h"
 #endif
 
-class GuiTabPageCtrl : public GuiTextCtrl
+class DLLEXPORTS GuiTabPageCtrl : public GuiTextCtrl
 {
    private:
       typedef GuiTextCtrl Parent;

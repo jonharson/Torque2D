@@ -32,7 +32,7 @@
 
 //-----------------------------------------------------------------------------
 
-class SceneRenderQueue : public IFactoryObjectReset
+class DLLEXPORTS SceneRenderQueue : public IFactoryObjectReset
 {
 public:
     typedef Vector<SceneRenderRequest*> typeRenderRequestVector;

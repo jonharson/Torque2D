@@ -33,7 +33,7 @@
 
 //------------------------------------------------------------------------------
 
-class BuoyancyController : public PickingSceneController
+class DLLEXPORTS BuoyancyController : public PickingSceneController
 {
 private:
     typedef PickingSceneController Parent;

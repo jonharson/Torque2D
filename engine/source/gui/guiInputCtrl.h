@@ -30,7 +30,7 @@
 #include "platform/event.h"
 #endif
 
-class GuiInputCtrl : public GuiControl
+class DLLEXPORTS GuiInputCtrl : public GuiControl
 {
    private:
       typedef GuiControl Parent;

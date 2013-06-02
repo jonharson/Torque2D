@@ -37,7 +37,7 @@
 
 //-----------------------------------------------------------------------------
 
-class DefaultGame : public GameInterface, public virtual Tickable
+class DLLEXPORTS DefaultGame : public GameInterface, public virtual Tickable
 {
 public:
     virtual bool mainInitialize( int argc, const char **argv );

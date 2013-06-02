@@ -34,7 +34,7 @@ class SceneRenderQueue;
 
 //-----------------------------------------------------------------------------
 
-extern FactoryCache<SceneRenderRequest> SceneRenderRequestFactory;
-extern FactoryCache<SceneRenderQueue> SceneRenderQueueFactory;
+extern DLLEXPORTS FactoryCache<SceneRenderRequest> SceneRenderRequestFactory;
+extern DLLEXPORTS FactoryCache<SceneRenderQueue> SceneRenderQueueFactory;
 
 #endif // _SCENE_RENDER_FACTORIES_H_

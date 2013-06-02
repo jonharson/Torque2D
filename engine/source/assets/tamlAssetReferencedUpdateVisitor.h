@@ -48,7 +48,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlAssetReferencedUpdateVisitor : public TamlVisitor
+class DLLEXPORTS TamlAssetReferencedUpdateVisitor : public TamlVisitor
 {
 private:    
     StringTableEntry mAssetIdFrom;

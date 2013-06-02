@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ScriptObject : public SimObject
+class DLLEXPORTS ScriptObject : public SimObject
 {
    typedef SimObject Parent;
 

@@ -27,7 +27,7 @@
 #include "platform/platform.h"
 #endif
 
-class File
+class DLLEXPORTS File
 {
 public:
    /// What is the status of our file handle?

@@ -31,7 +31,7 @@
 
 //--------------------------------------
 // helper class
-class Filter: public Vector<F32>
+class DLLEXPORTS Filter: public Vector<F32>
 {
 public:
    Filter() : Vector<F32>(__FILE__, __LINE__) { }
@@ -42,7 +42,7 @@ public:
 
 
 //--------------------------------------
-class GuiFilterCtrl : public GuiControl
+class DLLEXPORTS GuiFilterCtrl : public GuiControl
 {
   private:
    typedef GuiControl Parent;

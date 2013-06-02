@@ -39,9 +39,9 @@ class Stream;
 class GPalette;
 class RectI;
 
-extern ResourceInstance* constructBitmapBMP(Stream& stream);
-extern ResourceInstance* constructBitmapPNG(Stream& stream);
-extern ResourceInstance* constructBitmapJPEG(Stream& stream);
+extern DLLEXPORTS ResourceInstance* constructBitmapBMP(Stream& stream);
+extern DLLEXPORTS ResourceInstance* constructBitmapPNG(Stream& stream);
+extern DLLEXPORTS ResourceInstance* constructBitmapJPEG(Stream& stream);
 
 #ifdef TORQUE_OS_IOS
 extern ResourceInstance* constructBitmapPVR(Stream& stream);
@@ -50,7 +50,7 @@ extern ResourceInstance* constructBitmapPVR(Stream& stream);
 //------------------------------------------------------------------------------
 //-------------------------------------- GBitmap
 //
-class GBitmap: public ResourceInstance
+class DLLEXPORTS GBitmap: public ResourceInstance
 {
    //-------------------------------------- public enumerants and structures
   public:
@@ -248,11 +248,11 @@ inline const U8* GBitmap::getAddress(const S32 in_x, const S32 in_y, const U32 m
 }
 
 
-extern void (*bitmapExtrude5551)(const void *srcMip, void *mip, U32 height, U32 width);
-extern void (*bitmapExtrudeRGB)(const void *srcMip, void *mip, U32 height, U32 width);
-extern void (*bitmapConvertRGB_to_5551)(U8 *src, U32 pixels);
-extern void (*bitmapExtrudePaletted)(const void *srcMip, void *mip, U32 height, U32 width);
+extern DLLEXPORTS void (*bitmapExtrude5551)(const void *srcMip, void *mip, U32 height, U32 width);
+extern DLLEXPORTS void (*bitmapExtrudeRGB)(const void *srcMip, void *mip, U32 height, U32 width);
+extern DLLEXPORTS void (*bitmapConvertRGB_to_5551)(U8 *src, U32 pixels);
+extern DLLEXPORTS void (*bitmapExtrudePaletted)(const void *srcMip, void *mip, U32 height, U32 width);
 
-void bitmapExtrudeRGB_c(const void *srcMip, void *mip, U32 height, U32 width);
+DLLEXPORTS void bitmapExtrudeRGB_c(const void *srcMip, void *mip, U32 height, U32 width);
 
 #endif //_GBITMAP_H_

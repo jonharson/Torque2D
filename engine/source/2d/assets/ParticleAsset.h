@@ -41,7 +41,7 @@ DefineConsoleType( TypeParticleAssetPtr )
 
 //-----------------------------------------------------------------------------
 
-class ParticleAsset : public AssetBase, public TamlChildren
+class DLLEXPORTS ParticleAsset : public AssetBase, public TamlChildren
 {
 private:
     typedef AssetBase  Parent;

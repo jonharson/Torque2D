@@ -37,7 +37,7 @@ class ImageAsset;
 
 //-----------------------------------------------------------------------------
 
-class AnimationAsset : public AssetBase
+class DLLEXPORTS AnimationAsset : public AssetBase
 {
 private:
     typedef AssetBase  Parent;

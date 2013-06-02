@@ -43,7 +43,7 @@
 ///   // Free frameAllocator memory
 ///   FrameAllocator::setWaterMark(waterMark);
 /// @endcode
-class FrameAllocator
+class DLLEXPORTS FrameAllocator
 {
    static U8*   smBuffer;
    static U32   smHighWaterMark;
@@ -163,7 +163,7 @@ U32 FrameAllocator::getHighWaterMark()
 /// automatically restore the watermark on the FrameAllocator. In situations
 /// with complex branches, this can be a significant headache remover, as you
 /// don't have to remember to reset the FrameAllocator on every posssible branch.
-class FrameAllocatorMarker
+class DLLEXPORTS FrameAllocatorMarker
 {
    U32 mMarker;
 
@@ -211,7 +211,7 @@ public:
 /// would be used for. If strange things happen, you will need to debug
 /// them yourself.
 template<class T>
-class FrameTemp
+class DLLEXPORTS FrameTemp
 {
 protected:
    U32 mWaterMark;
@@ -294,7 +294,7 @@ public:
 // FrameTemp specializations for types with no constructor/destructor
 #define FRAME_TEMP_NC_SPEC(type) \
    template<> \
-   inline FrameTemp<type>::FrameTemp( const U32 count ) \
+   inline DLLEXPORTS FrameTemp<type>::FrameTemp( const U32 count ) \
    { \
       AssertFatal( count > 0, "Allocating a FrameTemp with less than one instance" ); \
       mWaterMark = FrameAllocator::getWaterMark(); \

@@ -39,7 +39,7 @@
 //-----------------------------------------------------------------------------
 // Master server information
 
-class DemoNetInterface : public NetInterface
+class DLLEXPORTS DemoNetInterface : public NetInterface
 {
 public:
    void handleInfoPacket(const NetAddress *address, U8 packetType, BitStream *stream);
@@ -55,7 +55,7 @@ struct MasterInfo
 //-----------------------------------------------------------------------------
 // Game Server Information
 
-struct ServerInfo
+struct DLLEXPORTS ServerInfo
 {
    enum StatusFlags
    {
@@ -121,23 +121,23 @@ struct ServerInfo
 
 //-----------------------------------------------------------------------------
 
-extern Vector<ServerInfo> gServerList;
-extern bool gServerBrowserDirty;
-extern void clearServerList();
-extern void queryLanServers(U32 port, U8 flags, const char* gameType, const char* missionType,
+extern DLLEXPORTS Vector<ServerInfo> gServerList;
+extern DLLEXPORTS bool gServerBrowserDirty;
+extern DLLEXPORTS void clearServerList();
+extern DLLEXPORTS void queryLanServers(U32 port, U8 flags, const char* gameType, const char* missionType,
       U8 minPlayers, U8 maxPlayers, U8 maxBots, U32 regionMask, U32 maxPing, U16 minCPU,
       U8 filterFlags);
-extern void queryMasterGameTypes();
-extern void queryMasterServer(U8 flags, const char* gameType, const char* missionType,
+extern DLLEXPORTS void queryMasterGameTypes();
+extern DLLEXPORTS void queryMasterServer(U8 flags, const char* gameType, const char* missionType,
       U8 minPlayers, U8 maxPlayers, U8 maxBots, U32 regionMask, U32 maxPing, U16 minCPU,
       U8 filterFlags, U8 buddyCount, U32* buddyList );
-extern void queryFavoriteServers( U8 flags );
-extern void querySingleServer(const NetAddress* addr, U8 flags);
-extern void startHeartbeat();
-extern void sendHeartbeat( U8 flags );
+extern DLLEXPORTS void queryFavoriteServers( U8 flags );
+extern DLLEXPORTS void querySingleServer(const NetAddress* addr, U8 flags);
+extern DLLEXPORTS void startHeartbeat();
+extern DLLEXPORTS void sendHeartbeat( U8 flags );
 
 #ifdef TORQUE_DEBUG
-extern void addFakeServers( S32 howMany );
+extern DLLEXPORTS void addFakeServers( S32 howMany );
 #endif // DEBUG
 
 #endif

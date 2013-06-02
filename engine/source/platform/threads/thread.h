@@ -33,7 +33,7 @@ struct PlatformThreadData;
 // Typedefs
 typedef void (*ThreadRunFunction)(void *data);
 
-class Thread
+class DLLEXPORTS Thread
 {
 protected:
    PlatformThreadData*  mData;
@@ -85,7 +85,7 @@ public:
    U32 getId();
 };
 
-class ThreadManager 
+class DLLEXPORTS ThreadManager 
 {
    static ThreadManager* singleton()
    {

@@ -45,7 +45,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ImageFont : public SceneObject
+class DLLEXPORTS ImageFont : public SceneObject
 {
     typedef SceneObject          Parent;
 

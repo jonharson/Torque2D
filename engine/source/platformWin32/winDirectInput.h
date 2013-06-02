@@ -39,7 +39,7 @@
 struct InputEvent;
 
 //------------------------------------------------------------------------------
-class DInputManager : public InputManager
+class DLLEXPORTS DInputManager : public InputManager
 {
    private:
       typedef SimGroup Parent;

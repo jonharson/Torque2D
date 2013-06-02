@@ -35,7 +35,7 @@ class SimObject;
 
 /// Dictionary to keep track of dynamic fields on SimObject.
 
-class SimFieldDictionary
+class DLLEXPORTS SimFieldDictionary
 {
    friend class SimFieldDictionaryIterator;
 
@@ -76,7 +76,7 @@ public:
 
 //-----------------------------------------------------------------------------
 
-class SimFieldDictionaryIterator
+class DLLEXPORTS SimFieldDictionaryIterator
 {
    SimFieldDictionary *          mDictionary;
    S32                           mHashIndex;

@@ -33,11 +33,11 @@
 
 ///-----------------------------------------------------------------------------
 
-class ParticleAssetField
+class DLLEXPORTS ParticleAssetField
 {
 public:
     /// Data Key Node.
-    struct DataKey
+    struct DLLEXPORTS DataKey
     {
         DataKey() {}
         DataKey( const F32 time, const F32 value ) : mTime( time ), mValue( value ) {}
@@ -55,7 +55,6 @@ public:
         F32     mTime;
         F32     mValue;
     };
-
     static ParticleAssetField::DataKey BadDataKey;
 
 private:
@@ -118,7 +117,7 @@ public:
 //-----------------------------------------------------------------------------
 
 /// Base field.
-class ParticleAssetFieldBase
+class DLLEXPORTS ParticleAssetFieldBase
 {
 private:
     ParticleAssetField mBase;
@@ -135,7 +134,7 @@ public:
 //-----------------------------------------------------------------------------
 
 /// Life field.
-class ParticleAssetFieldLife
+class DLLEXPORTS ParticleAssetFieldLife
 {
 private:
     ParticleAssetField mLife;
@@ -152,7 +151,7 @@ public:
 //-----------------------------------------------------------------------------
 
 /// Variation field.
-class ParticleAssetFieldVariation
+class DLLEXPORTS ParticleAssetFieldVariation
 {
 private:
     ParticleAssetField mVariation;
@@ -169,7 +168,7 @@ public:
 //-----------------------------------------------------------------------------
 
 /// Base and variation fields.
-class ParticleAssetFieldBaseVariation :
+class DLLEXPORTS ParticleAssetFieldBaseVariation :
     public ParticleAssetFieldBase,
     public ParticleAssetFieldVariation
 {
@@ -184,7 +183,7 @@ public:
 //-----------------------------------------------------------------------------
 
 /// Base, variation and life fields.
-class ParticleAssetFieldBaseVariationLife :
+class DLLEXPORTS ParticleAssetFieldBaseVariationLife :
     public ParticleAssetFieldBase,
     public ParticleAssetFieldVariation,
     public ParticleAssetFieldLife

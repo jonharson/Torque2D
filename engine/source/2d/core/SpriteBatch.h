@@ -37,7 +37,7 @@ class SpriteBatchQuery;
 
 //------------------------------------------------------------------------------  
 
-class SpriteBatch
+class DLLEXPORTS SpriteBatch
 {
 public:
     static const S32                INVALID_SPRITE_PROXY = -1;  

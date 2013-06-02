@@ -38,7 +38,7 @@
 /// independent way.
 ///
 /// Length does NOT include the null terminator.
-class StringBuffer
+class DLLEXPORTS StringBuffer
 {
    Vector<UTF16>  mBuffer;
    Vector<UTF8>   mBuffer8;

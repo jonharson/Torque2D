@@ -40,7 +40,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ParticlePlayer : public SceneObject, protected AssetPtrCallback
+class DLLEXPORTS ParticlePlayer : public SceneObject, protected AssetPtrCallback
 {
 private:
     typedef SceneObject Parent;

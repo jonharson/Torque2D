@@ -28,7 +28,7 @@
 
 class FileStream;
 
-class GameInterface
+class DLLEXPORTS GameInterface
 {
 private:
    enum JournalMode {
@@ -156,6 +156,6 @@ public:
 };
 
 /// Global game instance.
-extern GameInterface* Game;
+extern DLLEXPORTS GameInterface* Game;
 
 #endif

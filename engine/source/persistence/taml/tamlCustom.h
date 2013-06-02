@@ -58,14 +58,14 @@
 class TamlWriteNode;
 class TamlCustomNode;
 class TamlCustomField;
-extern FactoryCache<TamlCustomNode> TamlCustomNodeFactory;
-extern FactoryCache<TamlCustomField> TamlCustomFieldFactory;
+extern DLLEXPORTS FactoryCache<TamlCustomNode> TamlCustomNodeFactory;
+extern DLLEXPORTS FactoryCache<TamlCustomField> TamlCustomFieldFactory;
 typedef Vector<TamlCustomNode*> TamlCustomNodeVector;
 typedef Vector<TamlCustomField*> TamlCustomFieldVector;
 
 //-----------------------------------------------------------------------------
 
-class TamlCustomField : public IFactoryObjectReset
+class DLLEXPORTS TamlCustomField : public IFactoryObjectReset
 {
 public:
     TamlCustomField()
@@ -278,7 +278,7 @@ private:
 
 //-----------------------------------------------------------------------------
 
-class TamlCustomNode : public IFactoryObjectReset
+class DLLEXPORTS TamlCustomNode : public IFactoryObjectReset
 {
 public:
     TamlCustomNode()
@@ -599,7 +599,7 @@ private:
 
 //-----------------------------------------------------------------------------
 
-class TamlCustomNodes : public IFactoryObjectReset
+class DLLEXPORTS TamlCustomNodes : public IFactoryObjectReset
 {
 public:
     TamlCustomNodes()

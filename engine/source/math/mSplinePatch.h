@@ -39,7 +39,7 @@
 
 /// Class for spline control points.
 /// @see SplinePatch
-class SplCtrlPts
+class DLLEXPORTS SplCtrlPts
 {
 private:
    /// Vector of points in the spline
@@ -92,7 +92,7 @@ public:
 /// and just pass the SplineBeamInfo structure to the SplineUtil::drawSplineBeam function.
 /// @see SplCtrlPts
 /// @see SplineUtil
-class SplinePatch
+class DLLEXPORTS SplinePatch
 {
 private:
    U32         mNumReqControlPoints;

@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class AssetPtrCallback
+class DLLEXPORTS AssetPtrCallback
 {
     friend class AssetManager;
 
@@ -39,7 +39,7 @@ protected:
 
 //-----------------------------------------------------------------------------
 
-class AssetPtrBase
+class DLLEXPORTS AssetPtrBase
 {
 public:
     AssetPtrBase() {};
@@ -80,7 +80,7 @@ public:
 
 //-----------------------------------------------------------------------------
 
-template<typename T> class AssetPtr : public AssetPtrBase
+template<typename T> class DLLEXPORTS AssetPtr : public AssetPtrBase
 {
 private:
     SimObjectPtr<T> mpAsset;

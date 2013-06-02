@@ -26,7 +26,7 @@
 /// If the path points to a short cut it will resolve the real path to
 /// the short cut target and check if that is a directory. This allows 
 /// listing of short cuts to directories in the file dialogs.
-class Win32DirectoryResolver
+class DLLEXPORTS Win32DirectoryResolver
 {
    private:
       IShellLink*    mPSL; /// We cache the IShellLink interface pointer

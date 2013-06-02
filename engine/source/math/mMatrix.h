@@ -31,7 +31,7 @@
 /// 4x4 Matrix Class
 ///
 /// This runs at F32 precision.
-class MatrixF
+class DLLEXPORTS MatrixF
 {
 private:
    F32 m[16];     ///< Note: this is stored in ROW MAJOR format.  OpenGL is

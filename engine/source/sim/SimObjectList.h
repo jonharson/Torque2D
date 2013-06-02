@@ -33,7 +33,7 @@ class SimObject;
 
 //-----------------------------------------------------------------------------
 
-class SimObjectList : public VectorPtr<SimObject*>
+class DLLEXPORTS SimObjectList : public VectorPtr<SimObject*>
 {
    static S32 QSORT_CALLBACK compareId(const void* a,const void* b);
 

@@ -43,7 +43,7 @@
 /// Note that new/free/realloc WILL NOT WORK on memory gotten from the
 /// DataChunker. This also only grows (you can call freeBlocks to deallocate
 /// and reset things).
-class DataChunker
+class DLLEXPORTS DataChunker
 {
   public:
    enum {
@@ -94,7 +94,7 @@ class DataChunker
 //----------------------------------------------------------------------------
 
 template<class T>
-class Chunker: private DataChunker
+class DLLEXPORTS Chunker: private DataChunker
 {
 public:
    Chunker(S32 size = DataChunker::ChunkSize) : DataChunker(size) {};
@@ -103,7 +103,7 @@ public:
 };
 
 template<class T>
-class FreeListChunker: private DataChunker
+class DLLEXPORTS FreeListChunker: private DataChunker
 {
    S32 numAllocated;
    S32 elementSize;

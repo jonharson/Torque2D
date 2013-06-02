@@ -32,7 +32,7 @@
 
 //---------------------------------------------------------------------------
 
-class PlaneF: public Point3F
+class DLLEXPORTS PlaneF: public Point3F
 {
 public:
    F32 d;

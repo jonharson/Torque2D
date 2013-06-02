@@ -43,7 +43,7 @@
 
 //-----------------------------------------------------------------------------
 
-class AssetQuery : public SimObject, public Vector<StringTableEntry>
+class DLLEXPORTS AssetQuery : public SimObject, public Vector<StringTableEntry>
 {
 private:
     typedef SimObject Parent;

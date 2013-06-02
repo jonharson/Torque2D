@@ -32,7 +32,7 @@
 /// Notice that bits are accessed directly, ie, by passing
 /// a variable with the relevant bit set or not, instead of
 /// passing the index of the relevant bit.
-class BitSet32
+class DLLEXPORTS BitSet32
 {
 private:
    /// Internal representation of bitset.

@@ -32,7 +32,7 @@
 // and radios and check boxes can be done using pushbuttons
 // or bitmap buttons.
 
-class GuiButtonBaseCtrl : public GuiControl
+class DLLEXPORTS GuiButtonBaseCtrl : public GuiControl
 {
    typedef GuiControl Parent;
 

@@ -45,7 +45,7 @@ class ParticleAsset;
 
 //-----------------------------------------------------------------------------
 
-class ParticleAssetEmitter : public SimObject, protected AssetPtrCallback
+class DLLEXPORTS ParticleAssetEmitter : public SimObject, protected AssetPtrCallback
 {
     friend ParticleAsset;
 

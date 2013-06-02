@@ -27,6 +27,7 @@
 #include "platform/platform.h"
 #endif
 
+#include "sim/SimObject.h"
 
 //---------------------------------------------------------------------------
 /// Smart SimObject pointer.
@@ -52,7 +53,8 @@
 ///     // And reassign it - it will automatically update the references.
 ///     mOrbitObject = Sim::findObject("anotherObject");
 /// @endcode
-template <class T> class SimObjectPtr
+template <class T>
+class DLLEXPORTS SimObjectPtr
 {
   private:
    SimObject *mObj;
@@ -65,28 +67,37 @@ template <class T> class SimObjectPtr
       if(mObj)
          mObj->registerReference(&mObj);
    }
+
    SimObjectPtr(const SimObjectPtr<T>& rhs)
    {
-      mObj = const_cast<T*>(static_cast<const T*>(rhs));
+      mObj = reinterpret_cast<SimObject*>(const_cast<T*>(static_cast<const T*>(rhs)));
+
       if(mObj)
          mObj->registerReference(&mObj);
    }
+
    SimObjectPtr<T>& operator=(const SimObjectPtr<T>& rhs)
    {
       if(this == &rhs)
          return(*this);
+
       if(mObj)
          mObj->unregisterReference(&mObj);
-      mObj = const_cast<T*>(static_cast<const T*>(rhs));
+
+      mObj = reinterpret_cast<SimObject*>(const_cast<T*>(static_cast<const T*>(rhs)));
+
       if(mObj)
          mObj->registerReference(&mObj);
+
       return(*this);
    }
+
    ~SimObjectPtr()
    {
       if(mObj)
          mObj->unregisterReference(&mObj);
    }
+
    SimObjectPtr<T>& operator= (T *ptr)
    {
       if(mObj != (SimObject *) ptr)
@@ -99,16 +110,18 @@ template <class T> class SimObjectPtr
       }
       return *this;
    }
+
 #if defined(__MWERKS__) && (__MWERKS__ < 0x2400)
    // CW 5.3 seems to get confused comparing SimObjectPtrs...
    bool operator == (const SimObject *ptr) { return mObj == ptr; }
    bool operator != (const SimObject *ptr) { return mObj != ptr; }
 #endif
+
    bool isNull() const   { return mObj == 0; }
    bool notNull() const   { return mObj != 0; }
    T* operator->() const { return static_cast<T*>(mObj); }
    T& operator*() const  { return *static_cast<T*>(mObj); }
-   operator T*() const   { return static_cast<T*>(mObj)? static_cast<T*>(mObj) : 0; }
+   operator T*() const   { return reinterpret_cast<T*>(const_cast<SimObject*>(mObj)) ? reinterpret_cast<T*>(const_cast<SimObject*>(mObj)) : 0; }
 };
 
 #endif // _SIM_OBJECT_PTR_H_

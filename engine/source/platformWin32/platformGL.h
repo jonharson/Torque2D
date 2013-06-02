@@ -33,6 +33,7 @@
 #define MIN_RESOLUTION_XY_STRING	"320 320"
 //%PUAP%-->
 
+#include "torqueConfig.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -57,7 +58,7 @@ extern "C" {
 #define GL_V12FTVFMT_EXT                     0x8704
 #define GL_V12FMTVFMT_EXT                    0x8705
 
-struct GLState
+struct DLLEXPORTS GLState
 {
    bool suppARBMultitexture;
    bool suppEXTblendcolor;
@@ -85,112 +86,112 @@ struct GLState
    GLint   maxTextureUnits;
 };
 
-extern GLState gGLState;
+extern DLLEXPORTS GLState gGLState;
 #define UNSIGNED_SHORT_5_6_5 0x8363
 #define UNSIGNED_SHORT_5_6_5_REV 0x8364
 
-extern bool gOpenGLDisablePT;
-extern bool gOpenGLDisableCVA;
-extern bool gOpenGLDisableTEC;
-extern bool gOpenGLDisableARBMT;
-extern bool gOpenGLDisableFC;
-extern bool gOpenGLDisableTCompress;
-extern bool gOpenGLNoEnvColor;
-extern float gOpenGLGammaCorrection;
-extern bool gOpenGLNoDrawArraysAlpha;
+extern DLLEXPORTS bool gOpenGLDisablePT;
+extern DLLEXPORTS bool gOpenGLDisableCVA;
+extern DLLEXPORTS bool gOpenGLDisableTEC;
+extern DLLEXPORTS bool gOpenGLDisableARBMT;
+extern DLLEXPORTS bool gOpenGLDisableFC;
+extern DLLEXPORTS bool gOpenGLDisableTCompress;
+extern DLLEXPORTS bool gOpenGLNoEnvColor;
+extern DLLEXPORTS float gOpenGLGammaCorrection;
+extern DLLEXPORTS bool gOpenGLNoDrawArraysAlpha;
 
-inline void dglSetRenderPrimType(unsigned int type)
+inline DLLEXPORTS void dglSetRenderPrimType(unsigned int type)
 {
    gGLState.primMode = type;
 }
 
-inline void dglClearPrimMetrics()
+inline DLLEXPORTS void dglClearPrimMetrics()
 {
    for(int i = 0; i < 4; i++)
       gGLState.triCount[i] = gGLState.primCount[i] = 0;
 }
 
-inline bool dglDoesSupportPalettedTexture()
+inline DLLEXPORTS bool dglDoesSupportPalettedTexture()
 {
    return gGLState.suppPalettedTexture && (gOpenGLDisablePT == false);
 }
 
-inline bool dglDoesSupportCompiledVertexArray()
+inline DLLEXPORTS bool dglDoesSupportCompiledVertexArray()
 {
    return gGLState.suppLockedArrays && (gOpenGLDisableCVA == false);
 }
 
-inline bool dglDoesSupportTextureEnvCombine()
+inline DLLEXPORTS bool dglDoesSupportTextureEnvCombine()
 {
    return gGLState.suppTextureEnvCombine && (gOpenGLDisableTEC == false);
 }
 
-inline bool dglDoesSupportARBMultitexture()
+inline DLLEXPORTS bool dglDoesSupportARBMultitexture()
 {
    return gGLState.suppARBMultitexture && (gOpenGLDisableARBMT == false);
 }
 
-inline bool dglDoesSupportEXTBlendColor()
+inline DLLEXPORTS bool dglDoesSupportEXTBlendColor()
 {
    return gGLState.suppEXTblendcolor;
 }
 
-inline bool dglDoesSupportEXTBlendMinMax()
+inline DLLEXPORTS bool dglDoesSupportEXTBlendMinMax()
 {
    return gGLState.suppEXTblendminmax;
 }
 
-inline bool dglDoesSupportVertexArrayRange()
+inline DLLEXPORTS bool dglDoesSupportVertexArrayRange()
 {
    return gGLState.suppVertexArrayRange;
 }
 
-inline bool dglDoesSupportFogCoord()
+inline DLLEXPORTS bool dglDoesSupportFogCoord()
 {
    return gGLState.suppFogCoord && (gOpenGLDisableFC == false);
 }
 
-inline bool dglDoesSupportEdgeClamp()
+inline DLLEXPORTS bool dglDoesSupportEdgeClamp()
 {
    return gGLState.suppEdgeClamp;
 }
 
-inline bool dglDoesSupportTextureCompression()
+inline DLLEXPORTS bool dglDoesSupportTextureCompression()
 {
    return gGLState.suppTextureCompression && (gOpenGLDisableTCompress == false);
 }
 
-inline bool dglDoesSupportS3TC()
+inline DLLEXPORTS bool dglDoesSupportS3TC()
 {
    return gGLState.suppS3TC;
 }
 
-inline bool dglDoesSupportFXT1()
+inline DLLEXPORTS bool dglDoesSupportFXT1()
 {
    return gGLState.suppFXT1;
 }
 
-inline bool dglDoesSupportTexEnvAdd()
+inline DLLEXPORTS bool dglDoesSupportTexEnvAdd()
 {
    return gGLState.suppTexEnvAdd;
 }
 
-inline bool dglDoesSupportTexAnisotropy()
+inline DLLEXPORTS bool dglDoesSupportTexAnisotropy()
 {
    return gGLState.suppTexAnisotropic;
 }
 
-inline bool dglDoesSupportVertexBuffer()
+inline DLLEXPORTS bool dglDoesSupportVertexBuffer()
 {
    return gGLState.suppVertexBuffer;
 }
 
-inline GLfloat dglGetMaxAnisotropy()
+inline DLLEXPORTS GLfloat dglGetMaxAnisotropy()
 {
    return gGLState.maxAnisotropy;
 }
 
-inline GLint dglGetMaxTextureUnits()
+inline DLLEXPORTS GLint dglGetMaxTextureUnits()
 {
    if (dglDoesSupportARBMultitexture())
       return gGLState.maxTextureUnits;

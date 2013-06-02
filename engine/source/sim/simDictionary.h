@@ -40,7 +40,7 @@ class SimObject;
 ///
 /// Provides fast lookup for name->object and
 /// for fast removal of an object given object*
-class SimNameDictionary
+class DLLEXPORTS SimNameDictionary
 {
    enum
    {
@@ -62,7 +62,7 @@ public:
    ~SimNameDictionary();
 };
 
-class SimManagerNameDictionary
+class DLLEXPORTS SimManagerNameDictionary
 {
    enum
    {
@@ -89,7 +89,7 @@ public:
 ///
 /// Provides fast lookup for ID->object and
 /// for fast removal of an object given object*
-class SimIdDictionary
+class DLLEXPORTS SimIdDictionary
 {
    enum
    {

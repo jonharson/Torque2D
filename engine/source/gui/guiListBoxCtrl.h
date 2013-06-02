@@ -43,7 +43,7 @@
 #endif
 
 
-class GuiListBoxCtrl : public GuiControl
+class DLLEXPORTS GuiListBoxCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

@@ -32,7 +32,7 @@ class DebugStats;
 
 //------------------------------------------------------------------------------
 
-class SceneController
+class DLLEXPORTS SceneController
 {
 public:
     SceneController() {}

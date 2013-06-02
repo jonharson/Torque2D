@@ -34,7 +34,7 @@
 ///-----------------------------------------------------------------------------
 /// Trigger 2D.
 ///-----------------------------------------------------------------------------
-class Trigger : public SceneObject
+class DLLEXPORTS Trigger : public SceneObject
 {
    typedef SceneObject Parent;
 

@@ -82,7 +82,7 @@ class Point2I;
 
 //------------------------------------------------------------------------------
 
-struct Platform
+struct DLLEXPORTS Platform
 {
     struct LocalTime
     {

@@ -41,23 +41,16 @@ class AssetManager;
 
 //-----------------------------------------------------------------------------
 
-extern StringTableEntry assetNameField;
-extern StringTableEntry assetDescriptionField;
-extern StringTableEntry assetCategoryField;
-extern StringTableEntry assetInternalField;
-extern StringTableEntry assetPrivateField;
-extern StringTableEntry assetAutoUnloadField;
-
-//#define ASSET_BASE_ASSETNAME_FIELD         "AssetName"
-//#define ASSET_BASE_ASSETDESCRIPTION_FIELD  "AssetDescription"
-//#define ASSET_BASE_ASSETCATEGORY_FIELD     "AssetCategory"
-//#define ASSET_BASE_ASSETINTERNAL_FIELD     "AssetInternal"
-//#define ASSET_BASE_ASSETPRIVATE_FIELD      "AssetPrivate"
-//#define ASSET_BASE_AUTOUNLOAD_FIELD        "AssetAutoUnload"
+extern DLLEXPORTS StringTableEntry assetNameField;
+extern DLLEXPORTS StringTableEntry assetDescriptionField;
+extern DLLEXPORTS StringTableEntry assetCategoryField;
+extern DLLEXPORTS StringTableEntry assetInternalField;
+extern DLLEXPORTS StringTableEntry assetPrivateField;
+extern DLLEXPORTS StringTableEntry assetAutoUnloadField;
 
 //-----------------------------------------------------------------------------
 
-class AssetBase : public SimObject
+class DLLEXPORTS AssetBase : public SimObject
 {
     friend class AssetManager;
 
@@ -141,6 +134,8 @@ private:
     /// Set asset manager ownership.
     void                    setOwned( AssetManager* pAssetManager, AssetDefinition* pAssetDefinition );
 };
+
+template class DLLEXPORTS Vector<AssetBase*>;
 
 #endif // _ASSET_BASE_H_
 

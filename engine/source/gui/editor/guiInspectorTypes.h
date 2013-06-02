@@ -54,7 +54,7 @@
 //////////////////////////////////////////////////////////////////////////
 // TypeEnum GuiInspectorField Class
 //////////////////////////////////////////////////////////////////////////
-class GuiInspectorTypeEnum : public GuiInspectorField
+class DLLEXPORTS GuiInspectorTypeEnum : public GuiInspectorField
 {
 private:
    typedef GuiInspectorField Parent;
@@ -75,7 +75,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 // GuiInspectorTypeCheckBox Class
 //////////////////////////////////////////////////////////////////////////
-class GuiInspectorTypeCheckBox : public GuiInspectorField
+class DLLEXPORTS GuiInspectorTypeCheckBox : public GuiInspectorField
 {
 private:
    typedef GuiInspectorField Parent;
@@ -92,7 +92,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 // GuiInspectorTypeGuiProfile Class
 //////////////////////////////////////////////////////////////////////////
-class GuiInspectorTypeGuiProfile : public GuiInspectorTypeEnum
+class DLLEXPORTS GuiInspectorTypeGuiProfile : public GuiInspectorTypeEnum
 {
 private:
    typedef GuiInspectorTypeEnum Parent;
@@ -110,7 +110,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 // TypeFileName GuiInspectorField Class
 //////////////////////////////////////////////////////////////////////////
-class GuiInspectorTypeFileName : public GuiInspectorField
+class DLLEXPORTS GuiInspectorTypeFileName : public GuiInspectorField
 {
 private:
    typedef GuiInspectorField Parent;
@@ -131,7 +131,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 // TypeColor GuiInspectorField Class (Base for ColorI/ColorF)
 //////////////////////////////////////////////////////////////////////////
-class GuiInspectorTypeColor : public GuiInspectorField
+class DLLEXPORTS GuiInspectorTypeColor : public GuiInspectorField
 {
 private:
    typedef GuiInspectorField Parent;
@@ -151,7 +151,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 // TypeColorI GuiInspectorField Class
 //////////////////////////////////////////////////////////////////////////
-class GuiInspectorTypeColorI : public GuiInspectorTypeColor
+class DLLEXPORTS GuiInspectorTypeColorI : public GuiInspectorTypeColor
 {
 private:
    typedef GuiInspectorTypeColor Parent;
@@ -165,7 +165,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 // TypeColorF GuiInspectorField Class
 //////////////////////////////////////////////////////////////////////////
-class GuiInspectorTypeColorF : public GuiInspectorTypeColor
+class DLLEXPORTS GuiInspectorTypeColorF : public GuiInspectorTypeColor
 {
 private:
    typedef GuiInspectorTypeColor Parent;

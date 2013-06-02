@@ -40,7 +40,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlAssetReferencedVisitor : public TamlVisitor
+class DLLEXPORTS TamlAssetReferencedVisitor : public TamlVisitor
 {
 public:
     typedef StringTableEntry typeAssetId;

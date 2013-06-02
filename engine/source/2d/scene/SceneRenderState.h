@@ -36,7 +36,7 @@ struct b2AABB;
 
 //-----------------------------------------------------------------------------
 
-struct SceneRenderState
+struct DLLEXPORTS SceneRenderState
 {
     SceneRenderState(
         const RectF& renderArea,

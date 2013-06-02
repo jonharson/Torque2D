@@ -265,7 +265,7 @@ class ZipTempStream;
 /// and the script code for the packaging utility.
 /// 
 //////////////////////////////////////////////////////////////////////////
-class ZipArchive
+class DLLEXPORTS ZipArchive
 {
 public:
    /// Access modes for zip files and files within the zip

@@ -35,7 +35,7 @@
 
 //--------------------------------------------------------------------------
 
-class AudioBuffer: public ResourceInstance
+class DLLEXPORTS AudioBuffer: public ResourceInstance
 {
    friend class AudioThread;
 

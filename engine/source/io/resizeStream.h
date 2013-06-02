@@ -31,7 +31,7 @@
 #include "io/filterStream.h"
 #endif
 
-class ResizeFilterStream : public FilterStream
+class DLLEXPORTS ResizeFilterStream : public FilterStream
 {
    typedef FilterStream Parent;
 

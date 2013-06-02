@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ScriptGroup : public SimGroup
+class DLLEXPORTS ScriptGroup : public SimGroup
 {
    typedef SimGroup Parent;
    

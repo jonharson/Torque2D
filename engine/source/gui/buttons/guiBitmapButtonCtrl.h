@@ -38,7 +38,7 @@ enum ButtonState
     INACTIVE
 };
 
-class GuiBitmapButtonCtrl : public GuiButtonCtrl
+class DLLEXPORTS GuiBitmapButtonCtrl : public GuiButtonCtrl
 {
 private:
    typedef GuiButtonCtrl Parent;
@@ -75,7 +75,7 @@ public:
    void onRender(Point2I offset, const RectI &updateRect);
 };
 
-class GuiBitmapButtonTextCtrl : public GuiBitmapButtonCtrl
+class DLLEXPORTS GuiBitmapButtonTextCtrl : public GuiBitmapButtonCtrl
 {
    typedef GuiBitmapButtonCtrl Parent;
 public:

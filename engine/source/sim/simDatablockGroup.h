@@ -31,7 +31,7 @@
 
 //---------------------------------------------------------------------------
 
-class SimDataBlockGroup : public SimGroup
+class DLLEXPORTS SimDataBlockGroup : public SimGroup
 {
   private:
    S32 mLastModifiedKey;

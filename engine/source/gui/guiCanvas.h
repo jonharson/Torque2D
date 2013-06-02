@@ -72,7 +72,7 @@
 /// screen will be painted normally. If you are making an animated GuiControl
 /// you need to add your control to the dirty areas of the canvas.
 ///
-class GuiCanvas : public GuiControl
+class DLLEXPORTS GuiCanvas : public GuiControl
 {
 
 protected:
@@ -383,6 +383,6 @@ public:
    /// @}
 };
 
-extern GuiCanvas *Canvas;
+extern DLLEXPORTS GuiCanvas *Canvas;
 
 #endif

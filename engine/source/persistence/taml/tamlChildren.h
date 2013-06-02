@@ -33,7 +33,7 @@ class SimObject;
 
 //-----------------------------------------------------------------------------
 
-class TamlChildren
+class DLLEXPORTS TamlChildren
 {
 public:
     /// Called when Taml attempts to compile a list of children.

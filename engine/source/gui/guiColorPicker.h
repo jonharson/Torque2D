@@ -52,7 +52,7 @@
 /// -# With pHorizAlphaRange, a horizontal box with black blending with an alpha from 0 to 255
 /// -# With pVertAlphaRange, a vertical box with black blending with an apha from 0 to 255
 /// -# With pDropperBackground, nothing is drawn
-class GuiColorPickerCtrl : public GuiControl
+class DLLEXPORTS GuiColorPickerCtrl : public GuiControl
 {
    typedef GuiControl Parent;
    

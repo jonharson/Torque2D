@@ -48,7 +48,7 @@ class FileDialogOpaqueData;
 /// @ingroup SystemDialogs 
 /// @internal
 /// Platform Agnostic Structure for holding information about a file dialog.
-struct FileDialogData
+struct DLLEXPORTS FileDialogData
 {
 
 public:
@@ -98,7 +98,7 @@ public:
 ///
 ///
 /// @{
-class FileDialog : public SimObject
+class DLLEXPORTS FileDialog : public SimObject
 {
    typedef SimObject Parent;
 
@@ -138,7 +138,7 @@ protected:
 };
 /// @}
 
-class OpenFileDialog : public FileDialog
+class DLLEXPORTS OpenFileDialog : public FileDialog
 {
    typedef FileDialog Parent;
 
@@ -171,7 +171,7 @@ protected:
    static const char* getMultipleFiles(void* obj, const char* data);
 };
 
-class OpenFolderDialog : public OpenFileDialog
+class DLLEXPORTS OpenFolderDialog : public OpenFileDialog
 {
    typedef OpenFileDialog Parent;
 
@@ -185,7 +185,7 @@ public:
    static void initPersistFields();
 };
 
-class SaveFileDialog : public FileDialog
+class DLLEXPORTS SaveFileDialog : public FileDialog
 {
    typedef FileDialog Parent;
 

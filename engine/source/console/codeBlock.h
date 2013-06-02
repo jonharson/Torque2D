@@ -32,7 +32,7 @@ class Stream;
 /// Core TorqueScript code management class.
 ///
 /// This class represents a block of code, usually mapped directly to a file.
-class CodeBlock
+class DLLEXPORTS CodeBlock
 {
 private:
    static CodeBlock* smCodeBlockList;

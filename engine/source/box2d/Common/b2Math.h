@@ -20,6 +20,7 @@
 #define B2_MATH_H
 
 #include <Box2D/Common/b2Settings.h>
+#include "torqueConfig.h"
 
 #include <cmath>
 #include <cfloat>
@@ -61,7 +62,7 @@ inline float32 b2InvSqrt(float32 x)
 #define	b2Atan2(y, x)	std::atan2(y, x)
 
 /// A 2D column vector.
-struct b2Vec2
+struct DLLEXPORTS b2Vec2
 {
 	/// Default constructor does nothing (for performance).
 	b2Vec2() {}
@@ -152,7 +153,7 @@ struct b2Vec2
 };
 
 /// A 2D column vector with 3 elements.
-struct b2Vec3
+struct DLLEXPORTS b2Vec3
 {
 	/// Default constructor does nothing (for performance).
 	b2Vec3() {}
@@ -191,7 +192,7 @@ struct b2Vec3
 };
 
 /// A 2-by-2 matrix. Stored in column-major order.
-struct b2Mat22
+struct DLLEXPORTS b2Mat22
 {
 	/// The default constructor does nothing (for performance).
 	b2Mat22() {}
@@ -265,7 +266,7 @@ struct b2Mat22
 };
 
 /// A 3-by-3 matrix. Stored in column-major order.
-struct b2Mat33
+struct DLLEXPORTS b2Mat33
 {
 	/// The default constructor does nothing (for performance).
 	b2Mat33() {}
@@ -307,7 +308,7 @@ struct b2Mat33
 };
 
 /// Rotation
-struct b2Rot
+struct DLLEXPORTS b2Rot
 {
 	b2Rot() {}
 
@@ -358,7 +359,7 @@ struct b2Rot
 
 /// A transform contains translation and rotation. It is used to represent
 /// the position and orientation of rigid frames.
-struct b2Transform
+struct DLLEXPORTS b2Transform
 {
 	/// The default constructor does nothing.
 	b2Transform() {}
@@ -388,7 +389,7 @@ struct b2Transform
 /// Shapes are defined with respect to the body origin, which may
 /// no coincide with the center of mass. However, to support dynamics
 /// we must interpolate the center of mass position.
-struct b2Sweep
+struct DLLEXPORTS b2Sweep
 {
 	/// Get the interpolated transform at a specific time.
 	/// @param beta is a factor in [0,1], where 0 indicates alpha0.
@@ -411,7 +412,7 @@ struct b2Sweep
 };
 
 /// Useful constant
-extern const b2Vec2 b2Vec2_zero;
+extern DLLEXPORTS const b2Vec2 b2Vec2_zero;
 
 /// Perform the dot product on two vectors.
 inline float32 b2Dot(const b2Vec2& a, const b2Vec2& b)

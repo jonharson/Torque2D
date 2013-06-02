@@ -27,7 +27,7 @@
 #include "sim/simBase.h"
 #endif
 
-class ConsoleBaseType
+class DLLEXPORTS ConsoleBaseType
 {
 protected:
    /// This is used to generate unique IDs for each type.
@@ -89,10 +89,10 @@ public:
    virtual StringTableEntry getTypePrefix( void ) const { return StringTable->EmptyString; }
 };
 
-#define DefineConsoleType( type ) extern S32 type;
+#define DefineConsoleType( type ) extern DLLEXPORTS S32 type;
 
 #define ConsoleType( typeName, type, size, typePrefix ) \
-   class ConsoleType##type : public ConsoleBaseType \
+   class DLLEXPORTS ConsoleType##type : public ConsoleBaseType \
    { \
    public: \
       ConsoleType##type (const S32 aSize, S32 *idPtr, const char *aTypeName) : ConsoleBaseType(aSize, idPtr, aTypeName) { } \
@@ -105,7 +105,7 @@ public:
    ConsoleType##type gConsoleType##type##Instance(size,&type,#type); \
 
 #define ConsolePrepType( typeName, type, size, typePrefix ) \
-   class ConsoleType##type : public ConsoleBaseType \
+   class DLLEXPORTS ConsoleType##type : public ConsoleBaseType \
    { \
    public: \
       ConsoleType##type (const S32 aSize, S32 *idPtr, const char *aTypeName) : ConsoleBaseType(aSize, idPtr, aTypeName) { } \
@@ -131,7 +131,7 @@ public:
    StringTableEntry ConsoleType##type::getTypePrefix( void ) const { return StringTable->insert( typePrefix ); }
 
 #define DatablockConsoleType( typeName, type, size, className ) \
-   class ConsoleType##type : public ConsoleBaseType \
+   class DLLEXPORTS ConsoleType##type : public ConsoleBaseType \
    { \
    public: \
       ConsoleType##type (const S32 aSize, S32 *idPtr, const char *aTypeName) : ConsoleBaseType(aSize, idPtr, aTypeName) { } \

@@ -61,7 +61,7 @@
 #define GUI_FRAME_DEBUG
 // ...save the porpoises
 
-class GuiFrameSetCtrl : public GuiControl
+class DLLEXPORTS GuiFrameSetCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

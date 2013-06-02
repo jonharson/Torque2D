@@ -146,13 +146,13 @@ namespace Compiler
 
    //------------------------------------------------------------
 
-   F64 consoleStringToNumber(const char *str, StringTableEntry file = 0, U32 line = 0);
-   U32 precompileBlock(StmtNode *block, U32 loopCount);
-   U32 compileBlock(StmtNode *block, U32 *codeStream, U32 ip, U32 continuePoint, U32 breakPoint);
+   DLLEXPORTS F64 consoleStringToNumber(const char *str, StringTableEntry file = 0, U32 line = 0);
+   DLLEXPORTS U32 precompileBlock(StmtNode *block, U32 loopCount);
+   DLLEXPORTS U32 compileBlock(StmtNode *block, U32 *codeStream, U32 ip, U32 continuePoint, U32 breakPoint);
 
    //------------------------------------------------------------
 
-   struct CompilerIdentTable
+   struct DLLEXPORTS CompilerIdentTable
    {
       struct Entry
       {
@@ -169,7 +169,7 @@ namespace Compiler
 
    //------------------------------------------------------------
 
-   struct CompilerStringTable
+   struct DLLEXPORTS CompilerStringTable
    {
       U32 totalLen;
       struct Entry
@@ -194,7 +194,7 @@ namespace Compiler
 
    //------------------------------------------------------------
 
-   struct CompilerFloatTable
+   struct DLLEXPORTS CompilerFloatTable
    {
       struct Entry
       {
@@ -212,43 +212,43 @@ namespace Compiler
 
    //------------------------------------------------------------
 
-   inline StringTableEntry U32toSTE(U32 u)
+   inline DLLEXPORTS StringTableEntry U32toSTE(U32 u)
    {
       return *((StringTableEntry *) &u);
    }
 
-   extern U32 (*STEtoU32)(StringTableEntry ste, U32 ip);
+   extern DLLEXPORTS U32 (*STEtoU32)(StringTableEntry ste, U32 ip);
 
-   U32 evalSTEtoU32(StringTableEntry ste, U32);
-   U32 compileSTEtoU32(StringTableEntry ste, U32 ip);
+   DLLEXPORTS U32 evalSTEtoU32(StringTableEntry ste, U32);
+   DLLEXPORTS U32 compileSTEtoU32(StringTableEntry ste, U32 ip);
 
-   CompilerStringTable *getCurrentStringTable();
-   CompilerStringTable &getGlobalStringTable();
-   CompilerStringTable &getFunctionStringTable();
+   DLLEXPORTS CompilerStringTable *getCurrentStringTable();
+   DLLEXPORTS CompilerStringTable &getGlobalStringTable();
+   DLLEXPORTS CompilerStringTable &getFunctionStringTable();
 
-   void setCurrentStringTable (CompilerStringTable* cst);
+   DLLEXPORTS void setCurrentStringTable (CompilerStringTable* cst);
 
-   CompilerFloatTable *getCurrentFloatTable();
-   CompilerFloatTable &getGlobalFloatTable();
-   CompilerFloatTable &getFunctionFloatTable();
+   DLLEXPORTS CompilerFloatTable *getCurrentFloatTable();
+   DLLEXPORTS CompilerFloatTable &getGlobalFloatTable();
+   DLLEXPORTS CompilerFloatTable &getFunctionFloatTable();
 
-   void setCurrentFloatTable (CompilerFloatTable* cst);
+   DLLEXPORTS void setCurrentFloatTable (CompilerFloatTable* cst);
 
-   CompilerIdentTable &getIdentTable();
+   DLLEXPORTS CompilerIdentTable &getIdentTable();
 
-   void precompileIdent(StringTableEntry ident);
+   DLLEXPORTS void precompileIdent(StringTableEntry ident);
 
-   CodeBlock *getBreakCodeBlock();
-   void setBreakCodeBlock(CodeBlock *cb);
+   DLLEXPORTS CodeBlock *getBreakCodeBlock();
+   DLLEXPORTS void setBreakCodeBlock(CodeBlock *cb);
 
    /// Helper function to reset the float, string, and ident tables to a base
    /// starting state.
-   void resetTables();
+   DLLEXPORTS void resetTables();
 
-   void *consoleAlloc(U32 size);
-   void consoleAllocReset();
+   DLLEXPORTS void *consoleAlloc(U32 size);
+   DLLEXPORTS void consoleAllocReset();
 
-   extern bool gSyntaxError;
+   extern DLLEXPORTS bool gSyntaxError;
 };
 
 #endif

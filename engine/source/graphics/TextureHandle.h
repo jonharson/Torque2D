@@ -105,7 +105,7 @@ class TextureObject;
 ///
 /// Also note the operator TextureObject*, as you can actually cast
 /// a TextureHandle to a TextureObject* if necessary.
-class TextureHandle
+class DLLEXPORTS TextureHandle
 {    
 public:
     enum TextureHandleType
@@ -189,6 +189,6 @@ private:
 
 //-----------------------------------------------------------------------------
 
-extern TextureHandle BadTextureHandle;
+extern DLLEXPORTS TextureHandle BadTextureHandle;
 
 #endif // _TEXTURE_HANDLE_H_

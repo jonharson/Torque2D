@@ -31,7 +31,7 @@
 ///
 /// @ingroup gui_group Gui System
 /// @{
-class GuiWindowCtrl : public GuiTextCtrl
+class DLLEXPORTS GuiWindowCtrl : public GuiTextCtrl
 {
    private:
       typedef GuiTextCtrl Parent;

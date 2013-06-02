@@ -28,7 +28,7 @@
 #endif
 
 /// @see BitVector
-class BitVectorW
+class DLLEXPORTS BitVectorW
 {
       U32   mNumEntries;
       U32   mBitWidth;

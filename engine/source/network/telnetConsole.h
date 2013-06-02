@@ -51,7 +51,7 @@
 /// @endcode
 ///
 ///
-class TelnetConsole
+class DLLEXPORTS TelnetConsole
 {
    NetSocket mAcceptSocket;
    S32 mAcceptPort;
@@ -115,7 +115,7 @@ public:
    void processConsoleLine(const char *line);
 };
 
-extern TelnetConsole *TelConsole;
+extern DLLEXPORTS TelnetConsole *TelConsole;
 
 #endif
 

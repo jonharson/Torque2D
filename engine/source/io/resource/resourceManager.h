@@ -29,6 +29,9 @@
 #ifndef _VECTOR_H_
 #include "collection/vector.h"
 #endif
+
+#include "collection/template.h"
+
 #ifndef _STRINGTABLE_H_
 #include "string/stringTable.h"
 #endif
@@ -52,7 +55,7 @@ namespace Zip
    class CentralDir;
 }
 
-extern ResManager *ResourceManager;
+extern DLLEXPORTS ResManager *ResourceManager;
 
 //------------------------------------------------------------------------------
 class ResourceObject;
@@ -99,7 +102,7 @@ class ResourceObject;
 /// is only destroyed when no more references to it remain.
 ///
 /// @see TerrainFile, GBitmap, AudioBuffer for more examples.
-class ResourceInstance
+class DLLEXPORTS ResourceInstance
 {
 private:
 public:
@@ -122,7 +125,7 @@ typedef ResourceInstance* (*RESOURCE_CREATE_FN)(Stream &stream);
 /// This contains all the book-keeping data used by ResDictionary and ResManager.
 ///
 /// @see ResManager
-class ResourceObject
+class DLLEXPORTS ResourceObject
 {
    friend class ResDictionary;
    friend class ResManager;
@@ -230,7 +233,7 @@ inline void ResourceObject::linkAfter(ResourceObject* res)
 /// When the Resource<> is destroyed, it frees the lock on the resource.
 ///
 /// @see ResManager
-template <class T> class Resource
+template <class T> class DLLEXPORTS Resource
 {
 private:
    ResourceObject *obj;  ///< Actual resource object
@@ -281,7 +284,7 @@ public:
 /// for fast removal of an object given a pointer to it.
 ///
 /// @see ResManager
-class ResDictionary
+class DLLEXPORTS ResDictionary
 {
    /// @name Hash Table
    /// @{
@@ -338,7 +341,7 @@ public:
 ///    -# To register a creation function and file extension with the manager.
 ///
 /// @nosubgrouping
-class ResManager
+class DLLEXPORTS ResManager
 {
 private:
    /// Path to which we will write data.

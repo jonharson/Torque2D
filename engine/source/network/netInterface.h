@@ -26,7 +26,7 @@
 /// NetInterface class.  Manages all valid and pending notify protocol connections.
 ///
 /// @see NetConnection, GameConnection, NetObject, NetEvent
-class NetInterface
+class DLLEXPORTS NetInterface
 {
 public:
    /// PacketType is encoded as the first byte of each packet.  If the LSB of
@@ -138,5 +138,5 @@ public:
 };
 
 /// The global net interface instance.
-extern NetInterface *GNet;
+extern DLLEXPORTS NetInterface *GNet;
 #endif

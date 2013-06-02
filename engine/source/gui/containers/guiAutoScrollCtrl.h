@@ -30,7 +30,7 @@
 #include "gui/guiTickCtrl.h"
 #endif
 
-class GuiAutoScrollCtrl : public GuiTickCtrl
+class DLLEXPORTS GuiAutoScrollCtrl : public GuiTickCtrl
 {
 private:
    typedef GuiTickCtrl Parent;

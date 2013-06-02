@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class RandomGeneratorBase
+class DLLEXPORTS RandomGeneratorBase
 {
 protected:
     RandomGeneratorBase() {}
@@ -54,7 +54,7 @@ public:
 ///
 /// @author Park & Miller, 1988, Comm of the ACM, 31(10), pp. 1192-1201
 //-----------------------------------------------------------------------------
-class RandomLCG : public RandomGeneratorBase
+class DLLEXPORTS RandomLCG : public RandomGeneratorBase
 {
 protected:
    static const S32 msQuotient;
@@ -83,7 +83,7 @@ public:
 /// Maier, W.L., 1991; A Fast Pseudo Random Number Generator,
 /// Dr. Dobb's Journal, May, pp. 152 - 157
 //-----------------------------------------------------------------------------
-class RandomR250 : public RandomGeneratorBase
+class DLLEXPORTS RandomR250 : public RandomGeneratorBase
 {
 private:
    U32 mBuffer[250];
@@ -99,6 +99,6 @@ public:
 
 //-----------------------------------------------------------------------------
 
-extern RandomLCG gRandGen;
+extern DLLEXPORTS RandomLCG gRandGen;
 
 #endif //_MRANDOM_H_

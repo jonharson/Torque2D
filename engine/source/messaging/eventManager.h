@@ -31,7 +31,7 @@
 /// Listener class used by the EventManager to dispatch messages to specific
 /// callbacks.
 //-----------------------------------------------------------------------------
-class EventManagerListener : public Dispatcher::IMessageListener
+class DLLEXPORTS EventManagerListener : public Dispatcher::IMessageListener
 {
    friend class EventManager;
 
@@ -85,7 +85,7 @@ public:
 /// $MyEventManager.postEvent( "SomeCoolEvent", "Data" );
 /// @endcode
 //-----------------------------------------------------------------------------
-class EventManager : public SimObject
+class DLLEXPORTS EventManager : public SimObject
 {
    typedef SimObject Parent;
 

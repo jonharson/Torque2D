@@ -32,7 +32,7 @@
 ///
 /// This class provides some powerful semantics for working with strings, and is
 /// used heavily by the console interpreter.
-struct StringStack
+struct DLLEXPORTS StringStack
 {
    enum {
       MaxStackDepth = 1024,

@@ -111,7 +111,7 @@ static unsigned char PADDING[64] = {
 
 // convenient object that wraps
 // the C-functions for use in C++ only
-class MD5
+class DLLEXPORTS MD5
 {
 private:
   struct __context_t {

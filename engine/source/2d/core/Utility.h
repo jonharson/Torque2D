@@ -75,11 +75,11 @@ namespace Utility
 //-----------------------------------------------------------------------------
 
 /// String helpers.
-const char* mGetFirstNonWhitespace( const char* inString );
-Vector2 mGetStringElementVector( const char* inString, const U32 index = 0 );
-VectorF mGetStringElementVector3D( const char* inString, const U32 index = 0 );
-const char* mGetStringElement( const char* inString, const U32 index, const bool copyBuffer = true );
-U32 mGetStringElementCount( const char *string );
+DLLEXPORTS const char* mGetFirstNonWhitespace( const char* inString );
+DLLEXPORTS Vector2 mGetStringElementVector( const char* inString, const U32 index = 0 );
+DLLEXPORTS VectorF mGetStringElementVector3D( const char* inString, const U32 index = 0 );
+DLLEXPORTS const char* mGetStringElement( const char* inString, const U32 index, const bool copyBuffer = true );
+DLLEXPORTS U32 mGetStringElementCount( const char *string );
 
 } // Namespace Utility.
 

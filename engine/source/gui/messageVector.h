@@ -38,7 +38,7 @@
 /// This is responsible for managing messages which appear in the chat HUD.
 ///
 /// @see GuiMessageVectorCtrl for more details on how this is used.
-class MessageVector : public SimObject
+class DLLEXPORTS MessageVector : public SimObject
 {
    typedef SimObject Parent;
 

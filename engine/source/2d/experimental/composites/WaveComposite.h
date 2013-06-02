@@ -29,7 +29,7 @@
 
 //------------------------------------------------------------------------------  
 
-class WaveComposite : public SceneObject, public SpriteBatch
+class DLLEXPORTS WaveComposite : public SceneObject, public SpriteBatch
 {
 protected:
     typedef SceneObject Parent;

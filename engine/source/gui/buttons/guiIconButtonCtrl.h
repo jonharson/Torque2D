@@ -37,7 +37,7 @@
 /// if the extent is set to (0,0) in the gui editor and apply hit, this control will
 /// set it's extent to be exactly the size of the normal bitmap (if present)
 ///
-class GuiIconButtonCtrl : public GuiButtonCtrl
+class DLLEXPORTS GuiIconButtonCtrl : public GuiButtonCtrl
 {
 private:
    typedef GuiButtonCtrl Parent;

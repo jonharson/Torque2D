@@ -33,7 +33,7 @@
 /// A helper class for working with boxes. It runs at F32 precision.
 ///
 /// @see Box3D
-class Box3F
+class DLLEXPORTS Box3F
 {
   public:
    Point3F mMin; ///< Minimum extents of box
@@ -221,7 +221,7 @@ inline Point3F Box3F::getClosestPoint(const Point3F& refPt) const
 /// 3D types use F64.
 ///
 /// @see Box3F
-class Box3D
+class DLLEXPORTS Box3D
 {
   public:
    Point3D mMin;

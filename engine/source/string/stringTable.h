@@ -75,7 +75,7 @@
 /// @note Be aware that the StringTable NEVER DEALLOCATES memory, so be careful when you
 ///       add strings to it. If you carelessly add many strings, you will end up wasting
 ///       space.
-class _StringTable
+class DLLEXPORTS _StringTable
 {
 private:
    /// @name Implementation details
@@ -162,9 +162,9 @@ private:
    static StringTableEntry EmptyString;
 };
 
-extern _StringTable *_gStringTable;
+extern DLLEXPORTS _StringTable *_gStringTable;
 
-inline _StringTable* _getStringTable()
+inline DLLEXPORTS _StringTable* _getStringTable()
 {
     if(_gStringTable == NULL)
         _StringTable::create();

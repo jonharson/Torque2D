@@ -30,33 +30,33 @@
 namespace Hash
 {
 //-Mat this was copied from StringTable
-    void initTolowerTable();
-   U32 hash(const char *str);
+   DLLEXPORTS void initTolowerTable();
+   DLLEXPORTS U32 hash(const char *str);
 
 //-Mat
-   inline U32 hash(U32 data)
+   inline DLLEXPORTS U32 hash(U32 data)
    {
       return data;
    }
 
-   inline U32 hash(const void *data)
+   inline DLLEXPORTS U32 hash(const void *data)
    {
       return (U32)data;
    }
 
-   U32 nextPrime(U32);
+   DLLEXPORTS U32 nextPrime(U32);
 };
 
 namespace tKeyCompare
 {
    template<typename Key>
-   inline bool equals( Key keya, Key keyb )
+   inline DLLEXPORTS bool equals( Key keya, Key keyb )
    {
       return ( keya == keyb );
    }
 
    template<>
-   inline bool equals<>( const char *keya, const char *keyb )
+   inline DLLEXPORTS bool equals<>( const char *keya, const char *keyb )
    {
        //-Mat make sure this is an accurate compare (do we check case?)
       return ( dStricmp( keya, keyb ) == 0 );
@@ -71,7 +71,7 @@ namespace tKeyCompare
 /// is used for hashing, see util/hash.h
 /// @ingroup UtilContainers
 template<typename Key, typename Value >
-class HashTable
+class DLLEXPORTS HashTable
 {
 public:
    struct Pair {
@@ -535,7 +535,7 @@ void HashTable<Key,Value>::operator=(const HashTable& p)
 /// the key must be hashable, see util/hash.h for details.
 /// @ingroup UtilContainers
 template<typename Key, typename Value, class Sequence = HashTable<Key,Value> >
-class HashMap: private Sequence
+class DLLEXPORTS HashMap: private Sequence
 {
    typedef HashTable<Key,Value> Parent;
 

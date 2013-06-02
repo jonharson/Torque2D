@@ -37,7 +37,7 @@
 
 //-----------------------------------------------------------------------------
 
-class DynamicTexture : SimObject
+class DLLEXPORTS DynamicTexture : SimObject
 {
     typedef SimObject Parent;
 

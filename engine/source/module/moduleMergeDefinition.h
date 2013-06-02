@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ModuleMergeDefinition : public SimObject
+class DLLEXPORTS ModuleMergeDefinition : public SimObject
 {
 private:
     typedef SimObject Parent;

@@ -39,13 +39,13 @@ class ExtraField;
 // Creation Helpers
 typedef ExtraField *(*ExtraFieldCreateFn)();
 
-template<class T> ExtraField * createExtraField()
+template<class T> DLLEXPORTS ExtraField * createExtraField()
 {
    return new T;
 }
 
 // ExtraField base class
-class ExtraField
+class DLLEXPORTS ExtraField
 {
    ExtraField *mNext;
 

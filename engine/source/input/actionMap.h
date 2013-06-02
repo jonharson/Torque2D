@@ -35,7 +35,7 @@
 
 struct InputEvent;
 
-struct EventDescriptor
+struct DLLEXPORTS EventDescriptor
 {
    U8  flags;      ///< Combination of any modifier flags.
    U8  eventType;  ///< SI_KEY, etc.
@@ -45,7 +45,7 @@ struct EventDescriptor
 /// Map raw inputs to a variety of actions.  This is used for all keymapping
 /// in the engine.
 /// @see ActionMap::Node
-class ActionMap : public SimObject
+class DLLEXPORTS ActionMap : public SimObject
 {
    typedef SimObject Parent;
 
@@ -88,6 +88,7 @@ class ActionMap : public SimObject
       }
       ~DeviceMap();
    };
+
    struct BreakEntry
    {
       U32 deviceType;

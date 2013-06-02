@@ -46,7 +46,7 @@
 /// This allows handlers of a given event to say to the signal generator, "I handled this message, and 
 /// it is no longer appropriate for other listeners to handle it"
 
-class SignalBase
+class DLLEXPORTS SignalBase
 {
 public:
 
@@ -92,7 +92,7 @@ protected:
    Vector<DelegateLink*> mTriggerNext;
 };
 
-template<typename Signature> class SignalBaseT : public SignalBase
+template<typename Signature> class DLLEXPORTS SignalBaseT : public SignalBase
 {
 public:
 
@@ -211,7 +211,7 @@ template<typename Signature> class Signal;
 // Short-circuit signal implementations
 
 template<> 
-class Signal<bool()> : public SignalBaseT<bool()>
+class DLLEXPORTS Signal<bool()> : public SignalBaseT<bool()>
 {
    public:
 
@@ -234,7 +234,7 @@ class Signal<bool()> : public SignalBaseT<bool()>
 };
 
 template<class A> 
-class Signal<bool(A)> : public SignalBaseT<bool(A)>
+class DLLEXPORTS Signal<bool(A)> : public SignalBaseT<bool(A)>
 {   
    public:
 
@@ -257,7 +257,7 @@ class Signal<bool(A)> : public SignalBaseT<bool(A)>
 };
 
 template<class A, class B>
-class Signal<bool(A,B)> : public SignalBaseT<bool(A,B)>
+class DLLEXPORTS Signal<bool(A,B)> : public SignalBaseT<bool(A,B)>
 {
    public:
 
@@ -280,7 +280,7 @@ class Signal<bool(A,B)> : public SignalBaseT<bool(A,B)>
 };
 
 template<class A, class B, class C> 
-class Signal<bool(A,B,C)> : public SignalBaseT<bool(A,B,C)>
+class DLLEXPORTS Signal<bool(A,B,C)> : public SignalBaseT<bool(A,B,C)>
 {
    public:
 
@@ -303,7 +303,7 @@ class Signal<bool(A,B,C)> : public SignalBaseT<bool(A,B,C)>
 };
 
 template<class A, class B, class C, class D> 
-class Signal<bool(A,B,C,D)> : public SignalBaseT<bool(A,B,C,D)>
+class DLLEXPORTS Signal<bool(A,B,C,D)> : public SignalBaseT<bool(A,B,C,D)>
 {
    public:
 
@@ -326,7 +326,7 @@ class Signal<bool(A,B,C,D)> : public SignalBaseT<bool(A,B,C,D)>
 };
 
 template<class A, class B, class C, class D, class E> 
-class Signal<bool(A,B,C,D,E)> : public SignalBaseT<bool(A,B,C,D,E)>
+class DLLEXPORTS Signal<bool(A,B,C,D,E)> : public SignalBaseT<bool(A,B,C,D,E)>
 {
    public:
 
@@ -349,7 +349,7 @@ class Signal<bool(A,B,C,D,E)> : public SignalBaseT<bool(A,B,C,D,E)>
 };
 
 template<class A, class B, class C, class D, class E, class F> 
-class Signal<bool(A,B,C,D,E,F)> : public SignalBaseT<bool(A,B,C,D,E,F)>
+class DLLEXPORTS Signal<bool(A,B,C,D,E,F)> : public SignalBaseT<bool(A,B,C,D,E,F)>
 {
    public:
 
@@ -372,7 +372,7 @@ class Signal<bool(A,B,C,D,E,F)> : public SignalBaseT<bool(A,B,C,D,E,F)>
 };
 
 template<class A, class B, class C, class D, class E, class F, class G> 
-class Signal<bool(A,B,C,D,E,F,G)> : public SignalBaseT<bool(A,B,C,D,E,F,G)>
+class DLLEXPORTS Signal<bool(A,B,C,D,E,F,G)> : public SignalBaseT<bool(A,B,C,D,E,F,G)>
 {
    public:
 
@@ -395,7 +395,7 @@ class Signal<bool(A,B,C,D,E,F,G)> : public SignalBaseT<bool(A,B,C,D,E,F,G)>
 };
 
 template<class A, class B, class C, class D, class E, class F, class G, class H> 
-class Signal<bool(A,B,C,D,E,F,G,H)> : public SignalBaseT<bool(A,B,C,D,E,F,G,H)>
+class DLLEXPORTS Signal<bool(A,B,C,D,E,F,G,H)> : public SignalBaseT<bool(A,B,C,D,E,F,G,H)>
 {
    public:
 
@@ -418,7 +418,7 @@ class Signal<bool(A,B,C,D,E,F,G,H)> : public SignalBaseT<bool(A,B,C,D,E,F,G,H)>
 };
 
 template<class A, class B, class C, class D, class E, class F, class G, class H, class I> 
-class Signal<bool(A,B,C,D,E,F,G,H,I)> : public SignalBaseT<bool(A,B,C,D,E,F,G,H,I)>
+class DLLEXPORTS Signal<bool(A,B,C,D,E,F,G,H,I)> : public SignalBaseT<bool(A,B,C,D,E,F,G,H,I)>
 {
    public:
 
@@ -441,7 +441,7 @@ class Signal<bool(A,B,C,D,E,F,G,H,I)> : public SignalBaseT<bool(A,B,C,D,E,F,G,H,
 };
 
 template<class A, class B, class C, class D, class E, class F, class G, class H, class I, class J> 
-class Signal<bool(A,B,C,D,E,F,G,H,I,J)> : public SignalBaseT<bool(A,B,C,D,E,F,G,H,I,J)>
+class DLLEXPORTS Signal<bool(A,B,C,D,E,F,G,H,I,J)> : public SignalBaseT<bool(A,B,C,D,E,F,G,H,I,J)>
 {
    public:
 
@@ -466,7 +466,7 @@ class Signal<bool(A,B,C,D,E,F,G,H,I,J)> : public SignalBaseT<bool(A,B,C,D,E,F,G,
 // Non short-circuit signal implementations
 
 template<> 
-class Signal<void()> : public SignalBaseT<void()>
+class DLLEXPORTS Signal<void()> : public SignalBaseT<void()>
 {
    public:
 
@@ -484,7 +484,7 @@ class Signal<void()> : public SignalBaseT<void()>
 };
 
 template<class A>
-class Signal<void(A)> : public SignalBaseT<void(A)>
+class DLLEXPORTS Signal<void(A)> : public SignalBaseT<void(A)>
 {
    public:
 
@@ -502,7 +502,7 @@ class Signal<void(A)> : public SignalBaseT<void(A)>
 };
 
 template<class A, class B> 
-class Signal<void(A,B)> : public SignalBaseT<void(A,B)>
+class DLLEXPORTS Signal<void(A,B)> : public SignalBaseT<void(A,B)>
 {
    public:
 
@@ -520,7 +520,7 @@ class Signal<void(A,B)> : public SignalBaseT<void(A,B)>
 };
 
 template<class A, class B, class C> 
-class Signal<void(A,B,C)> : public SignalBaseT<void(A,B,C)>
+class DLLEXPORTS Signal<void(A,B,C)> : public SignalBaseT<void(A,B,C)>
 {
    public:
 
@@ -556,7 +556,7 @@ class Signal<void(A,B,C,D)> : public SignalBaseT<void(A,B,C,D)>
 };
 
 template<class A, class B, class C, class D, class E> 
-class Signal<void(A,B,C,D,E)> : public SignalBaseT<void(A,B,C,D,E)>
+class DLLEXPORTS Signal<void(A,B,C,D,E)> : public SignalBaseT<void(A,B,C,D,E)>
 {
    public:
 
@@ -574,7 +574,7 @@ class Signal<void(A,B,C,D,E)> : public SignalBaseT<void(A,B,C,D,E)>
 };
 
 template<class A, class B, class C, class D, class E, class F> 
-class Signal<void(A,B,C,D,E,F)> : public SignalBaseT<void(A,B,C,D,E,F)>
+class DLLEXPORTS Signal<void(A,B,C,D,E,F)> : public SignalBaseT<void(A,B,C,D,E,F)>
 {
    public:
 
@@ -592,7 +592,7 @@ class Signal<void(A,B,C,D,E,F)> : public SignalBaseT<void(A,B,C,D,E,F)>
 };
 
 template<class A, class B, class C, class D, class E, class F, class G> 
-class Signal<void(A,B,C,D,E,F,G)> : public SignalBaseT<void(A,B,C,D,E,F,G)>
+class DLLEXPORTS Signal<void(A,B,C,D,E,F,G)> : public SignalBaseT<void(A,B,C,D,E,F,G)>
 {
    public:
 
@@ -610,7 +610,7 @@ class Signal<void(A,B,C,D,E,F,G)> : public SignalBaseT<void(A,B,C,D,E,F,G)>
 };
 
 template<class A, class B, class C, class D, class E, class F, class G, class H> 
-class Signal<void(A,B,C,D,E,F,G,H)> : public SignalBaseT<void(A,B,C,D,E,F,G,H)>
+class DLLEXPORTS Signal<void(A,B,C,D,E,F,G,H)> : public SignalBaseT<void(A,B,C,D,E,F,G,H)>
 {
    public:
 
@@ -628,7 +628,7 @@ class Signal<void(A,B,C,D,E,F,G,H)> : public SignalBaseT<void(A,B,C,D,E,F,G,H)>
 };
 
 template<class A, class B, class C, class D, class E, class F, class G, class H, class I> 
-class Signal<void(A,B,C,D,E,F,G,H,I)> : public SignalBaseT<void(A,B,C,D,E,F,G,H,I)>
+class DLLEXPORTS Signal<void(A,B,C,D,E,F,G,H,I)> : public SignalBaseT<void(A,B,C,D,E,F,G,H,I)>
 {
    public:
 
@@ -646,7 +646,7 @@ class Signal<void(A,B,C,D,E,F,G,H,I)> : public SignalBaseT<void(A,B,C,D,E,F,G,H,
 };
 
 template<class A, class B, class C, class D, class E, class F, class G, class H, class I, class J> 
-class Signal<void(A,B,C,D,E,F,G,H,I,J)> : public SignalBaseT<void(A,B,C,D,E,F,G,H,I,J)>
+class DLLEXPORTS Signal<void(A,B,C,D,E,F,G,H,I,J)> : public SignalBaseT<void(A,B,C,D,E,F,G,H,I,J)>
 {
    public:
 

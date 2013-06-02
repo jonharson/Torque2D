@@ -64,7 +64,7 @@
 /// "FromQueue" is the queue you want to forward from.
 ///
 //////////////////////////////////////////////////////////////////////////
-class MessageForwarder : public ScriptMsgListener
+class DLLEXPORTS MessageForwarder : public ScriptMsgListener
 {
    typedef ScriptMsgListener Parent;
 

@@ -90,7 +90,7 @@ class GuiEditCtrl;
 ///
 /// @ingroup gui_group Gui System
 /// @{
-class GuiControl : public SimGroup
+class DLLEXPORTS GuiControl : public SimGroup
 {
 private:
    typedef SimGroup Parent;

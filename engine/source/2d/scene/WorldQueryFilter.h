@@ -29,7 +29,7 @@
 
 ///-----------------------------------------------------------------------------
 
-struct WorldQueryFilter
+struct DLLEXPORTS WorldQueryFilter
 {
     WorldQueryFilter()
         {

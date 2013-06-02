@@ -33,7 +33,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlXmlWriter
+class DLLEXPORTS TamlXmlWriter
 {
 public:
     TamlXmlWriter( Taml* pTaml ) :

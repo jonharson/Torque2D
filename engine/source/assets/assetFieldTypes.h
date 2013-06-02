@@ -50,7 +50,7 @@ DefineConsoleType( TypeAssetLooseFilePath )
 
 //-----------------------------------------------------------------------------
 
-extern StringTableEntry assetLooseIdSignature;
-extern StringTableEntry assetLooseFileSignature;
+extern DLLEXPORTS StringTableEntry assetLooseIdSignature;
+extern DLLEXPORTS StringTableEntry assetLooseFileSignature;
 
 #endif // _ASSET_FIELD_TYPES_H_

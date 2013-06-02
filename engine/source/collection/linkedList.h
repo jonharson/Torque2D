@@ -42,7 +42,7 @@
 //---------------------------------------------------------------------------------------
 // LListNode template data node
 //---------------------------------------------------------------------------------------
-template <class T> class LListNode
+template <class T> class DLLEXPORTS LListNode
 {
 public:
    LListNode<T> *   Next;
@@ -62,7 +62,7 @@ public:
 //---------------------------------------------------------------------------------------
 // LList template
 //---------------------------------------------------------------------------------------
-template <class T> class LList
+template <class T> class DLLEXPORTS LList
 {
 protected:
    LListNode< T > *first_entry;

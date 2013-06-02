@@ -45,7 +45,7 @@ class SceneRenderQueue;
 
 //-----------------------------------------------------------------------------
 
-class SceneRenderRequest : public IFactoryObjectReset
+class DLLEXPORTS SceneRenderRequest : public IFactoryObjectReset
 {
 public:
     SceneRenderRequest() : mpIsolatedRenderQueue(NULL)

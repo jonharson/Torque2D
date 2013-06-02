@@ -43,7 +43,7 @@ class ColorI;
 
 //-----------------------------------------------------------------------------
 
-class ColorF
+class DLLEXPORTS ColorF
 {
   public:
    F32 red;
@@ -118,7 +118,7 @@ class ColorF
 
 //-----------------------------------------------------------------------------
 
-class ColorI
+class DLLEXPORTS ColorI
 {
   public:
    U8 red;
@@ -186,7 +186,7 @@ class ColorI
 
 //-----------------------------------------------------------------------------
 
-class StockColorItem
+class DLLEXPORTS StockColorItem
 {
 private:
     StockColorItem() {}
@@ -215,7 +215,7 @@ public:
 
 //-----------------------------------------------------------------------------
 
-class StockColor
+class DLLEXPORTS StockColor
 {
 public:
     static bool isColor( const char* pStockColorName );

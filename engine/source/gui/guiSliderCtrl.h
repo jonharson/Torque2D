@@ -27,7 +27,7 @@
 #include "gui/guiControl.h"
 #endif
 
-class GuiSliderCtrl : public GuiControl
+class DLLEXPORTS GuiSliderCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

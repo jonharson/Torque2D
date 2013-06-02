@@ -45,13 +45,15 @@
 
 //-----------------------------------------------------------------------------
 
-class SceneWindow : public GuiControl, public virtual Tickable
+template class DLLEXPORTS Vector<b2FixtureDef*>;
+
+class DLLEXPORTS SceneWindow : public GuiControl, public virtual Tickable
 {
     typedef GuiControl Parent;
 
 public:
     /// Camera View.
-    struct CameraView
+    struct DLLEXPORTS CameraView
     {
         // Source.
         RectF           mSourceArea;

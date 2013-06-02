@@ -31,7 +31,7 @@ class TamlParser;
 
 //-----------------------------------------------------------------------------
 
-class TamlVisitor
+class DLLEXPORTS TamlVisitor
 {
 public:
     /// Visitor property state.

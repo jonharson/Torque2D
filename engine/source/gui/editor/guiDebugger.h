@@ -27,7 +27,7 @@
 #include "gui/guiArrayCtrl.h"
 #endif
 
-class DbgFileView : public GuiArrayCtrl
+class DLLEXPORTS DbgFileView : public GuiArrayCtrl
 {
   private:
 

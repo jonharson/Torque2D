@@ -37,7 +37,7 @@ class Stream;
 //------------------------------------------------------------------------------
 //-------------------------------------- GPalette
 //
-class GPalette
+class DLLEXPORTS GPalette
 {
   public:
    enum PaletteType {

@@ -36,7 +36,7 @@
 #include "string/stringBuffer.h"
 #endif
 
-class GuiTextCtrl : public GuiControl
+class DLLEXPORTS GuiTextCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

@@ -36,7 +36,7 @@
 #endif
 
 
-class WinDisplayDevice : public DisplayDevice
+class DLLEXPORTS WinDisplayDevice : public DisplayDevice
 {
 protected:
    bool mRestoreGamma;

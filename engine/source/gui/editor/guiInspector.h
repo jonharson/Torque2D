@@ -72,7 +72,7 @@ class GuiInspectorField;
 // Forward Declare GuiInspectorDatablockField
 class GuiInspectorDatablockField;
 
-class GuiInspector : public GuiStackControl
+class DLLEXPORTS GuiInspector : public GuiStackControl
 {
 private:
    typedef GuiStackControl Parent;
@@ -94,7 +94,7 @@ public:
    bool findExistentGroup( StringTableEntry groupName );
 };
 
-class GuiInspectorField : public GuiControl
+class DLLEXPORTS GuiInspectorField : public GuiControl
 {
 private:
    typedef GuiControl Parent;
@@ -135,7 +135,7 @@ public:
    virtual void onRender(Point2I offset, const RectI &updateRect);
 };
 
-class GuiInspectorGroup : public GuiRolloutCtrl
+class DLLEXPORTS GuiInspectorGroup : public GuiRolloutCtrl
 {
 private:
    typedef GuiRolloutCtrl Parent;
@@ -171,7 +171,7 @@ protected:
 
 };
 
-class GuiInspectorDynamicField : public GuiInspectorField
+class DLLEXPORTS GuiInspectorDynamicField : public GuiInspectorField
 {
 private:
    typedef GuiInspectorField Parent;
@@ -199,7 +199,7 @@ public:
    virtual void resize(const Point2I &newPosition, const Point2I &newExtent);
 };
 
-class GuiInspectorDynamicGroup : public GuiInspectorGroup
+class DLLEXPORTS GuiInspectorDynamicGroup : public GuiInspectorGroup
 {
 private:
    typedef GuiInspectorGroup Parent;
@@ -235,7 +235,7 @@ protected:
 //////////////////////////////////////////////////////////////////////////
 // GuiInspectorDatablockField - custom field type for datablock enumeration
 //////////////////////////////////////////////////////////////////////////
-class GuiInspectorDatablockField : public GuiInspectorField
+class DLLEXPORTS GuiInspectorDatablockField : public GuiInspectorField
 {
 private:
    typedef GuiInspectorField Parent;

@@ -41,7 +41,7 @@
 
 //------------------------------------------------------------------------------
 
-class GroupedSceneController : public SceneObjectSet, public SceneController
+class DLLEXPORTS GroupedSceneController : public SceneObjectSet, public SceneController
 {
     typedef SceneObjectSet Parent;
 

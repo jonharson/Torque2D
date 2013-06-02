@@ -27,7 +27,7 @@
 #endif
 
 /// Renders a separator line with optional text.
-class GuiSeparatorCtrl : public GuiControl
+class DLLEXPORTS GuiSeparatorCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

@@ -27,7 +27,7 @@
 #include "gui/guiControl.h"
 #endif
 
-class GuiScriptNotifyCtrl : public GuiControl
+class DLLEXPORTS GuiScriptNotifyCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

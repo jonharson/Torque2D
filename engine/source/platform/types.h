@@ -23,6 +23,8 @@
 #ifndef _TORQUE_TYPES_H_
 #define _TORQUE_TYPES_H_
 
+#include "torqueConfig.h"
+
 //------------------------------------------------------------------------------
 //-------------------------------------- Basic Types...
 
@@ -100,7 +102,7 @@ static const F32 F32_MAX = F32(3.402823466e+38F);                 ///< Constant 
    @param in_swap Any U16
    @returns swaped U16.
  */
-inline U16 endianSwap(const U16 in_swap)
+inline DLLEXPORTS U16 endianSwap(const U16 in_swap)
 {
    return U16(((in_swap >> 8) & 0x00ff) |
               ((in_swap << 8) & 0xff00));
@@ -111,7 +113,7 @@ inline U16 endianSwap(const U16 in_swap)
    @param in_swap Any U32
    @returns swaped U32.
  */
-inline U32 endianSwap(const U32 in_swap)
+inline DLLEXPORTS U32 endianSwap(const U32 in_swap)
 {
    return U32(((in_swap >> 24) & 0x000000ff) |
               ((in_swap >>  8) & 0x0000ff00) |

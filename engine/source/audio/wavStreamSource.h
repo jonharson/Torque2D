@@ -27,7 +27,7 @@
 #include "audio/audioStreamSource.h"
 #endif
 
-class WavStreamSource: public AudioStreamSource
+class DLLEXPORTS WavStreamSource: public AudioStreamSource
 {
     public:
         WavStreamSource(const char *filename);

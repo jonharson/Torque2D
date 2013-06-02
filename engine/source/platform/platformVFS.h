@@ -41,7 +41,7 @@ namespace Zip
    class ZipArchive;
 }
 
-extern Zip::ZipArchive *openEmbeddedVFSArchive();
-extern void closeEmbeddedVFSArchive();
+extern DLLEXPORTS Zip::ZipArchive *openEmbeddedVFSArchive();
+extern DLLEXPORTS void closeEmbeddedVFSArchive();
 
 #endif // _PLATFORMVFS_H_

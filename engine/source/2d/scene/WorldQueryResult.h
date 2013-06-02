@@ -33,7 +33,7 @@ class SceneObject;
 
 ///-----------------------------------------------------------------------------
 
-struct WorldQueryResult
+struct DLLEXPORTS WorldQueryResult
 {
     WorldQueryResult() :
         mpSceneObject( NULL ),
@@ -73,6 +73,7 @@ struct WorldQueryResult
 
 ///-----------------------------------------------------------------------------
 
+template class DLLEXPORTS Vector<WorldQueryResult*>;
 typedef Vector<WorldQueryResult> typeWorldQueryResultVector;
 
 #endif // _WORLD_QUERY_RESULT_H_

@@ -45,7 +45,7 @@
 
 //-----------------------------------------------------------------------------
 
-class GuiSceneObjectCtrl : public GuiButtonCtrl
+class DLLEXPORTS GuiSceneObjectCtrl : public GuiButtonCtrl
 {
 private:
    typedef GuiButtonCtrl Parent;

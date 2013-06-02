@@ -50,7 +50,7 @@ typedef U32 SimTime;
 ///     - The schedule() console function uses a subclass of
 ///       SimEvent called SimConsoleEvent to keep track of
 ///       scheduled events.
-class SimEvent
+class DLLEXPORTS SimEvent
 {
   public:
    SimEvent *nextEvent;     ///< Linked list details - pointer to next item in the list.

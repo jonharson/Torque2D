@@ -98,7 +98,7 @@
 /// @endcode
 ///
 
-class SimSet: public SimObject, public TamlChildren
+class DLLEXPORTS SimSet: public SimObject, public TamlChildren
 {
    typedef SimObject Parent;
    typedef SimObject Children;
@@ -247,14 +247,19 @@ public:
 /// Iterator for use with SimSets
 ///
 /// @see SimSet
-class SimSetIterator
+class DLLEXPORTS SimSetIterator
 {
 protected:
-   struct Entry {
+   struct DLLEXPORTS Entry 
+   {
       SimSet* set;
       SimSet::iterator itr;
+
+	  bool operator==(const Entry& entry) { return this->set == entry.set; }
    };
-   class Stack: public Vector<Entry> {
+
+   class DLLEXPORTS Stack: public Vector<Entry> 
+   {
    public:
       void push_back(SimSet*);
    };
@@ -263,9 +268,7 @@ protected:
 public:
    SimSetIterator(SimSet*);
    SimObject* operator++();
-   SimObject* operator*() {
-      return stack.empty()? 0: *stack.last().itr;
-   }
+   SimObject* operator*() { return stack.empty()? 0: *stack.last().itr; }
 };
 
 //---------------------------------------------------------------------------
@@ -288,7 +291,7 @@ public:
 ///         // do something with *itr
 ///      }
 /// @endcode
-class SimGroup: public SimSet
+class DLLEXPORTS SimGroup: public SimSet
 {
 private:
    friend class SimManager;
@@ -330,7 +333,7 @@ inline void SimGroup::addObject(SimObject *obj, const char *name)
    obj->assignName(name);
 }
 
-class SimGroupIterator: public SimSetIterator
+class DLLEXPORTS SimGroupIterator: public SimSetIterator
 {
 public:
    SimGroupIterator(SimGroup* grp): SimSetIterator(grp) {}

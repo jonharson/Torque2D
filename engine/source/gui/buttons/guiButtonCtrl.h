@@ -27,7 +27,7 @@
 #include "gui/buttons/guiButtonBaseCtrl.h"
 #endif
 
-class GuiButtonCtrl : public GuiButtonBaseCtrl
+class DLLEXPORTS GuiButtonCtrl : public GuiButtonBaseCtrl
 {
    typedef GuiButtonBaseCtrl Parent;
 protected:

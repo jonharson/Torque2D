@@ -30,7 +30,7 @@
 struct PlatformThreadStorage;
 
 /// Platform independent per-thread storage class.
-class ThreadStorage
+class DLLEXPORTS ThreadStorage
 {
    enum
    {

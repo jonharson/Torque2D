@@ -33,7 +33,7 @@
 
 //-----------------------------------------------------------------------------
 
-class BehaviorComponent : public DynamicConsoleMethodComponent
+class DLLEXPORTS BehaviorComponent : public DynamicConsoleMethodComponent
 {
     friend class BehaviorInterface;
     typedef DynamicConsoleMethodComponent Parent;

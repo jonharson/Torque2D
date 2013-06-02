@@ -33,7 +33,7 @@
 #include "gui/containers/guiScrollCtrl.h"
 #endif
 
-class GuiConsoleEditCtrl : public GuiTextEditCtrl
+class DLLEXPORTS GuiConsoleEditCtrl : public GuiTextEditCtrl
 {
 private:
    typedef GuiTextEditCtrl Parent;

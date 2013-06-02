@@ -36,7 +36,7 @@
 //------------------------------------------------------------------------------
 /// Quadratic spline patch.  This is a special type of spline that only had 3 control points.
 /// @see SplinePatch
-class QuadPatch : public SplinePatch
+class DLLEXPORTS QuadPatch : public SplinePatch
 {
    typedef SplinePatch Parent;
 

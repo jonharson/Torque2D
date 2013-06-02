@@ -32,7 +32,7 @@
 
 
 /// Renders a bitmap.
-class GuiBitmapCtrl : public GuiControl
+class DLLEXPORTS GuiBitmapCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

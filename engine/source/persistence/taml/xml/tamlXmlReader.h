@@ -37,7 +37,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlXmlReader
+class DLLEXPORTS TamlXmlReader
 {
 public:
     TamlXmlReader( Taml* pTaml ) :

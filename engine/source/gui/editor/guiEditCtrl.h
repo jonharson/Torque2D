@@ -26,7 +26,7 @@
 #include "gui/guiControl.h"
 #include "collection/undo.h"
 
-class GuiEditCtrl : public GuiControl
+class DLLEXPORTS GuiEditCtrl : public GuiControl
 {
    typedef GuiControl Parent;
 

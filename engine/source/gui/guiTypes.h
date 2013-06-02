@@ -58,7 +58,7 @@ class GBitmap;
 /// Represents a single GUI event.
 ///
 /// This is passed around to all the relevant controls so they know what's going on.
-struct GuiEvent
+struct DLLEXPORTS GuiEvent
 {
    U16      ascii;             ///< ascii character code 'a', 'A', 'b', '*', etc (if device==keyboard) - possibly a uchar or something
    U8       modifier;          ///< SI_LSHIFT, etc
@@ -68,7 +68,7 @@ struct GuiEvent
    S32		eventID;		   ///< assigns mouse or touch ID to the event
 };
 
-class GuiCursor : public SimObject
+class DLLEXPORTS GuiCursor : public SimObject
 {
 private:
    typedef SimObject Parent;
@@ -99,7 +99,7 @@ public:
 /// a level of abstraction between script and GUI control so that you can
 /// use the same control, say a button, and have it look completly different
 /// just with a different profile.
-class GuiControlProfile : public SimObject
+class DLLEXPORTS GuiControlProfile : public SimObject
 {
 private:
    typedef SimObject Parent;

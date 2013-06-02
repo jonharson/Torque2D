@@ -29,7 +29,7 @@
 // Forward ref used by platform code
 struct PlatformMutexData;
 
-class Mutex
+class DLLEXPORTS Mutex
 {
 protected:
    PlatformMutexData *mData;
@@ -83,7 +83,7 @@ public:
 ///
 /// handle.unlock();
 /// @endcode
-class MutexHandle
+class DLLEXPORTS MutexHandle
 {
 private:
    void *mMutexPtr;

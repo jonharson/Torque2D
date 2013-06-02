@@ -27,6 +27,8 @@
 #include "platform/types.h"
 #endif
 
+//#include "collection/template.h"
+
 //-------------------------------------------------------------------------
 
 template <class T> class Vector;
@@ -58,11 +60,11 @@ enum FontCharset
 
 //-------------------------------------------------------------------------
 
-const char *getFontCharSetName(const U32 charSet);
+DLLEXPORTS const char *getFontCharSetName(const U32 charSet);
 
 //-------------------------------------------------------------------------
 
-class PlatformFont
+class DLLEXPORTS PlatformFont
 {
 public:
     struct CharInfo
@@ -95,6 +97,6 @@ public:
 
 //-------------------------------------------------------------------------
 
-extern PlatformFont *createPlatformFont(const char *name, U32 size, U32 charset = TGE_ANSI_CHARSET);
+extern DLLEXPORTS PlatformFont *createPlatformFont(const char *name, U32 size, U32 charset = TGE_ANSI_CHARSET);
 
 #endif // _PLATFORMFONT_H_

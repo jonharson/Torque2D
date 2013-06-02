@@ -54,6 +54,6 @@ enum MBReturnVal
    MRDontSave,
 };
 
-extern void initMessageBoxVars();
+extern DLLEXPORTS void initMessageBoxVars();
 
 #endif // _MSGBOX_H_

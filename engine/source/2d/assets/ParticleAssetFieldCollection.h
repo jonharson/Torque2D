@@ -37,7 +37,7 @@
 
 ///-----------------------------------------------------------------------------
 
-class ParticleAssetFieldCollection
+class DLLEXPORTS ParticleAssetFieldCollection
 {
 public:
     typedef HashMap<StringTableEntry, ParticleAssetField*> typeFieldHash;

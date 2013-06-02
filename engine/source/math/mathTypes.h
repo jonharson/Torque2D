@@ -27,7 +27,7 @@
 #include "console/consoleBaseType.h"
 #endif
 
-void RegisterMathFunctions(void);
+DLLEXPORTS void RegisterMathFunctions(void);
 
 // Define Math Console Types
 DefineConsoleType( TypePoint2I )

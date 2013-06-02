@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlBinaryWriter
+class DLLEXPORTS TamlBinaryWriter
 {
 public:
     TamlBinaryWriter( Taml* pTaml ) :

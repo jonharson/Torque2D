@@ -57,9 +57,9 @@
 
 //-----------------------------------------------------------------------------
 
-extern StringTableEntry tamlRefIdName;
-extern StringTableEntry tamlRefToIdName;
-extern StringTableEntry tamlNamedObjectName;
+extern DLLEXPORTS StringTableEntry tamlRefIdName;
+extern DLLEXPORTS StringTableEntry tamlRefToIdName;
+extern DLLEXPORTS StringTableEntry tamlNamedObjectName;
 
 //-----------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ extern StringTableEntry tamlNamedObjectName;
 
 //-----------------------------------------------------------------------------
 
-class Taml : public SimObject
+class DLLEXPORTS Taml : public SimObject
 {
 public:
     enum TamlFormatMode

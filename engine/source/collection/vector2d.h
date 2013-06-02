@@ -33,7 +33,7 @@
 //-------------------------------------------------------------------------------------
 
 template <class T>
-class Vector2d : public Vector<T>
+class DLLEXPORTS Vector2d : public Vector<T>
 {
 protected:
     U32	mWidth;

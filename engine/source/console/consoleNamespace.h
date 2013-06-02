@@ -41,7 +41,7 @@ class AbstractClassRep;
 
 //-----------------------------------------------------------------------------
 
-class Namespace
+class DLLEXPORTS Namespace
 {
     enum {
         MaxActivePackages = 512,

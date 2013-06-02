@@ -41,7 +41,7 @@ enum CDIntFlags
    CDFileOpen = BIT(3)
 };
 
-class CentralDir : public FileHeader
+class DLLEXPORTS CentralDir : public FileHeader
 {
    typedef FileHeader Parent;
 
@@ -70,7 +70,7 @@ public:
    void setFileComment(const char *comment);
 };
 
-class EndOfCentralDir
+class DLLEXPORTS EndOfCentralDir
 {
    static const U32 mEOCDSignature = 0x06054b50;
    /// The size of the EndOfCentralDir record in the zip file, used to locate it

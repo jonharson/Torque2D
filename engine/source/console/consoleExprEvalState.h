@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ExprEvalState
+class DLLEXPORTS ExprEvalState
 {
 public:
     /// @name Expression Evaluation

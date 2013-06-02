@@ -41,10 +41,10 @@ class TamlCallbacks;
 
 //-----------------------------------------------------------------------------
 
-class TamlWriteNode
+class DLLEXPORTS TamlWriteNode
 {
 public:
-    class FieldValuePair
+    class DLLEXPORTS FieldValuePair
     {
     public:        
         FieldValuePair( StringTableEntry name, const char* pValue )
@@ -112,5 +112,7 @@ public:
     Vector<TamlWriteNode*>*     mChildren;
     TamlCustomNodes             mCustomNodes;
 };
+
+template class DLLEXPORTS Vector<TamlWriteNode*>;
 
 #endif // _TAML_WRITE_NODE_H_

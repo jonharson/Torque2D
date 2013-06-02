@@ -100,7 +100,7 @@ namespace Zip
 /// ZipArchive::extractFile() method in zipArchive.cc 
 /// 
 //////////////////////////////////////////////////////////////////////////
-class ZipStatFilter : public FilterStream
+class DLLEXPORTS ZipStatFilter : public FilterStream
 {
    typedef FilterStream Parent;
 

@@ -33,7 +33,7 @@ class SceneObject;
 
 //-----------------------------------------------------------------------------
 
-class SceneObjectList : public VectorPtr<SceneObject*>
+class DLLEXPORTS SceneObjectList : public VectorPtr<SceneObject*>
 {
 	static S32 QSORT_CALLBACK compareId(const void* a,const void* b);
 

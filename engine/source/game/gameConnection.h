@@ -48,13 +48,13 @@ struct AuthInfo;
 
 
 /// Formerly contained a certificate, showing that something was valid.
-class Auth2Certificate
+class DLLEXPORTS Auth2Certificate
 {
    U32 xxx;
 };
 
 /// Formerly contained data indicating whether a user is valid.
-struct AuthInfo
+struct DLLEXPORTS AuthInfo
 {
    enum {
       MaxNameLen = 31,
@@ -65,19 +65,19 @@ struct AuthInfo
 };
 
 /// Formerly validated the server's authentication info.
-inline bool validateAuthenticatedServer()
+inline DLLEXPORTS bool validateAuthenticatedServer()
 {
    return true;
 }
 
 /// Formerly validated the client's authentication info.
-inline bool validateAuthenticatedClient()
+inline DLLEXPORTS bool validateAuthenticatedClient()
 {
    return true;
 }
 
 
-class GameConnection : public NetConnection
+class DLLEXPORTS GameConnection : public NetConnection
 {
 private:
    typedef NetConnection Parent;

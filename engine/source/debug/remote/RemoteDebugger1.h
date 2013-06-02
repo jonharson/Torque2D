@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class RemoteDebugger1 : public RemoteDebuggerBase
+class DLLEXPORTS RemoteDebugger1 : public RemoteDebuggerBase
 {
     typedef RemoteDebuggerBase Parent;
 

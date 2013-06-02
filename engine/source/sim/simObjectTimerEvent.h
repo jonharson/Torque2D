@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class SimObjectTimerEvent : public SimEvent
+class DLLEXPORTS SimObjectTimerEvent : public SimEvent
 {
 public:
     SimObjectTimerEvent( StringTableEntry callbackFunction, const U32 period, const U32 repeat = 0 ) :

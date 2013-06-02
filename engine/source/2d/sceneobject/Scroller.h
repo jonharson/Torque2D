@@ -33,7 +33,7 @@
 
 //-----------------------------------------------------------------------------
 
-class Scroller : public SpriteBase
+class DLLEXPORTS Scroller : public SpriteBase
 {
     typedef SpriteBase      Parent;
 

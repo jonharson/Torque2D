@@ -33,7 +33,7 @@
 
 //-----------------------------------------------------------------------------
 
-class NameTags : public SimSet
+class DLLEXPORTS NameTags : public SimSet
 {
     typedef SimSet      Parent;
 

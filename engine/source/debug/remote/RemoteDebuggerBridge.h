@@ -34,7 +34,7 @@
 
 //-----------------------------------------------------------------------------
 
-class RemoteDebuggerBridge
+class DLLEXPORTS RemoteDebuggerBridge
 {
 public:
     enum ConnectionState

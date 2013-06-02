@@ -33,12 +33,12 @@
 
 //-----------------------------------------------------------------------------
 
-extern StringTableEntry JSON_RFC4627_NAME_MANGLING_CHARACTERS;
-extern StringTableEntry JSON_RFC4627_NAME_MANGLING_FORMAT;
+extern DLLEXPORTS StringTableEntry JSON_RFC4627_NAME_MANGLING_CHARACTERS;
+extern DLLEXPORTS StringTableEntry JSON_RFC4627_NAME_MANGLING_FORMAT;
 
 //-----------------------------------------------------------------------------
 
-class TamlJSONWriter
+class DLLEXPORTS TamlJSONWriter
 {
 public:
     TamlJSONWriter( Taml* pTaml ) :

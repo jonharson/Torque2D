@@ -36,7 +36,7 @@
 /// size of the bit matrix (beyond available memory).
 ///
 /// @note This class is currently unused.
-class BitMatrix
+class DLLEXPORTS BitMatrix
 {
    U32 mWidth;
    U32 mHeight;

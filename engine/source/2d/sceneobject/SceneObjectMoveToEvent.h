@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class SceneObjectMoveToEvent : public SimEvent
+class DLLEXPORTS SceneObjectMoveToEvent : public SimEvent
 {
 public:
     SceneObjectMoveToEvent( const Vector2& targetWorldPoint, const bool autoStop, const bool warpToTarget  ) :

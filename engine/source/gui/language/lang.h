@@ -36,7 +36,7 @@
 //////////////////////////////////////////////////////////////////////////
 /// \brief Class for working with language files
 //////////////////////////////////////////////////////////////////////////
-class LangFile
+class DLLEXPORTS LangFile
 {
 protected:
 	Vector<UTF8 *> mStringTable;
@@ -74,10 +74,12 @@ public:
 	S32 getNumStrings(void)					{ return mStringTable.size(); }
 };
 
+template class DLLEXPORTS Vector<LangFile*>;
+
 //////////////////////////////////////////////////////////////////////////
 /// \brief Language file table
 //////////////////////////////////////////////////////////////////////////
-class LangTable : public SimObject
+class DLLEXPORTS LangTable : public SimObject
 {
 	typedef SimObject Parent;
 	
@@ -112,9 +114,9 @@ public:
 	const U32 getStringLength(const U32 id) const;
 };
 
-extern UTF8 *sanitiseVarName(const UTF8 *varName, UTF8 *buffer, U32 bufsize);
-extern UTF8 *getCurrentModVarName(UTF8 *buffer, U32 bufsize);
-extern const LangTable *getCurrentModLangTable();
-extern const LangTable *getModLangTable(const UTF8 *mod);
+extern DLLEXPORTS UTF8 *sanitiseVarName(const UTF8 *varName, UTF8 *buffer, U32 bufsize);
+extern DLLEXPORTS UTF8 *getCurrentModVarName(UTF8 *buffer, U32 bufsize);
+extern DLLEXPORTS const LangTable *getCurrentModLangTable();
+extern DLLEXPORTS const LangTable *getModLangTable(const UTF8 *mod);
 
 #endif // _LANG_H_

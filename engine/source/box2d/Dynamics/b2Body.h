@@ -23,6 +23,8 @@
 #include <Box2D/Collision/Shapes/b2Shape.h>
 #include <memory>
 
+#include "torqueConfig.h"
+
 class b2Fixture;
 class b2Joint;
 class b2Contact;
@@ -48,7 +50,7 @@ enum b2BodyType
 
 /// A body definition holds all the data needed to construct a rigid body.
 /// You can safely re-use body definitions. Shapes are added to a body after construction.
-struct b2BodyDef
+struct  DLLEXPORTS b2BodyDef
 {
 	/// This constructor sets the body definition default values.
 	b2BodyDef()

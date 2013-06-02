@@ -29,7 +29,7 @@
 class UndoManager;
 
 //-----------------------------------------------------------------------------
-class UndoAction : public SimObject
+class DLLEXPORTS UndoAction : public SimObject
 {
 private:
     // Other actions necessary to support this action of which the user need not be aware	[KNM | 08/10/11 | ITGB-152]
@@ -67,7 +67,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------
-class UndoManager : public SimObject
+class DLLEXPORTS UndoManager : public SimObject
 {
 private:
    /// Default number of undo & redo levels.
@@ -140,7 +140,7 @@ public:
 //    ...
 // }
 // 
-class UndoScriptAction : public UndoAction
+class DLLEXPORTS UndoScriptAction : public UndoAction
 {
 public:
    typedef UndoAction Parent;

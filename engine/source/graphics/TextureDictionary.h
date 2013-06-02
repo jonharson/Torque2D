@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TextureDictionary
+class DLLEXPORTS TextureDictionary
 {
 public:
     static TextureObject **smTable;

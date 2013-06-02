@@ -29,7 +29,7 @@
 
 ///-----------------------------------------------------------------------------
 
-class ImageFrameProvider : public ImageFrameProviderCore
+class DLLEXPORTS ImageFrameProvider : public ImageFrameProviderCore
 {
 protected:
     AssetPtr<ImageAsset>                    mImageAsset;

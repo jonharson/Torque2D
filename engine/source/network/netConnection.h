@@ -68,7 +68,7 @@ struct SubPacketRef; // defined in NetConnection subclass
 
 class NetEvent;
 
-struct NetEventNote
+struct DLLEXPORTS NetEventNote
 {
     NetEvent *mEvent;
     S32 mSeqCount;
@@ -233,7 +233,7 @@ struct NetEventNote
 ///
 /// @note IMPLEMENT_CO_NETEVENT_V1 and co. have sibling macros which allow you to specify a
 ///       groupMask; see ConsoleObject for a further discussion of this.
-class NetEvent : public ConsoleObject
+class DLLEXPORTS NetEvent : public ConsoleObject
 {
 public:
     /// @name Implementation Details
@@ -400,7 +400,7 @@ public:
 ///      for player and vehicle classes.
 ///
 /// @nosubgrouping
-class NetConnection : public ConnectionProtocol, public SimGroup
+class DLLEXPORTS NetConnection : public ConnectionProtocol, public SimGroup
 {
     friend class NetInterface;
 
@@ -1027,7 +1027,7 @@ public:
 /// @note If the size of this structure changes, the
 ///       NetConnection::getGhostIndex function MUST be changed
 ///       to reflect the new size.
-struct GhostInfo
+struct DLLEXPORTS GhostInfo
 {
 public:  // required for MSVC
     NetObject *obj;                        ///< The object being ghosted.

@@ -44,7 +44,7 @@
 /// occur in the same time on a machine getting 300fps in the Gui shell as a
 /// machine which gets 150fps in the Gui shell.
 /// @see Tickable
-class GuiTickCtrl : public GuiControl, public virtual Tickable
+class DLLEXPORTS GuiTickCtrl : public GuiControl, public virtual Tickable
 {
    typedef GuiControl Parent;
 

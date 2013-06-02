@@ -47,7 +47,7 @@ class Point3F;
 class MatrixF;
 class HuffmanProcessor;
 
-class BitStream : public Stream
+class DLLEXPORTS BitStream : public Stream
 {
 protected:
    U8 *dataPtr;
@@ -205,7 +205,7 @@ public:
    U32  getStreamSize();
 };
 
-class ResizeBitStream : public BitStream
+class DLLEXPORTS ResizeBitStream : public BitStream
 {
 protected:
    U32 mMinSpace;

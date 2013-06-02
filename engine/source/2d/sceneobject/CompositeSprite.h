@@ -33,7 +33,7 @@
 
 //------------------------------------------------------------------------------  
 
-class CompositeSprite : public SceneObject, public SpriteBatch
+class DLLEXPORTS CompositeSprite : public SceneObject, public SpriteBatch
 {
 protected:
     typedef SceneObject Parent;

@@ -49,7 +49,7 @@ DefineConsoleType( TypeVector2 )
 
 ///-----------------------------------------------------------------------------
 
-struct Vector2 : b2Vec2
+struct DLLEXPORTS Vector2 : b2Vec2
 {
     /// Constructors.
     inline Vector2( void ) {}
@@ -107,6 +107,7 @@ struct Vector2 : b2Vec2
         x = dAtof(Utility::mGetStringElement(pString,0));
         y = dAtof(Utility::mGetStringElement(pString,1));
     }
+
     inline const Vector2& setZero()                                     { (*this) = getZero(); return *this; }
     inline const Vector2& setOne()                                      { (*this) = getOne(); return *this; }
     inline static const Vector2& getZero()                              { static const Vector2 v(0.0f, 0.0f); return v; }

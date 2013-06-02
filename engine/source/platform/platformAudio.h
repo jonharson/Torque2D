@@ -55,7 +55,7 @@ namespace Audio
 
    //--------------------------------------
    // sound property description
-   struct Description
+   struct DLLEXPORTS Description
    {
       F32  mVolume;    // 0-1    1=loudest volume
       S32  mVolumeChannel;
@@ -85,84 +85,84 @@ class AudioEnvironment;
 class AudioSampleEnvironment;
 class AudioStreamSource;
 
-AUDIOHANDLE alxCreateSource(const Audio::Description *desc, const char *filename, const MatrixF *transform=NULL, AudioSampleEnvironment * sampleEnvironment = 0);
-AUDIOHANDLE alxCreateSource(AudioDescription *descObject, const char *filename, const MatrixF *transform=NULL, AudioSampleEnvironment * sampleEnvironment = 0);
-AUDIOHANDLE alxCreateSource(const AudioAsset *profile, const MatrixF *transform=NULL);
-AudioStreamSource* alxFindAudioStreamSource(AUDIOHANDLE handle);
+DLLEXPORTS AUDIOHANDLE alxCreateSource(const Audio::Description *desc, const char *filename, const MatrixF *transform=NULL, AudioSampleEnvironment * sampleEnvironment = 0);
+DLLEXPORTS AUDIOHANDLE alxCreateSource(AudioDescription *descObject, const char *filename, const MatrixF *transform=NULL, AudioSampleEnvironment * sampleEnvironment = 0);
+DLLEXPORTS AUDIOHANDLE alxCreateSource(const AudioAsset *profile, const MatrixF *transform=NULL);
+DLLEXPORTS AudioStreamSource* alxFindAudioStreamSource(AUDIOHANDLE handle);
 
-AUDIOHANDLE alxPlay(AUDIOHANDLE handle);
-bool alxPause(AUDIOHANDLE handle);
-void alxPauseAll();
-void alxUnPause(AUDIOHANDLE handle);
-void alxUnPauseAll();
-void alxStop(AUDIOHANDLE handle);
-void alxStopAll();
+DLLEXPORTS AUDIOHANDLE alxPlay(AUDIOHANDLE handle);
+DLLEXPORTS bool alxPause(AUDIOHANDLE handle);
+DLLEXPORTS void alxPauseAll();
+DLLEXPORTS void alxUnPause(AUDIOHANDLE handle);
+DLLEXPORTS void alxUnPauseAll();
+DLLEXPORTS void alxStop(AUDIOHANDLE handle);
+DLLEXPORTS void alxStopAll();
 
 // one-shot helper alxPlay functions, create and play in one call
-AUDIOHANDLE alxPlay(const AudioAsset *profile, const MatrixF *transform=NULL, const Point3F *velocity=NULL);
+DLLEXPORTS AUDIOHANDLE alxPlay(const AudioAsset *profile, const MatrixF *transform=NULL, const Point3F *velocity=NULL);
 
 // Source
-void alxSourcef(AUDIOHANDLE handle, ALenum pname, ALfloat value);
-void alxSourcefv(AUDIOHANDLE handle, ALenum pname, ALfloat *values);
-void alxSource3f(AUDIOHANDLE handle, ALenum pname, ALfloat value1, ALfloat value2, ALfloat value3);
-void alxSourcei(AUDIOHANDLE handle, ALenum pname, ALint value);
-void alxSourceMatrixF(AUDIOHANDLE handle, const MatrixF *transform);
+DLLEXPORTS void alxSourcef(AUDIOHANDLE handle, ALenum pname, ALfloat value);
+DLLEXPORTS void alxSourcefv(AUDIOHANDLE handle, ALenum pname, ALfloat *values);
+DLLEXPORTS void alxSource3f(AUDIOHANDLE handle, ALenum pname, ALfloat value1, ALfloat value2, ALfloat value3);
+DLLEXPORTS void alxSourcei(AUDIOHANDLE handle, ALenum pname, ALint value);
+DLLEXPORTS void alxSourceMatrixF(AUDIOHANDLE handle, const MatrixF *transform);
 
-void alxGetSourcef(AUDIOHANDLE handle, ALenum pname, ALfloat *value);
-void alxGetSourcefv(AUDIOHANDLE handle, ALenum pname, ALfloat *values);
-void alxGetSource3f(AUDIOHANDLE handle, ALenum pname, ALfloat *value1, ALfloat *value2, ALfloat *value3);
-void alxGetSourcei(AUDIOHANDLE handle, ALenum pname, ALint *value);
+DLLEXPORTS void alxGetSourcef(AUDIOHANDLE handle, ALenum pname, ALfloat *value);
+DLLEXPORTS void alxGetSourcefv(AUDIOHANDLE handle, ALenum pname, ALfloat *values);
+DLLEXPORTS void alxGetSource3f(AUDIOHANDLE handle, ALenum pname, ALfloat *value1, ALfloat *value2, ALfloat *value3);
+DLLEXPORTS void alxGetSourcei(AUDIOHANDLE handle, ALenum pname, ALint *value);
 
 /**   alSource3f access extension for use with Point3F's
 */
-inline void alxSourcePoint3F(AUDIOHANDLE handle, ALenum pname, const Point3F *value)
+inline DLLEXPORTS void alxSourcePoint3F(AUDIOHANDLE handle, ALenum pname, const Point3F *value)
 {
    alxSource3f(handle, pname, value->x, value->y, value->z);
 }
 
 /**   alGetSource3f access extension for use with Point3F's
 */
-inline void alxSourceGetPoint3F(AUDIOHANDLE handle, ALenum pname, Point3F * value)
+inline DLLEXPORTS void alxSourceGetPoint3F(AUDIOHANDLE handle, ALenum pname, Point3F * value)
 {
    alxGetSource3f(handle, pname, &value->x, &value->y, &value->z);
 }
 
 // Listener
-void alxListenerMatrixF(const MatrixF *transform);
-void alxListenerf(ALenum param, ALfloat value);
-void alxGetListenerf(ALenum param, ALfloat *value);
+DLLEXPORTS void alxListenerMatrixF(const MatrixF *transform);
+DLLEXPORTS void alxListenerf(ALenum param, ALfloat value);
+DLLEXPORTS void alxGetListenerf(ALenum param, ALfloat *value);
 
 
 /**   alListener3f access extension for use with Point3F's
 */
-inline void alxListenerPoint3F(ALenum pname, const Point3F *value)
+inline DLLEXPORTS void alxListenerPoint3F(ALenum pname, const Point3F *value)
 {
    alListener3f(pname, value->x, value->y, value->z);   
 }
 
 /**   alGetListener3f access extension for use with Point3F's
 */
-inline void alxGetListenerPoint3F(ALenum pname, Point3F *value)
+inline DLLEXPORTS void alxGetListenerPoint3F(ALenum pname, Point3F *value)
 {
    alGetListener3f(pname, &value->x, &value->y, &value->z);
 }
 
 // Environment
-void alxEnvironmenti(ALenum pname, ALint value);
-void alxEnvironmentf(ALenum pname, ALfloat value);
-void alxGetEnvironmenti(ALenum pname, ALint * value);
-void alxGetEnvironmentf(ALenum pname, ALfloat * value);
+DLLEXPORTS void alxEnvironmenti(ALenum pname, ALint value);
+DLLEXPORTS void alxEnvironmentf(ALenum pname, ALfloat value);
+DLLEXPORTS void alxGetEnvironmenti(ALenum pname, ALint * value);
+DLLEXPORTS void alxGetEnvironmentf(ALenum pname, ALfloat * value);
 
-void alxSetEnvironment(const AudioEnvironment * environment);
-const AudioEnvironment * alxGetEnvironment();
+DLLEXPORTS void alxSetEnvironment(const AudioEnvironment * environment);
+DLLEXPORTS const AudioEnvironment * alxGetEnvironment();
 
 // misc
-void alxUpdateTypeGain(U32 type);
-bool alxIsValidHandle(AUDIOHANDLE handle);
-bool alxIsPlaying(AUDIOHANDLE handle);
-void alxUpdate();
-F32 alxGetStreamPosition( AUDIOHANDLE handle );
-F32 alxGetStreamDuration( AUDIOHANDLE handle );
+DLLEXPORTS void alxUpdateTypeGain(U32 type);
+DLLEXPORTS bool alxIsValidHandle(AUDIOHANDLE handle);
+DLLEXPORTS bool alxIsPlaying(AUDIOHANDLE handle);
+DLLEXPORTS void alxUpdate();
+DLLEXPORTS F32 alxGetStreamPosition( AUDIOHANDLE handle );
+DLLEXPORTS F32 alxGetStreamDuration( AUDIOHANDLE handle );
 
 #endif // NO_AUDIO_SUPPORT
 

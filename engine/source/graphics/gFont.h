@@ -48,14 +48,11 @@
 //-Mat use this to make space characters default to a certain x increment
 #define PUAP_SPACE_CHAR_X_INCREMENT	5
 
-
-
-
-extern ResourceInstance* constructNewFont(Stream& stream);
+extern DLLEXPORTS ResourceInstance* constructNewFont(Stream& stream);
 
 class TextureHandle;
 
-class GFont : public ResourceInstance
+class DLLEXPORTS GFont : public ResourceInstance
 {
    friend ResourceInstance* constructNewFont(Stream& stream);
 
@@ -75,7 +72,7 @@ public:
    // Enumerations and structures available to derived classes
 private:
    PlatformFont *mPlatformFont;
-   Vector<TextureHandle>mTextureSheets;
+   Vector<TextureHandle> mTextureSheets;
 
    S32 mCurX;
    S32 mCurY;

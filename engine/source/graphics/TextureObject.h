@@ -46,7 +46,7 @@ class GBitmap;
 
 //------------------------------------------------------------------------------
 
-class TextureObject
+class DLLEXPORTS TextureObject
 {
     friend class TextureManager;
     friend class TextureDictionary;

@@ -68,7 +68,7 @@ enum FileFlags
    ReservedPKWARE3 = BIT(15),
 };
 
-class FileHeader
+class DLLEXPORTS FileHeader
 {
    static const U32 mFileHeaderSignature = 0x04034b50;
 

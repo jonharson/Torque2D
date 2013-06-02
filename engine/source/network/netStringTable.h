@@ -33,9 +33,9 @@
 class NetConnection;
 
 class NetStringHandle;
-extern U32 GameAddTaggedString(const char *string);
+extern DLLEXPORTS U32 GameAddTaggedString(const char *string);
 
-class NetStringTable
+class DLLEXPORTS NetStringTable
 {
    friend class NetStringHandle;
    friend U32 GameAddTaggedString(const char *string);
@@ -95,9 +95,9 @@ public:
 #endif // DEBUG
 };
 
-extern NetStringTable *gNetStringTable;
+extern DLLEXPORTS NetStringTable *gNetStringTable;
 
-class NetStringHandle
+class DLLEXPORTS NetStringHandle
 {
    U32 index;
 public:

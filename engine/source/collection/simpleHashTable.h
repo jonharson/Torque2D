@@ -34,7 +34,7 @@
 #ifndef _TSIMPLEHASHTABLE_H
 #define _TSIMPLEHASHTABLE_H
 
-template <class T> class SimpleHashTable : public SparseArray<T>
+template <class T> class DLLEXPORTS SimpleHashTable : public SparseArray<T>
 {
    typedef SparseArray<T> Parent;
 

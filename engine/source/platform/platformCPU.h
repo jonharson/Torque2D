@@ -92,14 +92,14 @@ enum PPCProperties
 
 //-----------------------------------------------------------------------------
 
-struct Processor
+struct DLLEXPORTS Processor
 {
    static void init();
 };
 
 //-----------------------------------------------------------------------------
 
-struct TorqueSystemInfo
+struct DLLEXPORTS TorqueSystemInfo
 {
     struct Processor
     {
@@ -110,6 +110,6 @@ struct TorqueSystemInfo
     } processor;
 };
 
-extern TorqueSystemInfo PlatformSystemInfo;
+extern DLLEXPORTS TorqueSystemInfo PlatformSystemInfo;
 
 #endif // _PLATFORM_CPU_H_

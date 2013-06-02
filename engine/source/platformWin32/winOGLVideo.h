@@ -39,7 +39,7 @@
 #include "platformWin32/winVideo.h"
 #endif
 
-class OpenGLDevice : public WinDisplayDevice
+class DLLEXPORTS OpenGLDevice : public WinDisplayDevice
 {
 private:
    typedef WinDisplayDevice Parent;

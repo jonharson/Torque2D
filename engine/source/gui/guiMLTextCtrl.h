@@ -33,7 +33,7 @@
 
 class GFont;
 
-class GuiMLTextCtrl : public GuiControl
+class DLLEXPORTS GuiMLTextCtrl : public GuiControl
 {
    typedef GuiControl Parent;
 

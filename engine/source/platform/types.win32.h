@@ -23,6 +23,7 @@
 #ifndef _TYPESWIN32_H_
 #define _TYPESWIN32_H_
 
+#include "torqueConfig.h"
 
 #define FN_CDECL __cdecl            ///< Calling convention
 
@@ -35,7 +36,7 @@ typedef unsigned int  dsize_t;
 /** Platform dependent file date-time structure.  The defination of this structure
   * will likely be different for each OS platform.
   */
-struct FileTime                     
+struct DLLEXPORTS FileTime                     
 {
    U32 v1;
    U32 v2;

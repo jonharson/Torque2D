@@ -33,7 +33,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlXmlParser : public TamlParser
+class DLLEXPORTS TamlXmlParser : public TamlParser
 {
 public:
     TamlXmlParser() {}

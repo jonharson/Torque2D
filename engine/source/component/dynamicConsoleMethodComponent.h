@@ -26,7 +26,7 @@
 #include "component/simComponent.h"
 #include "console/consoleInternal.h"
 
-class DynamicConsoleMethodComponent : public SimComponent
+class DLLEXPORTS DynamicConsoleMethodComponent : public SimComponent
 {
    typedef SimComponent Parent;
 

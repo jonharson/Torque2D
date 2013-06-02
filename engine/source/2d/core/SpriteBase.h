@@ -33,7 +33,7 @@
 
 //------------------------------------------------------------------------------
 
-class SpriteBase : public SceneObject, public ImageFrameProvider
+class DLLEXPORTS SpriteBase : public SceneObject, public ImageFrameProvider
 {
     typedef SceneObject Parent;
 

@@ -27,7 +27,7 @@
 #include "platform/platform.h"
 #endif
 
-class PlatformAssert
+class DLLEXPORTS PlatformAssert
 {
 public:
    enum Type 
@@ -133,7 +133,7 @@ public:
    @warning avar uses a static fixed buffer.  Treat the buffer as volatile data
    and use it immediately.  Other functions my use avar too and clobber the buffer.
  */
-const char* avar(const char *in_msg, ...);
+DLLEXPORTS const char* avar(const char *in_msg, ...);
 
 
 

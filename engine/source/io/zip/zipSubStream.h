@@ -30,7 +30,7 @@
 
 struct z_stream_s;
 
-class ZipSubRStream : public FilterStream
+class DLLEXPORTS ZipSubRStream : public FilterStream
 {
    typedef FilterStream Parent;
    static const U32 csm_streamCaps;
@@ -73,7 +73,7 @@ class ZipSubRStream : public FilterStream
    U32  getStreamSize();
 };
 
-class ZipSubWStream : public FilterStream
+class DLLEXPORTS ZipSubWStream : public FilterStream
 {
    typedef FilterStream Parent;
    static const U32 csm_streamCaps;

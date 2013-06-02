@@ -38,11 +38,11 @@
 class ExprEvalState;
 class CodeBlock;
 
-extern char *typeValueEmpty;
+extern DLLEXPORTS char *typeValueEmpty;
 
 //-----------------------------------------------------------------------------
 
-class Dictionary
+class DLLEXPORTS Dictionary
 {
 public:
     struct Entry
@@ -175,5 +175,6 @@ public:
     const char *tabComplete(const char *prevText, S32 baseLen, bool);
 };
 
+template class DLLEXPORTS Vector<Dictionary*>;
 
 #endif // _CONSOLE_DICTIONARY_H_

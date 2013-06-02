@@ -33,7 +33,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlBinaryReader
+class DLLEXPORTS TamlBinaryReader
 {
 public:
     TamlBinaryReader( Taml* pTaml ) :

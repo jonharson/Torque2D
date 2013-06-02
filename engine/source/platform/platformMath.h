@@ -29,7 +29,7 @@
 
 //------------------------------------------------------------------------------
 
-struct Math
+struct DLLEXPORTS Math
 {
    static void init( U32 properties = 0 );   // 0 == detect available hardware
 };

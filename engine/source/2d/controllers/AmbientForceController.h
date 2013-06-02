@@ -33,7 +33,7 @@
 
 //------------------------------------------------------------------------------
 
-class AmbientForceController : public GroupedSceneController
+class DLLEXPORTS AmbientForceController : public GroupedSceneController
 {
 private:
     typedef GroupedSceneController Parent;

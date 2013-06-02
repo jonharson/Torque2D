@@ -43,7 +43,7 @@
 #include "audio/audioStreamSource.h"
 #endif
 
-class AudioStreamSourceFactory
+class DLLEXPORTS AudioStreamSourceFactory
 {
 	public:
 		static AudioStreamSource* getNewInstance(const char* filename);

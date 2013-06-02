@@ -32,7 +32,7 @@
 #endif
 
 
-class RectClipper
+class DLLEXPORTS RectClipper
 {
    RectI m_clipRect;
 

@@ -133,10 +133,10 @@ typedef U32 SimTime;
 ///
 /// These are used for named sets and groups in the manager.
 /// @{
-#define DeclareNamedSet(set) extern SimSet *g##set;inline SimSet *get##set() { return g##set; }
-#define DeclareNamedGroup(set) extern SimGroup *g##set;inline SimGroup *get##set() { return g##set; }
-#define ImplementNamedSet(set) SimSet *g##set;
-#define ImplementNamedGroup(set) SimGroup *g##set;
+#define DeclareNamedSet(set) extern DLLEXPORTS SimSet *g##set;inline SimSet *get##set() { return g##set; }
+#define DeclareNamedGroup(set) extern DLLEXPORTS SimGroup *g##set;inline SimGroup *get##set() { return g##set; }
+#define ImplementNamedSet(set) DLLEXPORTS SimSet *g##set;
+#define ImplementNamedGroup(set) DLLEXPORTS SimGroup *g##set;
 /// @}
 //---------------------------------------------------------------------------
 
@@ -154,73 +154,73 @@ namespace Sim
    DeclareNamedGroup(ClientConnectionGroup)
    DeclareNamedGroup(ChunkFileGroup);
 
-   void init();
-   void shutdown();
+   DLLEXPORTS void init();
+   DLLEXPORTS void shutdown();
 
-   SimDataBlockGroup *getDataBlockGroup();
-   SimGroup* getRootGroup();
+   DLLEXPORTS SimDataBlockGroup *getDataBlockGroup();
+   DLLEXPORTS SimGroup* getRootGroup();
 
-   SimObject* findObject(SimObjectId);
-   SimObject* findObject(const char* name);
-   template<class T> inline bool findObject(SimObjectId id,T*&t)
+   DLLEXPORTS SimObject* findObject(SimObjectId);
+   DLLEXPORTS SimObject* findObject(const char* name);
+   template<class T> inline DLLEXPORTS bool findObject(SimObjectId id,T*&t)
    {
       t = dynamic_cast<T*>(findObject(id));
       return t != NULL;
    }
-   template<class T> inline bool findObject(const char* pObjectName,T*&t)
+   template<class T> inline DLLEXPORTS bool findObject(const char* pObjectName,T*&t)
    {
       t = dynamic_cast<T*>(findObject(pObjectName));
       return t != NULL;
    }
-   template<class T> inline T* findObject(SimObjectId id)
+   template<class T> inline DLLEXPORTS T* findObject(SimObjectId id)
    {
        return dynamic_cast<T*>(findObject(id));
    }
-   template<class T> inline T* findObject(const char* pObjectName)
+   template<class T> inline DLLEXPORTS T* findObject(const char* pObjectName)
    {
        return dynamic_cast<T*>(findObject(pObjectName));
    }
 
-   void advanceToTime(SimTime time);
-   void advanceTime(SimTime delta);
-   SimTime getCurrentTime();
-   SimTime getTargetTime();
+   DLLEXPORTS void advanceToTime(SimTime time);
+   DLLEXPORTS void advanceTime(SimTime delta);
+   DLLEXPORTS SimTime getCurrentTime();
+   DLLEXPORTS SimTime getTargetTime();
 
    /// a target time of 0 on an event means current event
-   U32 postEvent(SimObject*, SimEvent*, U32 targetTime);
+   DLLEXPORTS U32 postEvent(SimObject*, SimEvent*, U32 targetTime);
 
-   inline U32 postEvent(SimObjectId iD,SimEvent*evt, U32 targetTime)
+   inline DLLEXPORTS U32 postEvent(SimObjectId iD,SimEvent*evt, U32 targetTime)
    {
       return postEvent(findObject(iD), evt, targetTime);
    }
-   inline U32 postEvent(const char *objectName,SimEvent*evt, U32 targetTime)
+   inline DLLEXPORTS U32 postEvent(const char *objectName,SimEvent*evt, U32 targetTime)
    {
       return postEvent(findObject(objectName), evt, targetTime);
    }
-   inline U32 postCurrentEvent(SimObject*obj, SimEvent*evt)
+   inline DLLEXPORTS U32 postCurrentEvent(SimObject*obj, SimEvent*evt)
    {
       return postEvent(obj,evt,getCurrentTime());
    }
-   inline U32 postCurrentEvent(SimObjectId obj,SimEvent*evt)
+   inline DLLEXPORTS U32 postCurrentEvent(SimObjectId obj,SimEvent*evt)
    {
       return postEvent(obj,evt,getCurrentTime());
    }
-   inline U32 postCurrentEvent(const char *obj,SimEvent*evt)
+   inline DLLEXPORTS U32 postCurrentEvent(const char *obj,SimEvent*evt)
    {
       return postEvent(obj,evt,getCurrentTime());
    }
 
-   void cancelEvent(U32 eventId);
-   bool isEventPending(U32 eventId);
-   U32  getEventTimeLeft(U32 eventId);
-   U32  getTimeSinceStart(U32 eventId);
-   U32  getScheduleDuration(U32 eventId);
+   DLLEXPORTS void cancelEvent(U32 eventId);
+   DLLEXPORTS bool isEventPending(U32 eventId);
+   DLLEXPORTS U32  getEventTimeLeft(U32 eventId);
+   DLLEXPORTS U32  getTimeSinceStart(U32 eventId);
+   DLLEXPORTS U32  getScheduleDuration(U32 eventId);
 
-   bool saveObject(SimObject *obj, Stream *stream);
-   SimObject *loadObjectStream(Stream *stream);
+   DLLEXPORTS bool saveObject(SimObject *obj, Stream *stream);
+   DLLEXPORTS SimObject *loadObjectStream(Stream *stream);
 
-   bool saveObject(SimObject *obj, const char *filename);
-   SimObject *loadObjectStream(const char *filename);
+   DLLEXPORTS bool saveObject(SimObject *obj, const char *filename);
+   DLLEXPORTS SimObject *loadObjectStream(const char *filename);
 }
 
 //----------------------------------------------------------------------------
@@ -231,7 +231,7 @@ namespace Sim
    DatablockConsoleType( T##Ptr, Type##T##Ptr, sizeof(T*), T )
 
 #define IMPLEMENT_SETDATATYPE(T) \
-   ConsoleSetType( Type##T##Ptr ) \
+   DLLEXPORTS ConsoleSetType( Type##T##Ptr ) \
    {                                                                                                 \
       if (argc == 1) {                                                                               \
          *reinterpret_cast<T**>(dptr) = NULL;                                                        \
@@ -243,7 +243,7 @@ namespace Sim
    }
 
 #define IMPLEMENT_GETDATATYPE(T) \
-   ConsoleGetType( Type##T##Ptr ) \
+   DLLEXPORTS ConsoleGetType( Type##T##Ptr ) \
    {                                                                                   \
       T** obj = reinterpret_cast<T**>(dptr);                                           \
       char* returnBuffer = Con::getReturnBuffer(16);                                   \

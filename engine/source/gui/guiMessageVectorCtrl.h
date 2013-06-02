@@ -37,7 +37,7 @@
 /// about, while we can destroy and create these GUI controls as
 /// needed. (For instance, Tribes 2 used seperate GuiMessageVectorCtrl
 /// controls in the different HUD modes.)
-class GuiMessageVectorCtrl : public GuiControl
+class DLLEXPORTS GuiMessageVectorCtrl : public GuiControl
 {
    typedef GuiControl Parent;
 

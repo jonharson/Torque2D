@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class BehaviorComponentRaiseEvent : public SimEvent
+class DLLEXPORTS BehaviorComponentRaiseEvent : public SimEvent
 {
 public:
     BehaviorComponentRaiseEvent( BehaviorInstance* pOutputBehavior, StringTableEntry pOutputName )

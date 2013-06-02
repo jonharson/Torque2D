@@ -182,7 +182,7 @@ class ConsoleTypeValidator;
 /// @nosubgrouping
 //-----------------------------------------------------------------------------
 
-class AbstractClassRep
+class DLLEXPORTS AbstractClassRep
 {
     friend class ConsoleObject;
 
@@ -219,7 +219,8 @@ public:
         DepricatedFieldType = 0xFFFFFFFF
     };
 
-    struct Field {
+    struct DLLEXPORTS Field 
+	{
         const char* pFieldname;    ///< Name of the field.
         const char* pGroupname;      ///< Optionally filled field containing the group name.
         ///
@@ -238,7 +239,6 @@ public:
         WriteDataNotify writeDataFn;   ///< Function to determine whether data should be written or not.
     };
     typedef Vector<Field> FieldList;
-
     FieldList mFieldList;
 
     bool mDynamicGroupExpand;
@@ -353,7 +353,7 @@ inline Namespace *AbstractClassRep::getNameSpace()
 //-----------------------------------------------------------------------------
 
 template <class T>
-class ConcreteClassRep : public AbstractClassRep
+class DLLEXPORTS ConcreteClassRep : public AbstractClassRep
 {
 public:
     ConcreteClassRep(const char *name, S32 netClassGroupMask, S32 netClassType, S32 netEventDir, AbstractClassRep *parent )
@@ -477,13 +477,13 @@ bool defaultProtectedWriteFn( void* obj, StringTableEntry pFieldName );
 /// @nosubgrouping
 //-----------------------------------------------------------------------------
 
-class ConsoleObject
+class DLLEXPORTS ConsoleObject
 {
 protected:
     /// @deprecated This is disallowed.
     ConsoleObject() { /* disallowed */ }
     /// @deprecated This is disallowed.
-    ConsoleObject(const ConsoleObject&);
+	ConsoleObject(const ConsoleObject&){};
 
 public:
     /// Get a reference to a field by name.

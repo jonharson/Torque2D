@@ -53,10 +53,7 @@
 
 ///-----------------------------------------------------------------------------
 
-class ImageFrameProviderCore :
-    public virtual Tickable,
-    public IFactoryObjectReset,
-    protected AssetPtrCallback
+class DLLEXPORTS ImageFrameProviderCore : public virtual Tickable, public IFactoryObjectReset, protected AssetPtrCallback
 {
 protected:
     bool                                    mSelfTick;

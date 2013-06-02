@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class NetworkProcessList
+class DLLEXPORTS NetworkProcessList
 {
 public:
     NetworkProcessList( const bool isServer );

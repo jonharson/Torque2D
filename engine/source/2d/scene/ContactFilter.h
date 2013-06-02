@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ContactFilter : public b2ContactFilter
+class DLLEXPORTS ContactFilter : public b2ContactFilter
 {
     virtual bool ShouldCollide(b2Fixture* fixtureA, b2Fixture* fixtureB);
 };

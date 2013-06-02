@@ -41,7 +41,7 @@
 
 //-----------------------------------------------------------------------------
 
-class DebugStats
+class DLLEXPORTS DebugStats
 {
 public:
 

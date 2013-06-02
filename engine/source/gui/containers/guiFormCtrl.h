@@ -48,7 +48,7 @@ class GuiMenuBar;
 /// (from the GuiControlProfile) that contains two images - the first is
 /// displayed when the control is expanded and the second is displayed when
 /// it is collapsed. The header is sized based off of the first image.
-class GuiFormCtrl : public GuiControl
+class DLLEXPORTS GuiFormCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

@@ -22,6 +22,8 @@
 #include <Box2D/Collision/b2Collision.h>
 #include <Box2D/Common/b2GrowableStack.h>
 
+#include "torqueConfig.h"
+
 #define b2_nullNode (-1)
 
 /// A node in the dynamic tree. The client does not interact with this directly.
@@ -58,7 +60,7 @@ struct b2TreeNode
 /// object to move by small amounts without triggering a tree update.
 ///
 /// Nodes are pooled and relocatable, so we use node indices rather than pointers.
-class b2DynamicTree
+class DLLEXPORTS b2DynamicTree
 {
 public:
 	/// Constructing the tree initializes the node pool.

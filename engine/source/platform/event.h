@@ -40,7 +40,7 @@ typedef int NetConnectionId;
 /// Generic network address
 ///
 /// This is used to represent IP addresses.
-struct NetAddress {
+struct DLLEXPORTS NetAddress {
    int type;        ///< Type of address (IPAddress currently)
 
    /// Acceptable NetAddress types.
@@ -81,14 +81,16 @@ enum EventTypes
 };
 
 /// Base event structure (also used for FrameEvent and QuitEvent)
-struct Event
+struct DLLEXPORTS Event
 {
    U16 type, size;
    Event() { size = sizeof(Event); }
 };
 
+//template class DLLEXPORTS Vector<Event*>;
+
 /// The time event causes the simulation to advance.
-struct TimeEvent : public Event
+struct DLLEXPORTS TimeEvent : public Event
 {
    U32 elapsedTime; ///< Indicates elapsed time in simulation.
 
@@ -96,7 +98,7 @@ struct TimeEvent : public Event
 };
 
 /// Notify simulation of state of a connection.
-struct ConnectedNotifyEvent : public Event
+struct DLLEXPORTS ConnectedNotifyEvent : public Event
 {
    /// Valid connection states
    enum State {
@@ -113,7 +115,7 @@ struct ConnectedNotifyEvent : public Event
 };
 
 /// Triggered when we receive data from a connected entity.
-struct ConnectedReceiveEvent : public Event
+struct DLLEXPORTS ConnectedReceiveEvent : public Event
 {
    U32 tag;     ///< Identifies connection
    U8 data[MaxPacketDataSize];  /// Payload
@@ -121,7 +123,7 @@ struct ConnectedReceiveEvent : public Event
 };
 
 /// Triggered when we accept a new connection.
-struct ConnectedAcceptEvent : public Event
+struct DLLEXPORTS ConnectedAcceptEvent : public Event
 {
    U32 portTag;         ///< Identifies port we received this connection on.
    U32 connectionTag;   ///< Identifies the connection.
@@ -133,7 +135,7 @@ struct ConnectedAcceptEvent : public Event
 /// Triggered on incoming (UDP) packet
 ///
 /// packetType is what type of packet it is.
-struct PacketReceiveEvent : public Event
+struct DLLEXPORTS PacketReceiveEvent : public Event
 {
    NetAddress sourceAddress;   ///< Originating address.
    U8 data[MaxPacketDataSize]; ///< Payload
@@ -141,7 +143,7 @@ struct PacketReceiveEvent : public Event
 };
 
 /// Represents a line of console input.
-struct ConsoleEvent : public Event
+struct DLLEXPORTS ConsoleEvent : public Event
 {
    char data[MaxConsoleLineSize];   ///< Payload
    ConsoleEvent() { type = ConsoleEventType; }
@@ -155,16 +157,15 @@ const U32 ConnectedReceiveEventHeaderSize = Offset(data,ConnectedReceiveEvent);
 /// Byte offset to payload of a ConsoleEvent
 const U32 ConsoleEventHeaderSize = Offset(data,ConsoleEvent);
 
-
 /// Mouse input event.
-struct MouseMoveEvent : public Event
+struct DLLEXPORTS MouseMoveEvent : public Event
 {
    S32 xPos, yPos;
    U8 modifier;
 
    MouseMoveEvent() { type = MouseMoveEventType; size = sizeof(MouseMoveEvent); }
 };
-struct ScreenTouchEvent : public Event  
+struct DLLEXPORTS ScreenTouchEvent : public Event  
 {  
     S32 xPos, yPos;  
     S32 touchID;
@@ -174,7 +175,7 @@ struct ScreenTouchEvent : public Event
     ScreenTouchEvent() { type = ScreenTouchEventType; size = sizeof(ScreenTouchEvent); }  
 };
 /// Generic input event.
-struct InputEvent : public Event
+struct DLLEXPORTS InputEvent : public Event
 {
    U32   deviceInst;  ///< Device instance: joystick0, joystick1, etc
    float fValue;      ///< Value ranges from -1.0 to 1.0

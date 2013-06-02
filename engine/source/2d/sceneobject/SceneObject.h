@@ -69,7 +69,7 @@
 
 //-----------------------------------------------------------------------------
 
-struct tDestroyNotification
+struct DLLEXPORTS tDestroyNotification
 {
     SceneObject*    mpSceneObject;
     U32             mRefCount;
@@ -81,6 +81,9 @@ typedef VectorPtr<b2FixtureDef*> typeCollisionFixtureDefVector;
 typedef VectorPtr<b2Fixture*> typeCollisionFixtureVector;
 typedef Vector<tDestroyNotification> typeDestroyNotificationVector;
 
+template class DLLEXPORTS Vector<b2FixtureDef*>;
+template class DLLEXPORTS Vector<b2Fixture*>;
+
 //-----------------------------------------------------------------------------
 
 const S32 GL_INVALID_BLEND_FACTOR = -1;
@@ -88,18 +91,14 @@ const S32 INVALID_COLLISION_SHAPE_INDEX = -1;
 
 //-----------------------------------------------------------------------------
 
-extern EnumTable bodyTypeTable;
-extern EnumTable srcBlendFactorTable;
-extern EnumTable dstBlendFactorTable;
+extern DLLEXPORTS EnumTable bodyTypeTable;
+extern DLLEXPORTS EnumTable srcBlendFactorTable;
+extern DLLEXPORTS EnumTable dstBlendFactorTable;
 
 //-----------------------------------------------------------------------------
 
-class SceneObject :
-    public BehaviorComponent,
-    public SceneRenderObject,
-    public PhysicsProxy
+class DLLEXPORTS SceneObject : public BehaviorComponent, public SceneRenderObject, public PhysicsProxy
 {
-
 private:
     typedef BehaviorComponent Parent;
 
@@ -736,5 +735,7 @@ protected:
     static bool             writeScene( void* obj, StringTableEntry pFieldName ) { return false; }
 
 };
+
+template class DLLEXPORTS Vector<SceneObject*>;
 
 #endif // _SCENE_OBJECT_H_

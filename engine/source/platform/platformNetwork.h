@@ -36,7 +36,7 @@ const NetSocket InvalidSocket = -1;
 
 //-----------------------------------------------------------------------------
 
-struct Net
+struct DLLEXPORTS Net
 {
    enum Error
    {

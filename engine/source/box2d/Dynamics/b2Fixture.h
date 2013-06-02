@@ -23,13 +23,15 @@
 #include <Box2D/Collision/b2Collision.h>
 #include <Box2D/Collision/Shapes/b2Shape.h>
 
+#include "torqueConfig.h"
+
 class b2BlockAllocator;
 class b2Body;
 class b2BroadPhase;
 class b2Fixture;
 
 /// This holds contact filtering data.
-struct b2Filter
+struct DLLEXPORTS b2Filter
 {
 	b2Filter()
 	{
@@ -53,7 +55,7 @@ struct b2Filter
 
 /// A fixture definition is used to create a fixture. This class defines an
 /// abstract fixture definition. You can reuse fixture definitions safely.
-struct b2FixtureDef
+struct DLLEXPORTS b2FixtureDef
 {
 	/// The constructor sets the default fixture definition values.
 	b2FixtureDef()

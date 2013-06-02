@@ -34,7 +34,7 @@
 /// This allows you to set a console function to be
 /// called at some point in the future.
 
-class SimConsoleEvent : public SimEvent
+class DLLEXPORTS SimConsoleEvent : public SimEvent
 {
 protected:
    S32 mArgc;

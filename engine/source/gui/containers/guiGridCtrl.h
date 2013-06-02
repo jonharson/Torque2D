@@ -9,7 +9,7 @@
 #include "console/console.h"
 #include "console/consoleTypes.h"
 
-class GuiGridControl : public GuiControl
+class DLLEXPORTS GuiGridControl : public GuiControl
 {
 private:
 

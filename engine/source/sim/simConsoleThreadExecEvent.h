@@ -30,7 +30,7 @@
 //-----------------------------------------------------------------------------
 
 /// Used by Con::threadSafeExecute()
-struct SimConsoleThreadExecCallback
+struct DLLEXPORTS SimConsoleThreadExecCallback
 {
    void *sem;
    const char *retVal;
@@ -42,7 +42,7 @@ struct SimConsoleThreadExecCallback
    const char *waitForResult();
 };
 
-class SimConsoleThreadExecEvent : public SimConsoleEvent
+class DLLEXPORTS SimConsoleThreadExecEvent : public SimConsoleEvent
 {
    SimConsoleThreadExecCallback *cb;
 

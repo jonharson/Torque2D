@@ -36,7 +36,7 @@
 /// 2D integer point
 ///
 /// Uses S32 internally.
-class Point2I
+class DLLEXPORTS Point2I
 {
    //-------------------------------------- Public data
   public:
@@ -88,7 +88,7 @@ class Point2I
 /// 3D integer point
 ///
 /// Uses S32 internally.
-class Point3I
+class DLLEXPORTS Point3I
 {
    //-------------------------------------- Public data
   public:
@@ -141,7 +141,7 @@ class Point3I
 
 //------------------------------------------------------------------------------
 /// 2D floating-point point.
-class Point2F
+class DLLEXPORTS Point2F
 {
    //-------------------------------------- Public data
   public:
@@ -214,7 +214,7 @@ class Point2F
 /// 2D high-precision point.
 ///
 /// Uses F64 internally.
-class Point2D
+class DLLEXPORTS Point2D
 {
    //-------------------------------------- Public data
   public:
@@ -281,7 +281,7 @@ class Point2D
 
 
 //------------------------------------------------------------------------------
-class Point3F
+class DLLEXPORTS Point3F
 {
    //-------------------------------------- Public data
   public:
@@ -357,7 +357,7 @@ typedef Point3F EulerF;
 
 
 //------------------------------------------------------------------------------
-class Point3D
+class DLLEXPORTS Point3D
 {
    //-------------------------------------- Public data
   public:
@@ -426,7 +426,7 @@ class Point3D
 /// Uses F32 internally.
 ///
 /// Useful for representing quaternions and other 4d beasties.
-class Point4F
+class DLLEXPORTS Point4F
 {
    //-------------------------------------- Public data
   public:

@@ -28,7 +28,7 @@
 #include "io/stream.h"
 #endif
 
-class MemStream : public Stream {
+class DLLEXPORTS MemStream : public Stream {
    typedef Stream Parent;
 
   protected:

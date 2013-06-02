@@ -57,7 +57,7 @@
 /// @ref GUI has an overview of the GUI system.
 ///
 /// @nosubgrouping
-class GuiTabBookCtrl : public GuiControl
+class DLLEXPORTS GuiTabBookCtrl : public GuiControl
 {
 public:
     enum TabPosition

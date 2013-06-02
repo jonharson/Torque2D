@@ -34,11 +34,11 @@ class SceneRenderRequest;
 
 //------------------------------------------------------------------------------  
 
-extern StringTableEntry spritesItemTypeName;
+extern DLLEXPORTS StringTableEntry spritesItemTypeName;
 
 //------------------------------------------------------------------------------  
 
-class SpriteBatchItem : public ImageFrameProvider
+class DLLEXPORTS SpriteBatchItem : public ImageFrameProvider
 {
     friend class SpriteBatch;
 
@@ -46,7 +46,7 @@ class SpriteBatchItem : public ImageFrameProvider
 
 public:
     // Represents a logical position.
-    struct LogicalPosition : public IFactoryObjectReset
+    struct DLLEXPORTS LogicalPosition : public IFactoryObjectReset
     {
         const static S32 MAX_ARGUMENTS = 6;
 

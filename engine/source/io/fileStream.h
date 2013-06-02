@@ -31,7 +31,7 @@
 #include "io/stream.h"
 #endif
 
-class FileStream : public Stream
+class DLLEXPORTS FileStream : public Stream
 {
 public:
    enum AccessMode
@@ -57,7 +57,7 @@ protected:
    bool mDirty;                        // whether buffer has been written to
    bool mEOF;                          // whether disk reads have reached the end-of-file
 
-   FileStream(const FileStream &i_fileStrm);             // disable copy constructor
+   FileStream(const FileStream &i_fileStrm) {};             // disable copy constructor
    FileStream& operator=(const FileStream &i_fileStrm);  // disable assignment operator
 
 public:

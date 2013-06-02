@@ -57,7 +57,7 @@ enum CompressionMethod
                               // method is specified in the AES extra field.
 };
 
-class Compressor
+class DLLEXPORTS Compressor
 {
    Compressor *mNext;
 

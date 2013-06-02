@@ -26,7 +26,7 @@
 /// Maintain a table of strings which are shared across the network.
 ///
 /// This allows us to reference strings in our network streams more efficiently.
-class ConnectionStringTable
+class DLLEXPORTS ConnectionStringTable
 {
 public:
    enum Constants {

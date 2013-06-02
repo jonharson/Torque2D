@@ -48,7 +48,7 @@
 
 #define NUMBUFFERS 16
 
-class AudioStreamSource
+class DLLEXPORTS AudioStreamSource
 {
     public:
         //need this because subclasses are deleted through base pointer

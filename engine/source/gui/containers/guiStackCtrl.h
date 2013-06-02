@@ -39,7 +39,7 @@
 ///
 ///
 /// @todo Make this support horizontal right to left stacks.
-class GuiStackControl : public GuiControl
+class DLLEXPORTS GuiStackControl : public GuiControl
 {
 protected:
    typedef GuiControl Parent;

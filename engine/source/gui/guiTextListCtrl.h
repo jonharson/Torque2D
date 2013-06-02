@@ -27,7 +27,7 @@
 #include "gui/guiArrayCtrl.h"
 #endif
 
-class GuiTextListCtrl : public GuiArrayCtrl
+class DLLEXPORTS GuiTextListCtrl : public GuiArrayCtrl
 {
   private:
    typedef GuiArrayCtrl Parent;

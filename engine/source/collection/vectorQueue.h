@@ -36,7 +36,7 @@
 //-------------------------------------------------------------------------------------
 
 template <class T>
-class Queue : public Vector<T>
+class DLLEXPORTS Queue : public Vector<T>
 {
    using Vector<T>::mElementCount;
    using Vector<T>::pop_front;

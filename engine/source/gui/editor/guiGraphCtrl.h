@@ -31,7 +31,7 @@
 #endif
 
 
-class GuiGraphCtrl : public GuiControl
+class DLLEXPORTS GuiGraphCtrl : public GuiControl
 {
 private:
 	typedef GuiControl Parent;

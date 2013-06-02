@@ -30,12 +30,12 @@
 class MatrixF;
 class QuatF;
 
-inline F32 QuatIsEqual(F32 a,F32 b,F32 epsilon = 0.0001f)
+inline DLLEXPORTS F32 QuatIsEqual(F32 a,F32 b,F32 epsilon = 0.0001f)
 {
    return mFabs(a-b) < epsilon;
 }
 
-inline F32 QuatIsZero(F32 a,F32 epsilon = 0.0001f)
+inline DLLEXPORTS F32 QuatIsZero(F32 a,F32 epsilon = 0.0001f)
 {
    return mFabs(a) < epsilon;
 }
@@ -43,7 +43,7 @@ inline F32 QuatIsZero(F32 a,F32 epsilon = 0.0001f)
 //----------------------------------------------------------------------------
 // rotation about an arbitrary axis through the origin:
 
-class AngAxisF
+class DLLEXPORTS AngAxisF
 {
   public:
    Point3F axis;
@@ -67,7 +67,7 @@ class AngAxisF
 //----------------------------------------------------------------------------
 // unit quaternion class:
 
-class QuatF
+class DLLEXPORTS QuatF
 {
   public:
    F32  x,y,z,w;
@@ -242,7 +242,7 @@ inline F32 QuatF::angleBetween( const QuatF & q )
 //----------------------------------------------------------------------------
 // TQuatF classes:
 
-class TQuatF : public QuatF
+class DLLEXPORTS TQuatF : public QuatF
 {
   public:
    enum

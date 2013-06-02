@@ -25,17 +25,17 @@
 
 class GuiControlProfile;
 
-void renderRaisedBox(RectI &bounds, GuiControlProfile *profile);
-void renderSlightlyRaisedBox(RectI &bounds, GuiControlProfile *profile);
-void renderLoweredBox(RectI &bounds, GuiControlProfile *profile);
-void renderSlightlyLoweredBox(RectI &bounds, GuiControlProfile *profile, bool active = true);
-void renderBorder(RectI &bounds, GuiControlProfile *profile);
-void renderFilledBorder( RectI &bounds, GuiControlProfile *profile );
-void renderFilledBorder( RectI &bounds, ColorI &borderColor, ColorI &fillColor );
-void renderSizableBitmapBordersFilled(RectI &bounds, S32 baseMultiplier, GuiControlProfile *profile); // DAW: Added
-void renderSizableBitmapBordersFilledIndex(RectI &bounds, S32 startIndex, GuiControlProfile *profile);
-void renderFixedBitmapBordersFilled(RectI &bounds, S32 baseMultiplier, GuiControlProfile *profile); // DAW: Added
-void renderFixedBitmapBordersFilled(RectI &bounds, S32 startIndex, GuiControlProfile *profile);
-void renderFixedBitmapBordersStretchYFilled(RectI &bounds, S32 baseMultiplier, GuiControlProfile *profile); // DAW: Added
+DLLEXPORTS void renderRaisedBox(RectI &bounds, GuiControlProfile *profile);
+DLLEXPORTS void renderSlightlyRaisedBox(RectI &bounds, GuiControlProfile *profile);
+DLLEXPORTS void renderLoweredBox(RectI &bounds, GuiControlProfile *profile);
+DLLEXPORTS void renderSlightlyLoweredBox(RectI &bounds, GuiControlProfile *profile, bool active = true);
+DLLEXPORTS void renderBorder(RectI &bounds, GuiControlProfile *profile);
+DLLEXPORTS void renderFilledBorder( RectI &bounds, GuiControlProfile *profile );
+DLLEXPORTS void renderFilledBorder( RectI &bounds, ColorI &borderColor, ColorI &fillColor );
+DLLEXPORTS void renderSizableBitmapBordersFilled(RectI &bounds, S32 baseMultiplier, GuiControlProfile *profile); // DAW: Added
+DLLEXPORTS void renderSizableBitmapBordersFilledIndex(RectI &bounds, S32 startIndex, GuiControlProfile *profile);
+DLLEXPORTS void renderFixedBitmapBordersFilled(RectI &bounds, S32 baseMultiplier, GuiControlProfile *profile); // DAW: Added
+DLLEXPORTS void renderFixedBitmapBordersFilled(RectI &bounds, S32 startIndex, GuiControlProfile *profile);
+DLLEXPORTS void renderFixedBitmapBordersStretchYFilled(RectI &bounds, S32 baseMultiplier, GuiControlProfile *profile); // DAW: Added
 
 #endif

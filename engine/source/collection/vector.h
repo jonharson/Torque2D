@@ -34,11 +34,11 @@
 const static S32 VectorBlockSize = 16;
 
 #ifdef TORQUE_DEBUG
-extern bool VectorResize(U32 *aSize, U32 *aCount, void **arrayPtr, U32 newCount, U32 elemSize,
+extern DLLEXPORTS bool VectorResize(U32 *aSize, U32 *aCount, void **arrayPtr, U32 newCount, U32 elemSize,
                          const char* fileName,
                          const U32   lineNum);
 #else
-extern bool VectorResize(U32 *aSize, U32 *aCount, void **arrayPtr, U32 newCount, U32 elemSize);
+extern DLLEXPORTS bool VectorResize(U32 *aSize, U32 *aCount, void **arrayPtr, U32 newCount, U32 elemSize);
 #endif
 
 /// Use the following macro to bind a vector to a particular line
@@ -67,7 +67,7 @@ extern bool VectorResize(U32 *aSize, U32 *aCount, void **arrayPtr, U32 newCount,
 ///
 /// @nosubgrouping
 template<class T>
-class Vector
+class /*DLLEXPORTS*/ Vector
 {
   protected:
    U32 mElementCount;
@@ -83,6 +83,7 @@ class Vector
    void  destroy(U32 start, U32 end);   ///< Destructs elements from <i>start</i> to <i>end-1</i>
    void  construct(U32 start, U32 end); ///< Constructs elements from <i>start</i> to <i>end-1</i>
    void  construct(U32 start, U32 end, const T* array);
+
   public:
    Vector(const U32 initialSize = 0);
    Vector(const U32 initialSize, const char* fileName, const U32 lineNum);
@@ -246,6 +247,11 @@ template<class T> inline Vector<T>::Vector(const Vector& p)
       dMemcpy(mArray,p.mArray,mElementCount * sizeof(value_type));
 }
 
+template<class T> inline bool Vector<T>::contains( const T& x ) const
+{
+	//FIXME
+   return false;
+}
 
 #ifdef TORQUE_DEBUG
 template<class T> inline void Vector<T>::setFileAssociation(const char* file,
@@ -412,7 +418,7 @@ typedef int (QSORT_CALLBACK *qsort_compare_func)(const void *, const void *);
 
 template<class T> inline void Vector<T>::sort(compare_func f)
 {
-   qsort(address(), size(), sizeof(T), (qsort_compare_func) f);
+   dQsort(address(), size(), sizeof(T), (qsort_compare_func) f);
 }
 
 //-----------------------------------------------------------------------------

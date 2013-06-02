@@ -30,7 +30,7 @@
 #include "gui/guiMLTextCtrl.h"
 #endif
 
-class GuiBubbleTextCtrl : public GuiTextCtrl
+class DLLEXPORTS GuiBubbleTextCtrl : public GuiTextCtrl
 {
   private:
    typedef GuiTextCtrl Parent;

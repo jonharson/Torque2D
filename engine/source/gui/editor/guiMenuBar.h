@@ -33,7 +33,7 @@
 class GuiMenuBar;
 class GuiMenuTextListCtrl;
 
-class GuiMenuBackgroundCtrl : public GuiControl
+class DLLEXPORTS GuiMenuBackgroundCtrl : public GuiControl
 {
    typedef GuiControl Parent;
 
@@ -47,7 +47,7 @@ public:
    void onMouseDragged(const GuiEvent &event);
 };
 
-class GuiSubmenuBackgroundCtrl : public GuiMenuBackgroundCtrl
+class DLLEXPORTS GuiSubmenuBackgroundCtrl : public GuiMenuBackgroundCtrl
 {
    typedef GuiMenuBackgroundCtrl Parent;
 
@@ -59,7 +59,7 @@ public:
 
 //------------------------------------------------------------------------------
 
-class GuiMenuTextListCtrl : public GuiTextListCtrl
+class DLLEXPORTS GuiMenuTextListCtrl : public GuiTextListCtrl
 {
    private:
       typedef GuiTextListCtrl Parent;
@@ -84,7 +84,7 @@ class GuiMenuTextListCtrl : public GuiTextListCtrl
 
 //------------------------------------------------------------------------------
 
-class GuiMenuBar : public GuiTickCtrl // DAW: Was: GuiControl
+class DLLEXPORTS GuiMenuBar : public GuiTickCtrl // DAW: Was: GuiControl
 {
    typedef GuiTickCtrl Parent; // DAW: Was: GuiControl Parent;
 public:

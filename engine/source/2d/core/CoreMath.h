@@ -53,22 +53,22 @@ struct Vector2;
 
 namespace CoreMath
 {
-extern RandomLCG gRandomGenerator;
+extern DLLEXPORTS RandomLCG gRandomGenerator;
 
 /// Random Float Range.
-inline F32 mGetRandomF( F32 from, F32 to ) { return gRandomGenerator.randRangeF( from, to ); }
+inline F32 DLLEXPORTS mGetRandomF( F32 from, F32 to ) { return gRandomGenerator.randRangeF( from, to ); }
 
 /// Random Float.
-inline F32 mGetRandomF( void ) { return gRandomGenerator.randF(); }
+inline F32 DLLEXPORTS mGetRandomF( void ) { return gRandomGenerator.randF(); }
 
 /// Random Integer Range.
-inline S32 mGetRandomI( const S32 from, const S32 to ) { return gRandomGenerator.randRangeI( from, to ); }
+inline S32 DLLEXPORTS mGetRandomI( const S32 from, const S32 to ) { return gRandomGenerator.randRangeI( from, to ); }
 
 /// Random Integer.
-inline S32 mGetRandomI( void ) { return gRandomGenerator.randI(); }
+inline S32 DLLEXPORTS mGetRandomI( void ) { return gRandomGenerator.randI(); }
 
 // Calculate an AABB.
-inline void mCalculateAABB( const b2Vec2* const pAABBVertices, const b2Transform& xf, b2AABB* pAABB )
+inline void DLLEXPORTS mCalculateAABB( const b2Vec2* const pAABBVertices, const b2Transform& xf, b2AABB* pAABB )
 {
     b2Vec2 lower = b2Mul(xf, pAABBVertices[0]);
     b2Vec2 upper = lower;
@@ -85,7 +85,7 @@ inline void mCalculateAABB( const b2Vec2* const pAABBVertices, const b2Transform
 }
 
 /// Calculate an OOBB.
-inline void mCalculateOOBB( const b2Vec2* const pAABBVertices, const b2Transform& xf, b2Vec2* pOOBBVertices )
+inline void DLLEXPORTS mCalculateOOBB( const b2Vec2* const pAABBVertices, const b2Transform& xf, b2Vec2* pOOBBVertices )
 {
     pOOBBVertices[0] = b2Mul( xf, pAABBVertices[0] );
     pOOBBVertices[1] = b2Mul( xf, pAABBVertices[1] );
@@ -94,7 +94,7 @@ inline void mCalculateOOBB( const b2Vec2* const pAABBVertices, const b2Transform
 }
 
 /// Calculate an OOBB.
-inline void mCalculateInverseOOBB( const b2Vec2* const pAABBVertices, const b2Transform& xf, b2Vec2* pOOBBVertices )
+inline void DLLEXPORTS mCalculateInverseOOBB( const b2Vec2* const pAABBVertices, const b2Transform& xf, b2Vec2* pOOBBVertices )
 {
     pOOBBVertices[0] = b2MulT( xf, pAABBVertices[0] );
     pOOBBVertices[1] = b2MulT( xf, pAABBVertices[1] );
@@ -103,7 +103,7 @@ inline void mCalculateInverseOOBB( const b2Vec2* const pAABBVertices, const b2Tr
 }
 
 /// Convert RectF to AABB.
-inline b2AABB mRectFtoAABB( const RectF& rect )
+inline b2AABB DLLEXPORTS mRectFtoAABB( const RectF& rect )
 {
     b2AABB aabb;
     b2Vec2 lower(rect.point.x, rect.point.y);
@@ -114,7 +114,7 @@ inline b2AABB mRectFtoAABB( const RectF& rect )
 }
 
 /// Convert AABB to OOBB.
-inline void mAABBtoOOBB( const b2AABB& aabb, b2Vec2* pOOBBVertices )
+inline void DLLEXPORTS mAABBtoOOBB( const b2AABB& aabb, b2Vec2* pOOBBVertices )
 {
     pOOBBVertices[0].Set( aabb.lowerBound.x, aabb.lowerBound.y );
     pOOBBVertices[1].Set( aabb.upperBound.x, aabb.lowerBound.y );
@@ -123,7 +123,7 @@ inline void mAABBtoOOBB( const b2AABB& aabb, b2Vec2* pOOBBVertices )
 }
 
 /// Convert OOBB to AABB.
-inline void mOOBBtoAABB( b2Vec2* pOOBBVertices, b2AABB& aabb )
+inline void DLLEXPORTS mOOBBtoAABB( b2Vec2* pOOBBVertices, b2AABB& aabb )
 {
     // Calculate AABB.
     b2Vec2 lower = pOOBBVertices[0];
@@ -139,7 +139,7 @@ inline void mOOBBtoAABB( b2Vec2* pOOBBVertices, b2AABB& aabb )
 }
 
 /// Rotate an AABB.
-inline void mRotateAABB( const b2AABB& aabb, const F32& angle, b2AABB& transformedAABB )
+inline void DLLEXPORTS mRotateAABB( const b2AABB& aabb, const F32& angle, b2AABB& transformedAABB )
 {
     // Fetch the AABB center.
     const b2Vec2 centerPosition = aabb.GetCenter();
@@ -162,13 +162,13 @@ inline void mRotateAABB( const b2AABB& aabb, const F32& angle, b2AABB& transform
 }
 
 /// Returns a point on the given line AB that is closest to 'point'.
-Vector2 mGetClosestPointOnLine( Vector2 &a, Vector2 &b, Vector2 &point);
+Vector2 DLLEXPORTS mGetClosestPointOnLine( Vector2 &a, Vector2 &b, Vector2 &point);
 
 /// Calculate point in rectangle.
-bool mPointInRectangle( const Vector2& point, const Vector2& rectMin, const Vector2& rectMax );
+bool DLLEXPORTS mPointInRectangle( const Vector2& point, const Vector2& rectMin, const Vector2& rectMax );
 
 /// Calculate line/rectangle intersection.
-bool mLineRectangleIntersect( const Vector2& startPoint, const Vector2& endPoint, const Vector2& rectMin, const Vector2& rectMax, F32* pTime = NULL );
+bool DLLEXPORTS mLineRectangleIntersect( const Vector2& startPoint, const Vector2& endPoint, const Vector2& rectMin, const Vector2& rectMax, F32* pTime = NULL );
 
 } // Namespace CoreMath.
 

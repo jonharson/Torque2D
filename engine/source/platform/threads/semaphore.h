@@ -30,7 +30,7 @@
 // Forward ref used by platform code
 struct PlatformSemaphore;
 
-class Semaphore
+class DLLEXPORTS Semaphore
 {
 protected:
    PlatformSemaphore *mData;

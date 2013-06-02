@@ -30,7 +30,7 @@
 #include "gui/guiTextCtrl.h"
 #endif
 
-class GuiTextEditCtrl : public GuiTextCtrl
+class DLLEXPORTS GuiTextEditCtrl : public GuiTextCtrl
 {
 private:
    typedef GuiTextCtrl Parent;

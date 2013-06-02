@@ -29,7 +29,7 @@
 
 //------------------------------------------------------------------------------
 
-class Sprite : public SpriteBase
+class DLLEXPORTS Sprite : public SpriteBase
 {
     typedef SpriteBase Parent;
 

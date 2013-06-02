@@ -36,7 +36,7 @@ typedef fastdelegate::DelegateMemento DelegateMemento;
 
 
 template<class T>
-class DelegateRemapper : public DelegateMemento
+class DLLEXPORTS DelegateRemapper : public DelegateMemento
 {
 public:
    DelegateRemapper() : mOffset(0) {}

@@ -28,7 +28,7 @@
 #include "math/mPoint.h"
 #endif
 
-class RectI
+class DLLEXPORTS RectI
 {
   public:
    Point2I  point;
@@ -63,7 +63,7 @@ class RectI
    bool isValidRect() const { return (extent.x > 0 && extent.y > 0); }
 };
 
-class RectF
+class DLLEXPORTS RectF
 {
   public:
    Point2F  point;
@@ -87,7 +87,7 @@ class RectF
    bool isValidRect() const { return (extent.x > 0 && extent.y > 0); }
 };
 
-class RectD
+class DLLEXPORTS RectD
 {
   public:
    Point2D  point;

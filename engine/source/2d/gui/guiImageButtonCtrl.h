@@ -40,7 +40,7 @@
 
 //-----------------------------------------------------------------------------
 
-class GuiImageButtonCtrl : public GuiButtonCtrl
+class DLLEXPORTS GuiImageButtonCtrl : public GuiButtonCtrl
 {
 private:
    typedef GuiButtonCtrl Parent;

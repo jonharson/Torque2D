@@ -39,7 +39,7 @@
 
 #include <dinput.h>
 
-class DInputDevice : public InputDevice
+class DLLEXPORTS DInputDevice : public InputDevice
 {
    public:
       static LPDIRECTINPUT8 smDInputInterface;
@@ -159,6 +159,6 @@ inline U8 DInputDevice::getDeviceID()
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-U16 DIK_to_Key( U8 dikCode );
-U8  Key_to_DIK( U16 keyCode );
+DLLEXPORTS U16 DIK_to_Key( U8 dikCode );
+DLLEXPORTS U8  Key_to_DIK( U16 keyCode );
 #endif // _H_WINDINPUTDEVICE_

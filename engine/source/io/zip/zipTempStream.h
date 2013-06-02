@@ -33,7 +33,7 @@ namespace Zip
 /// @ingroup zip_group
 // @{
 
-class ZipTempStream : public FileStream
+class DLLEXPORTS ZipTempStream : public FileStream
 {
    typedef FileStream Parent;
 
@@ -41,6 +41,9 @@ protected:
    CentralDir *mCD;
    bool mDeleteOnClose;
    StringTableEntry mFilename;
+
+   ZipTempStream(const ZipTempStream &i_zipStrm) {};             // disable copy constructor
+   ZipTempStream& operator=(const ZipTempStream &i_zipStrm);  // disable assignment operator
 
 public:
    ZipTempStream() : mCD(NULL), mDeleteOnClose(false) {}

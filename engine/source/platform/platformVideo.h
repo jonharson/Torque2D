@@ -45,7 +45,7 @@ struct Resolution;
 class DisplayDevice;
 
 
-class Video
+class DLLEXPORTS Video
 {
 private:
    static Vector<DisplayDevice *> smDeviceList;
@@ -80,7 +80,7 @@ public:
 };
 
 
-struct Resolution
+struct DLLEXPORTS Resolution
 {
    U32 w, h, bpp;
 
@@ -105,7 +105,7 @@ struct Resolution
 };
 
 
-class DisplayDevice
+class DLLEXPORTS DisplayDevice
 {
    public:
       const char* mDeviceName;

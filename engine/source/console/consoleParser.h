@@ -57,7 +57,7 @@ typedef void (*fnSetScanBuffer)(const char *sb, const char *fn);
 //////////////////////////////////////////////////////////////////////////
 /// \brief List of parsers for the compiler
 //////////////////////////////////////////////////////////////////////////
-struct ConsoleParser
+struct DLLEXPORTS ConsoleParser
 {
 	struct ConsoleParser *next;       //!< Next object in list or NULL
 
@@ -94,7 +94,7 @@ struct ConsoleParser
 /// 
 /// \sa AddConsoleParser()
 //////////////////////////////////////////////////////////////////////////
-void freeConsoleParserList(void);
+DLLEXPORTS void freeConsoleParserList(void);
 
 //////////////////////////////////////////////////////////////////////////
 /// \brief Add a console parser to the list
@@ -109,7 +109,7 @@ void freeConsoleParserList(void);
 /// \return true for success, false for failure (out of memory)
 /// \sa FreeConsoleParserList(), ConsoleParser
 //////////////////////////////////////////////////////////////////////////
-bool addConsoleParser(const char *ext, fnGetCurrentFile gcf, fnGetCurrentLine gcl, fnParse p, fnRestart r, fnSetScanBuffer ssb, bool def = false);
+DLLEXPORTS bool addConsoleParser(const char *ext, fnGetCurrentFile gcf, fnGetCurrentLine gcl, fnParse p, fnRestart r, fnSetScanBuffer ssb, bool def = false);
 
 //////////////////////////////////////////////////////////////////////////
 /// \brief Get the parser for a particular file based on its extension
@@ -117,7 +117,7 @@ bool addConsoleParser(const char *ext, fnGetCurrentFile gcf, fnGetCurrentLine gc
 /// \param filename Filename of file to obtain parser for
 /// \sa ConsoleParser
 //////////////////////////////////////////////////////////////////////////
-ConsoleParser * getParserForFile(const char *filename);
+DLLEXPORTS ConsoleParser * getParserForFile(const char *filename);
 
 } // end namespace Con
 

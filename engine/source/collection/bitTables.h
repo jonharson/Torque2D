@@ -27,7 +27,7 @@
 #include "platform/platform.h"
 #endif
 
-class BitTables
+class DLLEXPORTS BitTables
 {
   private:
    static bool mTablesBuilt;        ///< For first time build

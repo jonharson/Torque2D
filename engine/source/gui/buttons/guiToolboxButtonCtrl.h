@@ -30,7 +30,7 @@
 #include "graphics/TextureManager.h"
 #endif
 
-class GuiToolboxButtonCtrl : public GuiButtonCtrl
+class DLLEXPORTS GuiToolboxButtonCtrl : public GuiButtonCtrl
 {
 private:
    typedef GuiButtonCtrl Parent;

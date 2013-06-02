@@ -32,7 +32,7 @@
 //-------------------------------------------------------------------------------------
 
 template <class T>
-class Heap : public Vector<T>
+class DLLEXPORTS Heap : public Vector<T>
 {
    using Vector<T>::increment;
    using Vector<T>::decrement;

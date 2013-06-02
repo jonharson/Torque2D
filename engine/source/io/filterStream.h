@@ -31,7 +31,7 @@
 #include "io/stream.h"
 #endif
 
-class FilterStream : public Stream
+class DLLEXPORTS FilterStream : public Stream
 {
   public:
    virtual ~FilterStream();

@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ParticleSystem
+class DLLEXPORTS ParticleSystem
 {
 public:
     /// Particle node.

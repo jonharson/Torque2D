@@ -37,29 +37,14 @@
 //------------------------------------------------------------------------------
 //-------------------------------------- READING
 //
-inline bool mathRead(Stream& stream, Point2I* p)
+inline DLLEXPORTS bool mathRead(Stream& stream, Point2I* p)
 {
    bool success = stream.read(&p->x);
    success     &= stream.read(&p->y);
    return success;
 }
 
-inline bool mathRead(Stream& stream, Point3I* p)
-{
-   bool success = stream.read(&p->x);
-   success     &= stream.read(&p->y);
-   success     &= stream.read(&p->z);
-   return success;
-}
-
-inline bool mathRead(Stream& stream, Point2F* p)
-{
-   bool success = stream.read(&p->x);
-   success     &= stream.read(&p->y);
-   return success;
-}
-
-inline bool mathRead(Stream& stream, Point3F* p)
+inline DLLEXPORTS bool mathRead(Stream& stream, Point3I* p)
 {
    bool success = stream.read(&p->x);
    success     &= stream.read(&p->y);
@@ -67,7 +52,22 @@ inline bool mathRead(Stream& stream, Point3F* p)
    return success;
 }
 
-inline bool mathRead(Stream& stream, Point4F* p)
+inline DLLEXPORTS bool mathRead(Stream& stream, Point2F* p)
+{
+   bool success = stream.read(&p->x);
+   success     &= stream.read(&p->y);
+   return success;
+}
+
+inline DLLEXPORTS bool mathRead(Stream& stream, Point3F* p)
+{
+   bool success = stream.read(&p->x);
+   success     &= stream.read(&p->y);
+   success     &= stream.read(&p->z);
+   return success;
+}
+
+inline DLLEXPORTS bool mathRead(Stream& stream, Point4F* p)
 {
    bool success = stream.read(&p->x);
    success     &= stream.read(&p->y);
@@ -76,7 +76,7 @@ inline bool mathRead(Stream& stream, Point4F* p)
    return success;
 }
 
-inline bool mathRead(Stream& stream, Point3D* p)
+inline DLLEXPORTS bool mathRead(Stream& stream, Point3D* p)
 {
    bool success = stream.read(&p->x);
    success     &= stream.read(&p->y);
@@ -84,7 +84,7 @@ inline bool mathRead(Stream& stream, Point3D* p)
    return success;
 }
 
-inline bool mathRead(Stream& stream, PlaneF* p)
+inline DLLEXPORTS bool mathRead(Stream& stream, PlaneF* p)
 {
    bool success = stream.read(&p->x);
    success     &= stream.read(&p->y);
@@ -93,35 +93,35 @@ inline bool mathRead(Stream& stream, PlaneF* p)
    return success;
 }
 
-inline bool mathRead(Stream& stream, Box3F* b)
+inline DLLEXPORTS bool mathRead(Stream& stream, Box3F* b)
 {
    bool success = mathRead(stream, &b->mMin);
    success     &= mathRead(stream, &b->mMax);
    return success;
 }
 
-inline bool mathRead(Stream& stream, SphereF* s)
+inline DLLEXPORTS bool mathRead(Stream& stream, SphereF* s)
 {
    bool success = mathRead(stream, &s->center);
    success     &= stream.read(&s->radius);
    return success;
 }
 
-inline bool mathRead(Stream& stream, RectI* r)
+inline DLLEXPORTS bool mathRead(Stream& stream, RectI* r)
 {
    bool success = mathRead(stream, &r->point);
    success     &= mathRead(stream, &r->extent);
    return success;
 }
 
-inline bool mathRead(Stream& stream, RectF* r)
+inline DLLEXPORTS bool mathRead(Stream& stream, RectF* r)
 {
    bool success = mathRead(stream, &r->point);
    success     &= mathRead(stream, &r->extent);
    return success;
 }
 
-inline bool mathRead(Stream& stream, MatrixF* m)
+inline DLLEXPORTS bool mathRead(Stream& stream, MatrixF* m)
 {
    bool success = true;
    F32* pm    = *m;
@@ -130,7 +130,7 @@ inline bool mathRead(Stream& stream, MatrixF* m)
    return success;
 }
 
-inline bool mathRead(Stream& stream, QuatF* q)
+inline DLLEXPORTS bool mathRead(Stream& stream, QuatF* q)
 {
    bool success = stream.read(&q->x);
    success     &= stream.read(&q->y);
@@ -142,29 +142,14 @@ inline bool mathRead(Stream& stream, QuatF* q)
 //------------------------------------------------------------------------------
 //-------------------------------------- WRITING
 //
-inline bool mathWrite(Stream& stream, const Point2I& p)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const Point2I& p)
 {
    bool success = stream.write(p.x);
    success     &= stream.write(p.y);
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const Point3I& p)
-{
-   bool success = stream.write(p.x);
-   success     &= stream.write(p.y);
-   success     &= stream.write(p.z);
-   return success;
-}
-
-inline bool mathWrite(Stream& stream, const Point2F& p)
-{
-   bool success = stream.write(p.x);
-   success     &= stream.write(p.y);
-   return success;
-}
-
-inline bool mathWrite(Stream& stream, const Point3F& p)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const Point3I& p)
 {
    bool success = stream.write(p.x);
    success     &= stream.write(p.y);
@@ -172,7 +157,22 @@ inline bool mathWrite(Stream& stream, const Point3F& p)
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const Point4F& p)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const Point2F& p)
+{
+   bool success = stream.write(p.x);
+   success     &= stream.write(p.y);
+   return success;
+}
+
+inline DLLEXPORTS bool mathWrite(Stream& stream, const Point3F& p)
+{
+   bool success = stream.write(p.x);
+   success     &= stream.write(p.y);
+   success     &= stream.write(p.z);
+   return success;
+}
+
+inline DLLEXPORTS bool mathWrite(Stream& stream, const Point4F& p)
 {
    bool success = stream.write(p.x);
    success     &= stream.write(p.y);
@@ -181,7 +181,7 @@ inline bool mathWrite(Stream& stream, const Point4F& p)
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const Point3D& p)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const Point3D& p)
 {
    bool success = stream.write(p.x);
    success     &= stream.write(p.y);
@@ -189,7 +189,7 @@ inline bool mathWrite(Stream& stream, const Point3D& p)
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const PlaneF& p)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const PlaneF& p)
 {
    bool success = stream.write(p.x);
    success     &= stream.write(p.y);
@@ -198,35 +198,35 @@ inline bool mathWrite(Stream& stream, const PlaneF& p)
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const Box3F& b)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const Box3F& b)
 {
    bool success = mathWrite(stream, b.mMin);
    success     &= mathWrite(stream, b.mMax);
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const SphereF& s)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const SphereF& s)
 {
    bool success = mathWrite(stream, s.center);
    success     &= stream.write(s.radius);
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const RectI& r)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const RectI& r)
 {
    bool success = mathWrite(stream, r.point);
    success     &= mathWrite(stream, r.extent);
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const RectF& r)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const RectF& r)
 {
    bool success = mathWrite(stream, r.point);
    success     &= mathWrite(stream, r.extent);
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const MatrixF& m)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const MatrixF& m)
 {
    bool success    = true;
    const F32* pm = m;
@@ -235,7 +235,7 @@ inline bool mathWrite(Stream& stream, const MatrixF& m)
    return success;
 }
 
-inline bool mathWrite(Stream& stream, const QuatF& q)
+inline DLLEXPORTS bool mathWrite(Stream& stream, const QuatF& q)
 {
    bool success = stream.write(q.x);
    success     &= stream.write(q.y);

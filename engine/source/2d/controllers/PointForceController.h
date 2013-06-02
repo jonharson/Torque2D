@@ -33,7 +33,7 @@
 
 //------------------------------------------------------------------------------
 
-class PointForceController : public PickingSceneController
+class DLLEXPORTS PointForceController : public PickingSceneController
 {
 private:
     typedef PickingSceneController Parent;

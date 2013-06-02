@@ -31,7 +31,7 @@
 #include "console/console.h"
 #include "console/consoleTypes.h"
 
-class GuiDragAndDropControl : public GuiControl
+class DLLEXPORTS GuiDragAndDropControl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

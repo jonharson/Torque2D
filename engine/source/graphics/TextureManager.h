@@ -45,7 +45,7 @@
 #define MaximumProductSupportedTextureWidth 2048
 #define MaximumProductSupportedTextureHeight MaximumProductSupportedTextureWidth
 
-class TextureManager
+class DLLEXPORTS TextureManager
 {
    friend class TextureHandle;
    friend class TextureDictionary;

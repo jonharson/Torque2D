@@ -27,7 +27,7 @@
 #include "collection/vector.h"
 #endif
 
-class   FindMatch
+class DLLEXPORTS FindMatch
 {
    char*  expression;
    U32 maxMatches;

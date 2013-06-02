@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class GuiSpriteCtrl : public GuiControl, public ImageFrameProvider
+class DLLEXPORTS GuiSpriteCtrl : public GuiControl, public ImageFrameProvider
 {
 private:
     typedef GuiControl Parent;

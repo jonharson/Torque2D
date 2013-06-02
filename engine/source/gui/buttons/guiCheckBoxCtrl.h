@@ -27,7 +27,7 @@
 #include "gui/buttons/guiButtonBaseCtrl.h"
 #endif
 
-class GuiCheckBoxCtrl : public GuiButtonBaseCtrl
+class DLLEXPORTS GuiCheckBoxCtrl : public GuiButtonBaseCtrl
 {
    typedef GuiButtonBaseCtrl Parent;
 

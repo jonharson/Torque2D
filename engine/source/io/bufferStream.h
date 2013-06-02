@@ -37,7 +37,7 @@
 //straight to memory without saving to a filesystem
 
 
-class BufferStream : public Stream
+class DLLEXPORTS BufferStream : public Stream
 {
 public:
    enum

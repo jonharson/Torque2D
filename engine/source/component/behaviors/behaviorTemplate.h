@@ -37,7 +37,7 @@
 
 //-----------------------------------------------------------------------------
 
-class BehaviorTemplate : public SimObject
+class DLLEXPORTS BehaviorTemplate : public SimObject
 {
    typedef SimObject Parent;
 

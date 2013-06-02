@@ -41,7 +41,7 @@
 
 //------------------------------------------------------------------------------
 
-class PickingSceneController : public SimObject, public SceneController
+class DLLEXPORTS PickingSceneController : public SimObject, public SceneController
 {
     typedef SimObject Parent;
 

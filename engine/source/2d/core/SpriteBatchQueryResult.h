@@ -33,7 +33,7 @@ class SpriteBatchItem;
 
 ///-----------------------------------------------------------------------------
 
-struct SpriteBatchQueryResult
+struct DLLEXPORTS SpriteBatchQueryResult
 {
     SpriteBatchQueryResult() :
         mpSpriteBatchItem( NULL ),

@@ -39,7 +39,7 @@
 
 //-----------------------------------------------------------------------------
 
-class SceneRenderObject
+class DLLEXPORTS SceneRenderObject
 {
 public:
     SceneRenderObject() {}

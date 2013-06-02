@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ShapeVector : public SceneObject
+class DLLEXPORTS ShapeVector : public SceneObject
 {
     typedef SceneObject			Parent;
 

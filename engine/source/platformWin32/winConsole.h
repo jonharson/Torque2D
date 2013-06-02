@@ -31,7 +31,7 @@
 #include "platform/event.h"
 #endif
 
-class WinConsole
+class DLLEXPORTS WinConsole
 {
    bool winConsoleEnabled;
 
@@ -61,6 +61,6 @@ public:
    static bool isEnabled();
 };
 
-extern WinConsole *WindowsConsole;
+extern DLLEXPORTS WinConsole *WindowsConsole;
 
 #endif

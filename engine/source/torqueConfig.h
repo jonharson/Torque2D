@@ -88,5 +88,12 @@
 /// make the entire engine thread-safe nor is it a magic bullet that will make the engine
 /// perform operations in parallel and speed-up the engine.
 
+#ifdef TORQUE_DLLEXPORTS
+#define DLLEXPORTS __declspec(dllexport) 
+#elif defined TORQUE_DLLIMPORTS
+#define DLLEXPORTS __declspec(dllimport) 
+#else
+#define DLLEXPORTS
 #endif
 
+#endif

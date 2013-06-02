@@ -38,7 +38,7 @@
 #include "gui/guiTickCtrl.h"
 #endif
 
-class GuiRolloutCtrl : public GuiTickCtrl
+class DLLEXPORTS GuiRolloutCtrl : public GuiTickCtrl
 {
 private:
    typedef GuiControl Parent;

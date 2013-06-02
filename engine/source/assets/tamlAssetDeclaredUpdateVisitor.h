@@ -40,7 +40,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlAssetDeclaredUpdateVisitor : public TamlVisitor
+class DLLEXPORTS TamlAssetDeclaredUpdateVisitor : public TamlVisitor
 {
 private:    
     StringTableEntry mAssetIdFrom;

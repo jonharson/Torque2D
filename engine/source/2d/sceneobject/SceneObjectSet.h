@@ -49,7 +49,7 @@ class SceneObject;
 
 //-----------------------------------------------------------------------------
 
-class SceneObjectSet : public SimObject, public TamlChildren
+class DLLEXPORTS SceneObjectSet : public SimObject, public TamlChildren
 {
    typedef SimObject Parent;
 
@@ -146,16 +146,19 @@ public:
 
 //-----------------------------------------------------------------------------
 
-class SceneObjectSetIterator
+class DLLEXPORTS SceneObjectSetIterator
 {
 protected:
-    struct Entry
+    struct DLLEXPORTS Entry
     {
         SceneObjectSet* set;
         SceneObjectSet::iterator itr;
+
+	   bool operator==(const Entry& entry) { return this->set == entry.set; }
     };
 
-    class Stack : public Vector<Entry> {
+    class DLLEXPORTS Stack : public Vector<Entry> 
+	{
     public:
         void push_back(SceneObjectSet*);
     };

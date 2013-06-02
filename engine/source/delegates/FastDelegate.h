@@ -170,7 +170,7 @@ namespace detail {	// we'll hide the implementation details in a nested namespac
 // anything nasty. 
 // Usage is identical to static_cast<>
 template <class OutputClass, class InputClass>
-inline OutputClass implicit_cast(InputClass input){
+inline DLLEXPORTS OutputClass implicit_cast(InputClass input){
     return input;
 }
 

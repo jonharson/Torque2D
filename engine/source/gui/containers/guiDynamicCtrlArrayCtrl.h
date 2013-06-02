@@ -31,7 +31,7 @@
 #include "console/console.h"
 #include "console/consoleTypes.h"
 
-class GuiDynamicCtrlArrayControl : public GuiControl
+class DLLEXPORTS GuiDynamicCtrlArrayControl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

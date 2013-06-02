@@ -41,7 +41,7 @@
 class GuiPopUpMenuCtrl;
 class GuiPopupTextListCtrl;
 
-class GuiPopUpBackgroundCtrl : public GuiControl
+class DLLEXPORTS GuiPopUpBackgroundCtrl : public GuiControl
 {
 protected:
    GuiPopUpMenuCtrl *mPopUpCtrl;
@@ -73,7 +73,7 @@ public:
    void onRenderCell(Point2I offset, Point2I cell, bool selected, bool mouseOver);
 };
 
-class GuiPopUpMenuCtrl : public GuiTextCtrl
+class DLLEXPORTS GuiPopUpMenuCtrl : public GuiTextCtrl
 {
    typedef GuiTextCtrl Parent;
 

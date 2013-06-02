@@ -32,7 +32,7 @@
 #endif
 
 template <class T>
-class SparseArray
+class DLLEXPORTS SparseArray
 {
   protected:
    struct Node {

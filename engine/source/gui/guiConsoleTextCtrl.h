@@ -30,7 +30,7 @@
 #include "gui/guiControl.h"
 #endif
 
-class GuiConsoleTextCtrl : public GuiControl
+class DLLEXPORTS GuiConsoleTextCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

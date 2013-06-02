@@ -21,6 +21,8 @@
 
 #include <Box2D/Common/b2Settings.h>
 
+#include "torqueConfig.h"
+
 const int32 b2_chunkSize = 16 * 1024;
 const int32 b2_maxBlockSize = 640;
 const int32 b2_blockSizes = 14;
@@ -32,7 +34,7 @@ struct b2Chunk;
 /// This is a small object allocator used for allocating small
 /// objects that persist for more than one time step.
 /// See: http://www.codeproject.com/useritems/Small_Block_Allocator.asp
-class b2BlockAllocator
+class DLLEXPORTS b2BlockAllocator
 {
 public:
 	b2BlockAllocator();

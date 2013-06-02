@@ -30,12 +30,12 @@
 
 //------------------------------------------------------------------------------
 
-U8 TranslateOSKeyCode( U8 vcode );
+DLLEXPORTS U8 TranslateOSKeyCode( U8 vcode );
 
 
 //------------------------------------------------------------------------------
 
-class InputDevice : public SimObject
+class DLLEXPORTS InputDevice : public SimObject
 {
 public:
     struct ObjInfo
@@ -56,7 +56,7 @@ public:
 
 //------------------------------------------------------------------------------
 
-inline const char* InputDevice::getDeviceName()
+inline DLLEXPORTS const char* InputDevice::getDeviceName()
 {
     return mName;
 }
@@ -64,7 +64,7 @@ inline const char* InputDevice::getDeviceName()
 
 //------------------------------------------------------------------------------
 
-class InputManager : public SimGroup
+class DLLEXPORTS InputManager : public SimGroup
 {
 protected:
     bool  mEnabled;
@@ -81,7 +81,7 @@ public:
 
 //------------------------------------------------------------------------------
 
-inline bool InputManager::isEnabled()
+inline DLLEXPORTS bool InputManager::isEnabled()
 {
     return mEnabled;
 }
@@ -98,7 +98,7 @@ enum KEY_STATE
 ///
 /// The CursorManager class manages a LIFO stack of platform cursor shapes
 /// with a standard platform cursor at the bottom, usually an Arrow Cursor.
-class CursorManager
+class DLLEXPORTS CursorManager
 {
    // todo: paxorr: make cursor manager a singleton, store in cursormanager.cc
 protected:
@@ -137,7 +137,7 @@ public:
 
 //------------------------------------------------------------------------------
 
-class Input
+class DLLEXPORTS Input
 {
 protected:
     static InputManager* smManager; ///< Input Manager Singleton

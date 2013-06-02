@@ -42,7 +42,7 @@ namespace SplineUtil
 {
 /// All the info that is needed to define a spline.  This is optional for actually drawing a spline
    /// @see drawSplineBeam
-   struct SplineBeamInfo
+   struct DLLEXPORTS SplineBeamInfo
    {
       Point3F *      camPos;
       U32            numSegments;
@@ -88,12 +88,12 @@ namespace SplineUtil
    ///                     to make it a little more dynamic.
    ///
    /// @param numTexRep    This is the scale of the texture so you can squish or stretch it.
-   void drawSplineBeam( const Point3F& camPos, U32 numSegments, F32 width,
+   DLLEXPORTS void drawSplineBeam( const Point3F& camPos, U32 numSegments, F32 width,
                         SplinePatch &spline, F32 uvOffset = 0.0, F32 numTexRep = 1.0 );
 
    /// Function for drawing a spline.  Only needs SplineBeamInfo.
    /// @see SplineBeamInfo
-   void drawSplineBeam( SplineBeamInfo &sbi );
+   DLLEXPORTS void drawSplineBeam( SplineBeamInfo &sbi );
 }
 
 

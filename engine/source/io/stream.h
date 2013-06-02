@@ -65,7 +65,7 @@ class ColorF;
 //-------------------------------------- Base Stream class
 //
 /// Base stream class for streaming data across a specific media
-class Stream {
+class DLLEXPORTS Stream {
    // Public structs and enumerations...
   public:
      /// Status constantants for the stream

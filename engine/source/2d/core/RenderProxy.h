@@ -29,7 +29,7 @@
 
 //------------------------------------------------------------------------------
 
-class RenderProxy : public SimObject, public ImageFrameProvider
+class DLLEXPORTS RenderProxy : public SimObject, public ImageFrameProvider
 {
     typedef SimObject               Parent;
 

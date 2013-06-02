@@ -49,7 +49,7 @@ class ModuleManager;
 
 //-----------------------------------------------------------------------------
 
-class ModuleDefinition : public SimSet
+class DLLEXPORTS ModuleDefinition : public SimSet
 {
     friend class ModuleManager;
 

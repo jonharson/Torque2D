@@ -37,7 +37,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlModuleIdUpdateVisitor : public TamlVisitor
+class DLLEXPORTS TamlModuleIdUpdateVisitor : public TamlVisitor
 {
 private:    
     StringTableEntry mModuleIdFrom;

@@ -31,7 +31,7 @@
 // the only difference is it sends messages to its siblings to
 // turn themselves off.
 
-class GuiRadioCtrl : public GuiCheckBoxCtrl
+class DLLEXPORTS GuiRadioCtrl : public GuiCheckBoxCtrl
 {
    typedef GuiCheckBoxCtrl Parent;
 

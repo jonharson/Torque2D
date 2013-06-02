@@ -37,7 +37,7 @@
 
 //-----------------------------------------------------------------------------
 
-class TamlJSONReader
+class DLLEXPORTS TamlJSONReader
 {
 public:
     TamlJSONReader( Taml* pTaml ) :

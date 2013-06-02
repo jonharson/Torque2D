@@ -42,7 +42,7 @@ class ModuleDefinition;
 
 //-----------------------------------------------------------------------------
 
-struct AssetDefinition
+struct DLLEXPORTS AssetDefinition
 {
 public:
     AssetDefinition() { reset(); }
@@ -89,6 +89,8 @@ public:
     StringTableEntry            mAssetType;
     StringTableEntry            mAssetCategory;
 };
+
+template class DLLEXPORTS Vector<AssetDefinition*>;
 
 #endif // _ASSET_DEFINITION_H_
 

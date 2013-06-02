@@ -50,7 +50,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ModuleManager : public SimObject
+class DLLEXPORTS ModuleManager : public SimObject
 {
 private:
     typedef SimObject Parent;
@@ -202,6 +202,6 @@ private:
 
 //-----------------------------------------------------------------------------
 
-extern ModuleManager ModuleDatabase;
+extern DLLEXPORTS ModuleManager ModuleDatabase;
 
 #endif // _MODULE_MANAGER_H

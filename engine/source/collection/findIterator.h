@@ -23,7 +23,7 @@
 #ifndef _FIND_ITERATOR_H_
 #define _FIND_ITERATOR_H_
 
-template <class Iterator, class Value>
+template <class Iterator, class Value> DLLEXPORTS 
 Iterator find(Iterator first, Iterator last, Value value)
 {
    while (first != last && *first != value)

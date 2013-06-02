@@ -30,7 +30,7 @@
 
 //------------------------------------------------------------------------------
 
-class GuiTreeViewCtrl : public GuiArrayCtrl
+class DLLEXPORTS GuiTreeViewCtrl : public GuiArrayCtrl
 {
    private:
       typedef GuiArrayCtrl Parent;

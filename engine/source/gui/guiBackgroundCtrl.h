@@ -28,7 +28,7 @@
 #endif
 
 /// Renders a background, so you can have a backdrop for your GUI.
-class GuiBackgroundCtrl : public GuiControl
+class DLLEXPORTS GuiBackgroundCtrl : public GuiControl
 {
 private:
    typedef GuiControl Parent;

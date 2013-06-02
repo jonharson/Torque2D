@@ -31,7 +31,7 @@
 #endif
 
 /// Renders a grid of cells.
-class GuiArrayCtrl : public GuiControl
+class DLLEXPORTS GuiArrayCtrl : public GuiControl
 {
    typedef GuiControl Parent;
 
