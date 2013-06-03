@@ -446,8 +446,15 @@ const Vector2 CompositeSprite::getLogicalPosition( const Vector2& worldPosition 
 			{
 				const Vector2 spriteStride = getDefaultSpriteStride();
 				
-				logicalPosition.x = static_cast<int>((localPosition.x + 0.5f) / spriteStride.x);
-				logicalPosition.y = static_cast<int>((localPosition.y + 0.5f) / spriteStride.y);
+				if(logicalPosition.x > 0)
+					logicalPosition.x = mCeil(localPosition.x / spriteStride.x);
+				else
+					logicalPosition.x = mFloor(localPosition.x / spriteStride.x);
+
+				if(logicalPosition.y > 0)
+					logicalPosition.y = mCeil(localPosition.y / spriteStride.y);
+				else
+					logicalPosition.y = mFloor(localPosition.y / spriteStride.y);
 
 				return logicalPosition;
 			}
