@@ -454,6 +454,10 @@
     <ClCompile Include="..\..\source\network\telnetConsole.cc" />
     <ClCompile Include="..\..\source\persistence\taml\binary\tamlBinaryReader.cc" />
     <ClCompile Include="..\..\source\persistence\taml\binary\tamlBinaryWriter.cc" />
+    <ClCompile Include="..\..\source\persistence\taml\csv\CsvDocument.cc" />
+    <ClCompile Include="..\..\source\persistence\taml\csv\tamlCsvParser.cc" />
+    <ClCompile Include="..\..\source\persistence\taml\csv\tamlCsvReader.cc" />
+    <ClCompile Include="..\..\source\persistence\taml\csv\tamlCsvWriter.cc" />
     <ClCompile Include="..\..\source\persistence\taml\json\tamlJSONParser.cc" />
     <ClCompile Include="..\..\source\persistence\taml\json\tamlJSONReader.cc" />
     <ClCompile Include="..\..\source\persistence\taml\json\tamlJSONWriter.cc" />
@@ -926,6 +930,10 @@
     <ClInclude Include="..\..\source\persistence\rapidjson\include\rapidjson\writer.h" />
     <ClInclude Include="..\..\source\persistence\taml\binary\tamlBinaryReader.h" />
     <ClInclude Include="..\..\source\persistence\taml\binary\tamlBinaryWriter.h" />
+    <ClInclude Include="..\..\source\persistence\taml\csv\CsvDocument.h" />
+    <ClInclude Include="..\..\source\persistence\taml\csv\tamlCsvParser.h" />
+    <ClInclude Include="..\..\source\persistence\taml\csv\tamlCsvReader.h" />
+    <ClInclude Include="..\..\source\persistence\taml\csv\tamlCsvWriter.h" />
     <ClInclude Include="..\..\source\persistence\taml\json\tamlJSONParser.h" />
     <ClInclude Include="..\..\source\persistence\taml\json\tamlJSONReader.h" />
     <ClInclude Include="..\..\source\persistence\taml\json\tamlJSONWriter.h" />

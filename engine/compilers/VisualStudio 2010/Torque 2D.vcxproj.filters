@@ -196,6 +196,12 @@
     <Filter Include="sqlite">
       <UniqueIdentifier>{f6e49386-16a3-44b2-898e-47e263c11742}</UniqueIdentifier>
     </Filter>
+    <Filter Include="persistence\taml\sql">
+      <UniqueIdentifier>{2be26f82-d484-480f-9991-42833206653b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="persistence\taml\csv">
+      <UniqueIdentifier>{2f5cc391-5113-4a8d-a1db-6286e27addb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\audio\audio.cc">
@@ -1349,6 +1355,18 @@
     </ClCompile>
     <ClCompile Include="..\..\source\sqlite\SQLiteRecordSet.cpp">
       <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\persistence\taml\csv\CsvDocument.cc">
+      <Filter>persistence\taml\csv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\persistence\taml\csv\tamlCsvParser.cc">
+      <Filter>persistence\taml\csv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\persistence\taml\csv\tamlCsvReader.cc">
+      <Filter>persistence\taml\csv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\persistence\taml\csv\tamlCsvWriter.cc">
+      <Filter>persistence\taml\csv</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2822,6 +2840,18 @@
     </ClInclude>
     <ClInclude Include="..\..\source\sqlite\SQLiteRecordSet.h">
       <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\persistence\taml\csv\CsvDocument.h">
+      <Filter>persistence\taml\csv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\persistence\taml\csv\tamlCsvParser.h">
+      <Filter>persistence\taml\csv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\persistence\taml\csv\tamlCsvReader.h">
+      <Filter>persistence\taml\csv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\persistence\taml\csv\tamlCsvWriter.h">
+      <Filter>persistence\taml\csv</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
