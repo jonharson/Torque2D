@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// Copyright (c) 2013 GarageGames, LLC
+// Copyright (c) 2012 GarageGames, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
@@ -28,12 +28,13 @@
 #endif
 
 // Forward ref used by platform code
-struct PlatformSemaphore;
+class PlatformSemaphore;
 
 class Semaphore
 {
 protected:
    PlatformSemaphore *mData;
+
 public:
    /// Create a semaphore. initialCount defaults to 1.
    Semaphore(S32 initialCount = 1);
@@ -45,34 +46,10 @@ public:
    /// Returns true if the semaphore was acquired, false if the semaphore could
    /// not be acquired and block was false.
    bool acquire(bool block = true, S32 timeoutMS = -1);
-   
+
    /// Release the semaphore, incrementing its count.
    /// Never blocks.
    void release();
-   
-   // Old API so that we don't have to change a load of code
-   static void* createSemaphore(U32 initialCount = 1)
-   {
-      return new Semaphore(initialCount);
-   }
-
-   static void destroySemaphore(void * semaphore)
-   {
-      Semaphore* realSem = reinterpret_cast<Semaphore*>(semaphore);
-      delete realSem;
-   }
-
-   static bool acquireSemaphore(void * semaphore, bool block = true)
-   {
-      Semaphore* realSem = reinterpret_cast<Semaphore*>(semaphore);
-      return realSem->acquire(block);
-   }
-
-   static void releaseSemaphore(void * semaphore)
-   {
-      Semaphore* realSem = reinterpret_cast<Semaphore*>(semaphore);
-      realSem->release();
-   }
 };
 
 #endif

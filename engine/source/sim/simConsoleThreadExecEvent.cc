@@ -34,23 +34,24 @@ extern ExprEvalState gEvalState;
 
 SimConsoleThreadExecCallback::SimConsoleThreadExecCallback() : retVal(NULL)
 {
-   sem = Semaphore::createSemaphore(0);
+   sem = new Semaphore();
 }
 
 SimConsoleThreadExecCallback::~SimConsoleThreadExecCallback()
 {
-   Semaphore::destroySemaphore(sem);
+	if(sem)
+		delete sem;
 }
 
 void SimConsoleThreadExecCallback::handleCallback(const char *ret)
 {
    retVal = ret;
-   Semaphore::releaseSemaphore(sem);
+   sem->release();
 }
 
 const char *SimConsoleThreadExecCallback::waitForResult()
 {
-   if(Semaphore::acquireSemaphore(sem, true))
+   if(sem->acquire())
    {
       return retVal;
    }

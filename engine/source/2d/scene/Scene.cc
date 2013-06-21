@@ -484,12 +484,12 @@ void Scene::dispatchBeginContactCallbacks( void )
         const b2Vec2& normal = tickContact.mWorldManifold.normal;
         const b2Vec2& point1 = tickContact.mWorldManifold.points[0];
         const b2Vec2& point2 = tickContact.mWorldManifold.points[1];
-        const S32 shapeIndexA = pSceneObjectA->getCollisionShapeIndex( tickContact.mpFixtureA );
-        const S32 shapeIndexB = pSceneObjectB->getCollisionShapeIndex( tickContact.mpFixtureB );
+        const S32 shapeIdA = pSceneObjectA->getCollisionShapeId( tickContact.mpFixtureA );
+        const S32 shapeIdB = pSceneObjectB->getCollisionShapeId( tickContact.mpFixtureB );
 
         // Sanity!
-        AssertFatal( shapeIndexA >= 0, "Scene::dispatchBeginContactCallbacks() - Cannot find shape index reported on physics proxy of a fixture." );
-        AssertFatal( shapeIndexB >= 0, "Scene::dispatchBeginContactCallbacks() - Cannot find shape index reported on physics proxy of a fixture." );
+        AssertFatal( shapeIdA >= 0, "Scene::dispatchBeginContactCallbacks() - Cannot find shape index reported on physics proxy of a fixture." );
+        AssertFatal( shapeIdB >= 0, "Scene::dispatchBeginContactCallbacks() - Cannot find shape index reported on physics proxy of a fixture." );
 
         // Fetch collision impulse information
         const F32 normalImpulse1 = tickContact.mNormalImpulses[0];
@@ -509,7 +509,7 @@ void Scene::dispatchBeginContactCallbacks( void )
         {
             dSprintf(miscInfoBuffer, sizeof(miscInfoBuffer),
                 "%d %d %0.4f %0.4f %0.4f %0.4f %0.4f %0.4f %0.4f %0.4f %0.4f %0.4f",
-                shapeIndexA, shapeIndexB,
+                shapeIdA, shapeIdB,
                 normal.x, normal.y,
                 point1.x, point1.y,
                 normalImpulse1,
@@ -522,7 +522,7 @@ void Scene::dispatchBeginContactCallbacks( void )
         {
             dSprintf(miscInfoBuffer, sizeof(miscInfoBuffer),
                 "%d %d %0.4f %0.4f %0.4f %0.4f %0.4f %0.4f",
-                shapeIndexA, shapeIndexB,
+                shapeIdA, shapeIdB,
                 normal.x, normal.y,
                 point1.x, point1.y,
                 normalImpulse1,
@@ -532,7 +532,7 @@ void Scene::dispatchBeginContactCallbacks( void )
         {
             dSprintf(miscInfoBuffer, sizeof(miscInfoBuffer),
                 "%d %d",
-                shapeIndexA, shapeIndexB );
+                shapeIdA, shapeIdB );
         }
 
         // Does the scene handle the collision callback?
@@ -630,12 +630,12 @@ void Scene::dispatchEndContactCallbacks( void )
             continue;
 
         // Fetch shape index.
-        const S32 shapeIndexA = pSceneObjectA->getCollisionShapeIndex( tickContact.mpFixtureA );
-        const S32 shapeIndexB = pSceneObjectB->getCollisionShapeIndex( tickContact.mpFixtureB );
+        const S32 shapeIdA = pSceneObjectA->getCollisionShapeId( tickContact.mpFixtureA );
+        const S32 shapeIdB = pSceneObjectB->getCollisionShapeId( tickContact.mpFixtureB );
 
         // Sanity!
-        AssertFatal( shapeIndexA >= 0, "Scene::dispatchEndContactCallbacks() - Cannot find shape index reported on physics proxy of a fixture." );
-        AssertFatal( shapeIndexB >= 0, "Scene::dispatchEndContactCallbacks() - Cannot find shape index reported on physics proxy of a fixture." );
+        AssertFatal( shapeIdA >= 0, "Scene::dispatchEndContactCallbacks() - Cannot find shape index reported on physics proxy of a fixture." );
+        AssertFatal( shapeIdB >= 0, "Scene::dispatchEndContactCallbacks() - Cannot find shape index reported on physics proxy of a fixture." );
 
         // Format objects.
         char sceneObjectABuffer[16];
@@ -645,7 +645,7 @@ void Scene::dispatchEndContactCallbacks( void )
 
         // Format miscellaneous information.
         char miscInfoBuffer[32];
-        dSprintf(miscInfoBuffer, sizeof(miscInfoBuffer), "%d %d", shapeIndexA, shapeIndexB );
+        dSprintf(miscInfoBuffer, sizeof(miscInfoBuffer), "%d %d", shapeIdA, shapeIdB );
 
         // Does the scene handle the collision callback?
         Namespace* pNamespace = getNamespace();
@@ -753,7 +753,7 @@ void Scene::processTick( void )
         mTickedSceneObjects.clear();
 
         // Iterate scene objects.
-        for( S32 n = 0; n < mSceneObjects.size(); ++n )
+        for( U32 n = 0; n < mSceneObjects.size(); ++n )
         {
             // Fetch scene object.
             SceneObject* pSceneObject = mSceneObjects[n];
@@ -1319,7 +1319,7 @@ void Scene::addToScene( SceneObject* pSceneObject )
 
 #if defined(TORQUE_DEBUG)
     // Sanity!
-    for ( S32 n = 0; n < mSceneObjects.size(); ++n )
+    for ( U32 n = 0; n < mSceneObjects.size(); ++n )
     {
         AssertFatal( mSceneObjects[n] != pSceneObject, "A scene object has become corrupt." );
     }
@@ -1384,7 +1384,7 @@ void Scene::removeFromScene( SceneObject* pSceneObject )
     pSceneObject->OnUnregisterScene( this );
 
     // Find scene object and remove it quickly.
-    for ( S32 n = 0; n < mSceneObjects.size(); ++n )
+    for ( U32 n = 0; n < mSceneObjects.size(); ++n )
     {
         if ( mSceneObjects[n] == pSceneObject )
         {
@@ -1433,7 +1433,7 @@ U32 Scene::getSceneObjects( typeSceneObjectVector& objects, const U32 sceneLayer
     U32 count = 0;
 
     // Iterate scene objects.
-    for( S32 n = 0; n < mSceneObjects.size(); ++n )
+    for( U32 n = 0; n < mSceneObjects.size(); ++n )
     {
         // Fetch scene object.
         SceneObject* pSceneObject = mSceneObjects[n];
@@ -1454,7 +1454,7 @@ U32 Scene::getSceneObjects( typeSceneObjectVector& objects, const U32 sceneLayer
 
 //-----------------------------------------------------------------------------
 
-const AssetPtr<AssetBase>* Scene::getAssetPreload( const S32 index ) const
+const AssetPtr<AssetBase>* Scene::getAssetPreload( const U32 index ) const
 {
     // Is the index valid?
     if ( index < 0 || index >= mAssetPreloads.size() )

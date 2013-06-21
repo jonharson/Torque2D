@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// Copyright (c) 2013 GarageGames, LLC
+// Copyright (c) 2012 GarageGames, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
@@ -20,11 +20,11 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-#ifndef _PLATFORM_THREADS_MUTEX_H_
-#define _PLATFORM_THREADS_MUTEX_H_
-
 #include "platform/types.h"
 #include "platform/platformAssert.h"
+
+#ifndef _PLATFORM_THREADS_MUTEX_H_
+#define _PLATFORM_THREADS_MUTEX_H_
 
 // Forward ref used by platform code
 struct PlatformMutexData;

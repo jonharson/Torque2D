@@ -199,7 +199,7 @@ S32 GuiListBoxCtrl::getItemIndex( LBItem *item )
       return -1;
 
    // Lookup the index of an item in our list, by the pointer to the item
-   for( S32 i = 0; i < mItems.size(); i++ )
+   for( U32 i = 0; i < mItems.size(); i++ )
       if( mItems[i] == item )
          return i;
 
@@ -235,7 +235,7 @@ S32 GuiListBoxCtrl::getSelectedItem()
    if( mSelectedItems.empty() || mItems.empty() )
       return -1;
 
-   for( S32 i = 0 ; i < mItems.size(); i++ )
+   for( U32 i = 0 ; i < mItems.size(); i++ )
       if( mItems[i]->isSelected )
          return i;
 
@@ -278,7 +278,7 @@ void GuiListBoxCtrl::getSelectedItems( Vector<S32> &Items )
    if( mSelectedItems.empty() )
       return;
    
-   for( S32 i = 0; i < mItems.size(); i++ )
+   for( U32 i = 0; i < mItems.size(); i++ )
       if( mItems[i]->isSelected )
          Items.push_back( i );
 }
@@ -311,7 +311,7 @@ S32 GuiListBoxCtrl::findItemText( StringTableEntry text, bool caseSensitive )
       return -1;
 
    // Lookup the index of an item in our list, by the pointer to the item
-   for( S32 i = 0; i < mItems.size(); i++ )
+   for( U32 i = 0; i < mItems.size(); i++ )
    {
       // Case Sensitive Compare?
       if( caseSensitive && ( dStrcmp( mItems[i]->itemText, text ) == 0 ) )
@@ -708,7 +708,7 @@ void GuiListBoxCtrl::onRender( Point2I offset, const RectI &updateRect )
    // Save our original clip rect
    RectI oldClipRect = clipRect;
 
-   for ( S32 i = 0; i < mItems.size(); i++)
+   for ( U32 i = 0; i < mItems.size(); i++)
    {
       S32 colorBoxSize = 0;
       ColorI boxColor = ColorI(0, 0, 0);

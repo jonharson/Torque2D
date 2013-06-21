@@ -193,6 +193,9 @@
     <Filter Include="persistence\taml\xml">
       <UniqueIdentifier>{e8f11d4b-6a54-4467-ae13-794ed56063f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sqlite">
+      <UniqueIdentifier>{f6e49386-16a3-44b2-898e-47e263c11742}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\audio\audio.cc">
@@ -1331,6 +1334,21 @@
     </ClCompile>
     <ClCompile Include="..\..\source\persistence\taml\json\tamlJSONParser.cc">
       <Filter>persistence\taml\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\platform\threads\threadPool.cpp">
+      <Filter>platform\threads</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\sqlite\sqlite3.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\sqlite\SQLiteInterface.cpp">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\sqlite\SQLiteProcess.cpp">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\sqlite\SQLiteRecordSet.cpp">
+      <Filter>sqlite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2759,6 +2777,51 @@
     </ClInclude>
     <ClInclude Include="..\..\source\persistence\taml\json\tamlJSONParser.h">
       <Filter>persistence\taml\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\platformIntrinsics.gcc.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\platformIntrinsics.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\platformIntrinsics.visualc.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\threads\threadPool.h">
+      <Filter>platform\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\threads\threadPoolAsyncIO.h">
+      <Filter>platform\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\threads\threadSafeDeque.h">
+      <Filter>platform\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\threads\threadSafeFreeList.h">
+      <Filter>platform\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\threads\threadSafePriorityQueue.h">
+      <Filter>platform\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\threads\threadSafeRefCount.h">
+      <Filter>platform\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\platform\typetraits.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\2d\core\Singleton.h">
+      <Filter>2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\sqlite\sqlite3.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\sqlite\SQLiteEvents.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\sqlite\SQLiteInterface.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\sqlite\SQLiteRecordSet.h">
+      <Filter>sqlite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

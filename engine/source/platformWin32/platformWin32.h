@@ -23,6 +23,12 @@
 #ifndef _PLATFORMWIN32_H_
 #define _PLATFORMWIN32_H_
 
+#ifdef DllExport
+#undef DllExport
+#endif
+
+#define DllExport __declspec(dllexport)
+
 // Sanity check for UNICODE
 #ifdef TORQUE_UNICODE
 #  ifndef UNICODE
@@ -30,12 +36,10 @@
 #  endif
 #endif
 
-
 //Luma:	add WINVER definition if it doesn't exist.. Is that our bad that it isn't on our systems already?
 #ifndef	WINVER
 #define WINVER  0x0500      /* version 5.0 */
 #endif	//!WINVER
-
 
 // define this so that we can use WM_MOUSEWHEEL messages...
 #ifndef _WIN32_WINNT

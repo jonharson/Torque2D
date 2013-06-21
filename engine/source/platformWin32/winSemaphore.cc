@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// Copyright (c) 2013 GarageGames, LLC
+// Copyright (c) 2012 GarageGames, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
@@ -23,8 +23,9 @@
 #include "platformWin32/platformWin32.h"
 #include "platform/threads/semaphore.h"
 
-struct PlatformSemaphore
+class PlatformSemaphore
 {
+public:
    HANDLE   *semaphore;
 
    PlatformSemaphore(S32 initialCount)
@@ -57,7 +58,7 @@ bool Semaphore::acquire(bool block, S32 timeoutMS)
    AssertFatal(mData && mData->semaphore, "Semaphore::acquireSemaphore: invalid semaphore");
    if(block)
    {
-      WaitForSingleObject(*(HANDLE*)(mData->semaphore), timeoutMS != -1 ? timeoutMS : INFINITE);
+      WaitForSingleObject(*(HANDLE*)(mData->semaphore), timeoutMS != -1 ? timeoutMS : INFINITE );
       return(true);
    }
    else

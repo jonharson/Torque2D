@@ -24,7 +24,10 @@
 #define _SIM_CONSOLE_THREAD_EXEC_EVENT_H_
 
 #ifndef _SIM_CONSOLE_EVENT_H_
-#include "sim/simConsoleEvent.h"
+	#include "sim/simConsoleEvent.h"
+#endif
+#ifndef _PLATFORM_THREAD_SEMAPHORE_H_
+	#include "platform/threads/semaphore.h"
 #endif
 
 //-----------------------------------------------------------------------------
@@ -32,7 +35,7 @@
 /// Used by Con::threadSafeExecute()
 struct SimConsoleThreadExecCallback
 {
-   void *sem;
+   Semaphore* sem;
    const char *retVal;
 
    SimConsoleThreadExecCallback();

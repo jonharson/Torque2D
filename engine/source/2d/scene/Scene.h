@@ -356,7 +356,7 @@ public:
     inline SimSet*			getControllers( void )						{ return mControllers; }
 
     inline S32              getAssetPreloadCount( void ) const          { return mAssetPreloads.size(); }
-    const AssetPtr<AssetBase>* getAssetPreload( const S32 index ) const;
+    const AssetPtr<AssetBase>* getAssetPreload( const U32 index ) const;
     void                    addAssetPreload( const char* pAssetId );
     void                    removeAssetPreload( const char* pAssetId );
     void                    clearAssetPreloads( void );

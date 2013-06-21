@@ -557,6 +557,7 @@
     <ClCompile Include="..\..\source\platformWin32\nativeDialogs\win32MsgBox.cpp" />
     <ClCompile Include="..\..\source\platformWin32\threads\mutex.cc" />
     <ClCompile Include="..\..\source\platformWin32\threads\thread.cc" />
+    <ClCompile Include="..\..\source\platform\threads\threadPool.cpp" />
     <ClCompile Include="..\..\source\platform\Tickable.cc" />
     <ClCompile Include="..\..\source\sim\scriptGroup.cc" />
     <ClCompile Include="..\..\source\sim\scriptObject.cc" />
@@ -571,6 +572,12 @@
     <ClCompile Include="..\..\source\sim\SimObjectList.cc" />
     <ClCompile Include="..\..\source\sim\simSerialize.cpp" />
     <ClCompile Include="..\..\source\sim\simSet.cc" />
+    <ClCompile Include="..\..\source\sqlite\sqlite3.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\sqlite\SQLiteInterface.cpp" />
+    <ClCompile Include="..\..\source\sqlite\SQLiteProcess.cpp" />
+    <ClCompile Include="..\..\source\sqlite\SQLiteRecordSet.cpp" />
     <ClCompile Include="..\..\source\string\findMatch.cc" />
     <ClCompile Include="..\..\source\string\stringBuffer.cc" />
     <ClCompile Include="..\..\source\string\stringStack.cc" />
@@ -641,6 +648,7 @@
     <ClInclude Include="..\..\source\2d\core\ParticleSystem.h" />
     <ClInclude Include="..\..\source\2d\core\RenderProxy.h" />
     <ClInclude Include="..\..\source\2d\core\RenderProxy_ScriptBinding.h" />
+    <ClInclude Include="..\..\source\2d\core\Singleton.h" />
     <ClInclude Include="..\..\source\2d\core\SpriteBase.h" />
     <ClInclude Include="..\..\source\2d\core\SpriteBase_ScriptBinding.h" />
     <ClInclude Include="..\..\source\2d\core\SpriteBatch.h" />
@@ -993,6 +1001,9 @@
     <ClInclude Include="..\..\source\platform\platformGL.h" />
     <ClInclude Include="..\..\source\platform\platformInput.h" />
     <ClInclude Include="..\..\source\platform\platformInput_ScriptBinding.h" />
+    <ClInclude Include="..\..\source\platform\platformIntrinsics.gcc.h" />
+    <ClInclude Include="..\..\source\platform\platformIntrinsics.h" />
+    <ClInclude Include="..\..\source\platform\platformIntrinsics.visualc.h" />
     <ClInclude Include="..\..\source\platform\platformMath.h" />
     <ClInclude Include="..\..\source\platform\platformMemory.h" />
     <ClInclude Include="..\..\source\platform\platformNetwork.h" />
@@ -1003,6 +1014,12 @@
     <ClInclude Include="..\..\source\platform\platformVFS.h" />
     <ClInclude Include="..\..\source\platform\platformVideo.h" />
     <ClInclude Include="..\..\source\platform\platform_ScriptBinding.h" />
+    <ClInclude Include="..\..\source\platform\threads\threadPool.h" />
+    <ClInclude Include="..\..\source\platform\threads\threadPoolAsyncIO.h" />
+    <ClInclude Include="..\..\source\platform\threads\threadSafeDeque.h" />
+    <ClInclude Include="..\..\source\platform\threads\threadSafeFreeList.h" />
+    <ClInclude Include="..\..\source\platform\threads\threadSafePriorityQueue.h" />
+    <ClInclude Include="..\..\source\platform\threads\threadSafeRefCount.h" />
     <ClInclude Include="..\..\source\platform\Tickable.h" />
     <ClInclude Include="..\..\source\platform\types.codewarrior.h" />
     <ClInclude Include="..\..\source\platform\types.gcc.h" />
@@ -1038,6 +1055,7 @@
     <ClInclude Include="..\..\source\platformWin32\winOGLVideo.h" />
     <ClInclude Include="..\..\source\platformWin32\winVideo.h" />
     <ClInclude Include="..\..\source\platformWin32\nativeDialogs\win32DirectoryResolver.h" />
+    <ClInclude Include="..\..\source\platform\typetraits.h" />
     <ClInclude Include="..\..\source\sim\scriptGroup.h" />
     <ClInclude Include="..\..\source\sim\scriptObject.h" />
     <ClInclude Include="..\..\source\sim\simBase.h" />
@@ -1053,6 +1071,10 @@
     <ClInclude Include="..\..\source\sim\simObjectPtr.h" />
     <ClInclude Include="..\..\source\sim\simObjectTimerEvent.h" />
     <ClInclude Include="..\..\source\sim\simSet.h" />
+    <ClInclude Include="..\..\source\sqlite\sqlite3.h" />
+    <ClInclude Include="..\..\source\sqlite\SQLiteEvents.h" />
+    <ClInclude Include="..\..\source\sqlite\SQLiteInterface.h" />
+    <ClInclude Include="..\..\source\sqlite\SQLiteRecordSet.h" />
     <ClInclude Include="..\..\source\string\findMatch.h" />
     <ClInclude Include="..\..\source\string\stringBuffer.h" />
     <ClInclude Include="..\..\source\string\stringStack.h" />

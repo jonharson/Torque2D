@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// Copyright (c) 2013 GarageGames, LLC
+// Copyright (c) 2012 GarageGames, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
@@ -24,67 +24,51 @@
 #include "platformWin32/platformWin32.h"
 #include "memory/safeDelete.h"
 
-//////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
 // Mutex Data
-//////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
 
 struct PlatformMutexData
 {
-   HANDLE mMutex;
-
-   PlatformMutexData()
-   {
-      mMutex = NULL;
-   }
+   CRITICAL_SECTION mCriticalSection;
 };
 
-//////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
 // Constructor/Destructor
-//////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
 
 Mutex::Mutex()
 {
    mData = new PlatformMutexData;
-
-   mData->mMutex = CreateMutex(NULL, FALSE, NULL);
+   InitializeCriticalSection( &mData->mCriticalSection );
 }
 
 Mutex::~Mutex()
 {
-   if(mData && mData->mMutex)
-      CloseHandle(mData->mMutex);
-   
-   SAFE_DELETE(mData);
+   AssertFatal( TryEnterCriticalSection( &mData->mCriticalSection ), "Mutex::~Mutex - Critical section is locked!" );
+   DeleteCriticalSection( &mData->mCriticalSection );
+   SAFE_DELETE( mData );
 }
 
-//////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
 // Public Methods
-//////////////////////////////////////////////////////////////////////////
+//-----------------------------------------------------------------------------
 
-bool Mutex::lock(bool block /* = true */)
+bool Mutex::lock( bool block )
 {
-   if(mData == NULL || mData->mMutex == NULL)
-      return false;
+   AssertFatal( mData, "Mutex::lock - No data!" );
 
-   return (bool)WaitForSingleObject(mData->mMutex, block ? INFINITE : 0) == WAIT_OBJECT_0;
+   if( !block )
+      return TryEnterCriticalSection( &mData->mCriticalSection );
+   else
+   {
+      EnterCriticalSection( &mData->mCriticalSection );
+      return true;
+   }
 }
 
 void Mutex::unlock()
 {
-   if(mData == NULL || mData->mMutex == NULL)
-      return;
-
-   ReleaseMutex(mData->mMutex);
+   AssertFatal( mData, "Mutex::unlock - No data!" );
+   LeaveCriticalSection( &mData->mCriticalSection );
 }
-
-//void Mutex::set( void*data )
-//{
-//   if(mData && mData->mMutex)
-//      CloseHandle(mData->mMutex);
-//
-//   if( mData == NULL )
-//      mData = new PlatformMutexData;
-//
-//   mData->mMutex = (HANDLE)data;
-//
-//}

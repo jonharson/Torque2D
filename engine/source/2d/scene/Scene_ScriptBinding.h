@@ -230,7 +230,7 @@ ConsoleMethod(Scene, getSceneObjectList, const char*, 2, 2, "() Gets the Scene O
     U32 bufferCount = 0;
 
     // Iterate through the list and generate an id string list to return
-    for ( S32 n = 0; n < objList.size(); n++ )
+    for ( U32 n = 0; n < objList.size(); n++ )
     {
         // Output Object ID.
         bufferCount += dSprintf( pBuffer + bufferCount, maxBufferSize-bufferCount, "%d ", objList[n]->getId() );
@@ -2940,7 +2940,7 @@ ConsoleMethod(Scene, pickRayCollision, const char*, 4, 8, "(startx/y, endx/y, [s
                 "@param sceneGroupMask Optional scene group mask.  (-1) or empty string selects all groups.\n"
                 "@param sceneLayerMask Optional scene layer mask.  (-1) or empty string selects all layers.\n"
                 "@return Returns a list of objects in blocks of detail items where each block represents a single object and its collision detail in the format:"
-                "<ObjectId PointX PointY NormalX NormalY RayFraction ShapeIndex> <ObjectId PointX PointY NormalX NormalY RayFraction ShapeIndex> <ObjectId PointX PointY NormalX NormalY RayFraction ShapeIndex> etc.\n")
+                "<ObjectId PointX PointY NormalX NormalY RayFraction shapeId> <ObjectId PointX PointY NormalX NormalY RayFraction shapeId> <ObjectId PointX PointY NormalX NormalY RayFraction shapeId> etc.\n")
 {
     // Upper left and lower right bound.
     Vector2 v1, v2;
@@ -3047,7 +3047,7 @@ ConsoleMethod(Scene, pickRayCollision, const char*, 4, 8, "(startx/y, endx/y, [s
             queryResult.mPoint.x, queryResult.mPoint.y,
             queryResult.mNormal.x, queryResult.mNormal.y,
             queryResult.mFraction,
-            queryResult.mShapeIndex );
+            queryResult.mshapeId );
 
         // Finish early if we run out of buffer space.
         if ( bufferCount >= maxBufferSize )
