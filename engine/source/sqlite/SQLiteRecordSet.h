@@ -13,128 +13,134 @@
 
 #include "memory/safeDelete.h"
 
-class SQLiteInterface;
+#include "SQLiteInterface.h"
 
-class SQLiteRecordSet : public SimObject
+namespace SQLite
 {
-private:
-   typedef SimObject Parent;
+	class RecordSet : public SimObject
+	{
+	public:
+	   RecordSet(SQLite::Interface* sqli = NULL);
+	   ~RecordSet(void);
 
-public:
-   SQLiteRecordSet( SQLiteInterface *sqli = NULL );
-   ~SQLiteRecordSet();
+	   DECLARE_CONOBJECT(SQLite::RecordSet);
 
-public:
-   virtual bool onAdd();
-   virtual void onRemove();
+	   virtual bool onAdd(void);
+	   virtual void onRemove(void);
 
-   static void initPersistFields();
+	   static void initPersistFields(void);
 
-public:
-   S32 getDataFieldCount() { return mDataFieldCount; }
-   void setDataFieldName( S32 index, const char* fieldName );
-   const char* getDataFieldName( U32 index );
-   const char* getDataFieldValue( U32 index );
-   const char* getDataFieldValue( const char* pFieldName );
-   static S32 _sqliteRowAddCallback(void *obj, S32 argc, char **argv, char **columnNames);
+	   S32 getDataFieldCount(void) { return mDataFieldCount; }
+	   void setDataFieldName(S32 index, const char* fieldName);
+	   const char* getDataFieldName(U32 index);
+	   const char* getDataFieldValue(U32 index);
+	   const char* getDataFieldValue(const char* pFieldName);
 
-public:
-   bool nextRecord();
-   void rewindToFirstRecord() { mFirstRecord = true; };
+	   static S32 _sqliteRowAddCallback(void *obj, S32 argc, char **argv, char **columnNames);
 
-   struct SQLiteDataRow
-   {
-      VectorPtr<char*> mValues;
-      ~SQLiteDataRow()
-      {
-         // Clear values
-         for(VectorPtr<char*>::iterator i = mValues.begin(); i != mValues.end(); i++)
-		 {
-            SAFE_DELETE_ARRAY(*i);
-		 }
-         mValues.clear();
-      }
-   };
+	   bool nextRecord(void);
+	   void rewindToFirstRecord(void) { mFirstRecord = true; };
 
-   struct SQLiteDataSet
-   {
-      SQLiteDataSet()
-      {
-         mValid = false;
-         mCurrentRow = -1;
-         mCurrentColumn = -1;
-         mNumRows = 0;
-         mNumCols = 0;
-      }
-      ~SQLiteDataSet()
-      {
-         // Clear field names
-         for(VectorPtr<char*>::iterator i = mFieldNames.begin(); i != mFieldNames.end(); i++)
-		 {
-            SAFE_DELETE_ARRAY(*i);
-		 }
-         mFieldNames.clear();
-         // Clear data rows
-         for(VectorPtr<SQLiteDataRow*>::iterator i = mRows.begin(); i != mRows.end(); i++)
-		 {
-            SAFE_DELETE(*i);
-		 }
-         mRows.clear();
-      }
-      bool mValid;
-      S32 mCurrentRow;
-      S32 mCurrentColumn;
-      S32 mNumRows;
-      S32 mNumCols;
-      VectorPtr<char*> mFieldNames;
-      VectorPtr<SQLiteDataRow*> mRows;
-   };
-   typedef VectorPtr<SQLiteDataRow*> SQLiteDataRowType;
-   SQLiteDataRowType::iterator mCurrentRecord;
+	   void checkExpiryStatus(void);
 
-private:
-   SQLiteDataSet* mDataSet;
-   SimObjectPtr<SQLiteInterface> mSQLiteInterface;
-   bool isDebug();
+	   // How many records do we have
+	   S32 mRecordCount;
+	   S32 getRecordCount(void) { return mRecordCount; }
 
-   S32 mDataFieldCount;
-   bool mFirstRecord;
-   bool mBusy;
-   bool mIgnoreExpiredWarning;
-   U32 mInitiatedAt;
-   U32 mExpiryWarnCounter;
-   U32 mLastExpiryCheck;
-   S32 mAffectedRows;
-   U64 mLastID;
+	   // The last inserted ID (for auto-increment)
+	   void setLastInsertID(U64 id) { mLastID = id; };
+	   U64 getLastInsertID(void) { return mLastID; };
 
-public:
-   DECLARE_CONOBJECT(SQLiteRecordSet);
-   void checkExpiryStatus();
+	   // Number of rows affected by the query
+	   void setAffectedRows(S32 num) { mAffectedRows = num; };
+	   S32 getAffectedRows(void) { return mAffectedRows; };
 
-   // How many records do we have
-   S32 mRecordCount;
-   S32 getRecordCount() { return mRecordCount; }
+	   // Query result
+	   bool mSucceed;
 
-   // The last inserted ID (for auto-increment)
-   void setLastInsertID(U64 id) { mLastID = id; };
-   U64 getLastInsertID() { return mLastID; };
+	   void setBusy(bool busy) { mBusy = busy; }
+	   bool isBusy(void) { return mBusy; }
 
-   // Number of rows affected by the query
-   void setAffectedRows(S32 num) { mAffectedRows = num; };
-   S32 getAffectedRows() { return mAffectedRows; };
+	   static S32 sgNextSQLiteQueryId;
 
-   // Query result
-   bool mSucceed;
+	   const char *mReqSQLString;
+	   const char *mReqQueryCallback;
+	   SimObjectId mReqQueryRef; 
 
-   void setBusy( bool busy ) { mBusy = busy; }
-   bool isBusy() { return mBusy; }
+	   void processReplyEvent(void);
 
-   static S32 sgNextSQLiteQueryId;
+	   struct DataRow
+	   {
+		  ~DataRow(void)
+		  {
+			 for(VectorPtr<char*>::iterator i = mValues.begin(); i != mValues.end(); i++)
+			 {
+				SAFE_DELETE_ARRAY(*i);
+			 }
+			 mValues.clear();
+		  }
 
-   const char *mReqSQLString;
-   const char *mReqQueryCallback;
-   SimObjectId mReqQueryRef; 
-   void processReplyEvent();
-};
+		  VectorPtr<char*> mValues;
+	   };
+
+	   struct DataSet
+	   {
+		  DataSet(void)
+		  {
+			 mValid = false;
+			 mCurrentRow = -1;
+			 mCurrentColumn = -1;
+			 mNumRows = 0;
+			 mNumCols = 0;
+		  }
+
+		  ~DataSet(void)
+		  {
+			 // Clear field names
+			 for(VectorPtr<char*>::iterator i = mFieldNames.begin(); i != mFieldNames.end(); i++)
+			 {
+				SAFE_DELETE_ARRAY(*i);
+			 }
+			 mFieldNames.clear();
+			 
+			 // Clear data rows
+			 for(VectorPtr<SQLite::RecordSet::DataRow*>::iterator i = mRows.begin(); i != mRows.end(); i++)
+			 {
+				SAFE_DELETE(*i);
+			 }
+			 mRows.clear();
+		  }
+
+		  bool mValid;
+		  S32 mCurrentRow;
+		  S32 mCurrentColumn;
+		  S32 mNumRows;
+		  S32 mNumCols;
+		  VectorPtr<char*> mFieldNames;
+		  VectorPtr<SQLite::RecordSet::DataRow*> mRows;
+	   };
+
+	   typedef VectorPtr<SQLite::RecordSet::DataRow*> DataRowType;
+	   DataRowType::iterator mCurrentRecord;
+
+	private:
+	   bool isDebug(void);
+
+	   typedef SimObject Parent;
+
+	   DataSet* mDataSet;
+	   SimObjectPtr<SQLite::Interface> mInterface;
+
+	   S32 mDataFieldCount;
+	   bool mFirstRecord;
+	   bool mBusy;
+	   bool mIgnoreExpiredWarning;
+	   U32 mInitiatedAt;
+	   U32 mExpiryWarnCounter;
+	   U32 mLastExpiryCheck;
+	   S32 mAffectedRows;
+	   U64 mLastID;
+	};
+}
 
 #endif // _SQLITE_RECORDSET_

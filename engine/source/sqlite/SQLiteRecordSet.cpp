@@ -4,22 +4,19 @@
 // Copyright Dedicated Logic 2011
 //-----------------------------------------------------------------------------
 
-//#include "console/engineAPI.h"
-
 #include "SQLiteRecordSet.h"
-#include "SQLiteInterface.h"
 
-IMPLEMENT_CONOBJECT(SQLiteRecordSet);
+IMPLEMENT_CONOBJECT(SQLite::RecordSet);
 
-S32 SQLiteRecordSet::sgNextSQLiteQueryId = 1;
+S32 SQLite::RecordSet::sgNextSQLiteQueryId = 1;
 
-SQLiteRecordSet::SQLiteRecordSet( SQLiteInterface *sqli )
-:  mDataFieldCount(0)
-,  mRecordCount(0)
-,  mFirstRecord(true)
-,  mBusy(false)
+SQLite::RecordSet::RecordSet(SQLite::Interface *sqli) :
+	mDataFieldCount(0),
+	mRecordCount(0),
+	mFirstRecord(true),
+	mBusy(false)
 {
-   mSQLiteInterface = sqli;
+   mInterface = sqli;
    mLastID = 0;
    mAffectedRows = 0;
    mSucceed = true;
@@ -36,14 +33,14 @@ SQLiteRecordSet::SQLiteRecordSet( SQLiteInterface *sqli )
    mDataSet = NULL;
 }
 
-SQLiteRecordSet::~SQLiteRecordSet()
+SQLite::RecordSet::~RecordSet(void)
 {
    SAFE_DELETE(mDataSet);
    SAFE_DELETE(mReqSQLString);
    SAFE_DELETE(mReqQueryCallback);
 }
 
-bool SQLiteRecordSet::onAdd()
+bool SQLite::RecordSet::onAdd(void)
 {
    if (!Parent::onAdd())
       return false;
@@ -56,52 +53,52 @@ bool SQLiteRecordSet::onAdd()
    return true;
 }
 
-void SQLiteRecordSet::onRemove()
+void SQLite::RecordSet::onRemove(void)
 {
-   // Cleanup!
    Parent::onRemove();
 }
 
-void SQLiteRecordSet::initPersistFields()
+void SQLite::RecordSet::initPersistFields(void)
 {
-   // Out stuff
-
-   // Init parent too
    Parent::initPersistFields();
 }
 
-void SQLiteRecordSet::checkExpiryStatus()
+void SQLite::RecordSet::checkExpiryStatus(void)
 {
    if(mIgnoreExpiredWarning)
       return;
+
    mLastExpiryCheck = Platform::getRealMilliseconds();
    const U32 elapsedMS = mLastExpiryCheck - mLastExpiryCheck;
+
    if(elapsedMS > SQLITE_RECORDSET_EXPIRE_TIMEOUT_MS)
    {
       mExpiryWarnCounter++;
-      Con::warnf("Warning: found an outdated SQLiteRecordSet [%d] inside SQLI [%d] (%s). Time elapsed: %d sec / Warn counter: %d ",
-         getId(),
-         mSQLiteInterface->getId(),
-         mSQLiteInterface->getName(),
+
+      Con::warnf("Warning: found an outdated SQLite::RecordSet [%d] inside SQLI [%d] (%s). Time elapsed: %d sec / Warn counter: %d ",
+         getId(), mInterface->getId(), mInterface->getName(),
          mExpiryWarnCounter * SQLITE_RECORDSET_EXPIRE_TIMEOUT_MS,
          mExpiryWarnCounter);
+
       if(isDebug() && getFieldDictionary())
          getFieldDictionary()->printFields(this);
    }
 }
 
-bool SQLiteRecordSet::isDebug()
+bool SQLite::RecordSet::isDebug(void)
 {
-   if(mSQLiteInterface.isNull())
+   if(mInterface.isNull())
       return false;
-   return mSQLiteInterface->isDebug();
+
+   return mInterface->isDebug();
 }
 
-bool SQLiteRecordSet::nextRecord()
+bool SQLite::RecordSet::nextRecord(void)
 {
    // Don't try to do anything in case we don't have results (was performing INSERT/UPDATE/DELETE maybe?)
    if(mDataFieldCount == 0)
       return false;
+
    // If this is a first call...
    if(mFirstRecord)
    {
@@ -121,18 +118,13 @@ bool SQLiteRecordSet::nextRecord()
    if(haveRecord)
    {
       for(S32 i=0; i< mDataFieldCount; i++)
-      {
-         setDataField(
-            StringTable->insert(mDataSet->mFieldNames[i]), 
-            NULL, 
-            (*mCurrentRecord)->mValues[i]
-         );
-      }
+         setDataField(StringTable->insert(mDataSet->mFieldNames[i]), NULL, (*mCurrentRecord)->mValues[i]);
    }
+
    return haveRecord;
 }
 
-const char* SQLiteRecordSet::getDataFieldName(U32 index)
+const char* SQLite::RecordSet::getDataFieldName(U32 index)
 {
    if(index < 0 || index > mDataSet->mFieldNames.size()-1)
       return "";
@@ -140,33 +132,39 @@ const char* SQLiteRecordSet::getDataFieldName(U32 index)
       return mDataSet->mFieldNames[index];
 }
 
-const char* SQLiteRecordSet::getDataFieldValue(U32 index)
+const char* SQLite::RecordSet::getDataFieldValue(U32 index)
 {
    if (mFirstRecord)
    {
-      Con::errorf("Call SQLiteRecordSet::nextRecord() before calling getDataFieldValue");
+      Con::errorf("Call SQLite::RecordSet::nextRecord() before calling getDataFieldValue");
       return "";
    }
+
    if(index < 0 || index > (*mCurrentRecord)->mValues.size()-1)
    {
-      Con::errorf("SQLiteRecordSet::getFieldValue error: out of range. Requested field with index %d, but we have %d fields in dataset.", index, mDataSet->mFieldNames.size());
+      Con::errorf("SQLite::RecordSet::getFieldValue error: out of range. Requested field with index %d, but we have %d fields in dataset.", index, mDataSet->mFieldNames.size());
       return "";
    }
+
    return (*mCurrentRecord)->mValues[index];
 }
 
-const char* SQLiteRecordSet::getDataFieldValue(const char* fieldName)
+const char* SQLite::RecordSet::getDataFieldValue(const char* fieldName)
 {
    for(U32 i=0; i < mDataSet->mFieldNames.size(); i++)
    {
       if(dStricmp(fieldName, mDataSet->mFieldNames[i]) == 0)
          return getDataFieldValue(i);
    }
-   Con::errorf("SQLiteRecordSet::getDataFieldValue error: field `%s` not found!", fieldName);
+
+   Con::errorf("SQLite::RecordSet::getDataFieldValue error: field `%s` not found!", fieldName);
    return "";
 }
 
 /*
+
+//TODO!
+
 DefineEngineMethod(SQLiteRecordSet, getSQL, const char*, (),,
                    "@return original SQL request string\n"
                    "@ingroup SQLiteInterface")

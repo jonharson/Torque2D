@@ -7,90 +7,109 @@
 #ifndef _SQLITE_EVENTS_H_
 #define _SQLITE_EVENTS_H_
 
-#ifndef _SIMBASE_H_
-#include "console/simEvents.h"
-#endif
+#include "SQLiteRecordSet.h"
 
-#include "collection/hashTable.h"
-
-enum SQLiteEventType
+namespace SQLite
 {
-   StubEventType,
-   GenericQuery,
-   GenericSelectQuery,
-   GenericUpdateQuery,
-   ExampleQuery,
-   ExclusiveQuery,
-   // Feel free to add your own additional types
-};
+	enum EventType
+	{
+	   StubEventType,
+	   GenericQuery,
+	   GenericSelectQuery,
+	   GenericUpdateQuery,
+	   DalObjectSelectQuery,
+	   DalObjectUpdateQuery,
+	   DalTableSelectQuery,
+	   DalTableUpdateQuery,
+	   ExclusiveQuery
+	};
 
-struct SQLiteRequest
-{
-   S32 mSubmitCounter;
-   U16 size;
-   SQLiteEventType type;
-   SQLiteRequest() :
-      mSubmitCounter(0)
-   {
-      size = sizeof(SQLiteRequest);
-      type = StubEventType;
-   }
-};
+	struct Request
+	{
+	   S32 mSubmitCounter;
+	   U16 size;
+	   SQLite::EventType type;
 
-class SQLiteRecordSet;
+	   Request(void) : mSubmitCounter(0)
+	   {
+		  size = sizeof(Request);
+		  type = StubEventType;
+	   }
+	};
 
-struct GenericSQLiteQueryRequest
-   : public SQLiteRequest
-{
-   SQLiteRecordSet* mRecordSet;
-   GenericSQLiteQueryRequest() :
-      mRecordSet(NULL)
-   {
-      size = sizeof(GenericSQLiteQueryRequest);
-      type = GenericQuery;
-   }
-};
+	struct GenericQueryRequest : public Request
+	{
+	   SQLite::RecordSet* mRecordSet;
 
-struct ExclusiveSQLiteSelectQueryRequest
-   : public GenericSQLiteQueryRequest
-{
-   ExclusiveSQLiteSelectQueryRequest()
-   {
-      size = sizeof(ExclusiveSQLiteSelectQueryRequest);
-      type = ExclusiveQuery;
-   }
-};
+	   GenericQueryRequest(void) : mRecordSet(NULL)
+	   {
+		  size = sizeof(GenericQueryRequest);
+		  type = GenericQuery;
+	   }
+	};
 
-// Example on how to use own requests
-struct GenericSQLiteSelectQueryRequest : public GenericSQLiteQueryRequest
-{
-   GenericSQLiteSelectQueryRequest()
-   {
-      size = sizeof(GenericSQLiteSelectQueryRequest);
-      type = GenericSelectQuery;
-   }
-};
+	struct ExclusiveQueryRequest : public GenericQueryRequest
+	{
+	   ExclusiveQueryRequest(void)
+	   {
+		  size = sizeof(ExclusiveQueryRequest);
+		  type = ExclusiveQuery;
+	   }
+	};
 
-struct GenericSQLiteUpdateQueryRequest : public GenericSQLiteQueryRequest
-{
-   GenericSQLiteUpdateQueryRequest()
-   {
-      size = sizeof(GenericSQLiteUpdateQueryRequest);
-      type = GenericUpdateQuery;
-   }
-};
+	struct GenericSelectQueryRequest : public GenericQueryRequest
+	{
+	   GenericSelectQueryRequest(void)
+	   {
+		  size = sizeof(GenericSelectQueryRequest);
+		  type = GenericSelectQuery;
+	   }
+	};
 
-// SQLiExample
-//class HashTable;
-struct ExampleSQLiteQueryRequest : public SQLiteRequest
-{
-   HashMap<const char*, char*> *ao;
-   ExampleSQLiteQueryRequest()
-   {
-      ao = NULL;
-      size = sizeof(ExampleSQLiteQueryRequest);
-      type = ExampleQuery;
-   }
-};
+	struct GenericUpdateQueryRequest : public GenericQueryRequest
+	{
+	   GenericUpdateQueryRequest(void)
+	   {
+		  size = sizeof(GenericUpdateQueryRequest);
+		  type = GenericUpdateQuery;
+	   }
+	};
+
+	struct DalObjectSelectQueryRequest : public GenericQueryRequest
+	{
+	   DalObjectSelectQueryRequest(void)
+	   {
+		  size = sizeof(DalObjectSelectQueryRequest);
+		  type = DalObjectSelectQuery;
+	   }
+	};
+
+	struct DalObjectUpdateQueryRequest : public GenericQueryRequest
+	{
+	   DalObjectUpdateQueryRequest(void)
+	   {
+		  size = sizeof(DalObjectUpdateQueryRequest);
+		  type = DalObjectUpdateQuery;
+	   }
+	};
+
+	struct DalTableSelectQueryRequest : public GenericQueryRequest
+	{
+	   DalTableSelectQueryRequest(void)
+	   {
+		  size = sizeof(DalTableSelectQueryRequest);
+		  type = DalTableSelectQuery;
+	   }
+	};
+
+	struct DalTableUpdateQueryRequest : public GenericQueryRequest
+	{
+	   DalTableUpdateQueryRequest(void)
+	   {
+		  size = sizeof(DalTableUpdateQueryRequest);
+		  type = DalTableUpdateQuery;
+	   }
+	};
+}
 
 #endif // _SQLITE_EVENTS_H_

@@ -14,58 +14,69 @@
 
 #include "sqlite3.h"
 #include "SQLiteRecordSet.h"
+#include "SQLiteEvents.h"
 
-IMPLEMENT_CONOBJECT(SQLiteInterface);
+IMPLEMENT_CONOBJECT(SQLite::Interface);
 
 S32 gSQLICount = 0;
 
-SQLiteInterface::SQLiteInterface()
-:  mp_CurrentEventQueue(&m_SQLiteEventQueue1)
-,  m_SQLiteMutex(Mutex::createMutex())
-,  m_SQLiteExclusiveMutex(Mutex::createMutex())
-,  m_ActionSemaphore(new Semaphore(0))
-,  mv_ShuttingDown(false)
-,  mv_Initialized(false)
-,  mv_DebugMode(false)
-,  mSQLiteDB(NULL)
-,  mDatabase(NULL)
+SQLite::Interface::Interface(void) :
+	mCurrentEventQueue(&mEventQueue1),
+	mQueueMutex(Mutex::createMutex()),
+	mExclusiveMutex(Mutex::createMutex()),
+	mActionSemaphore(new Semaphore(0)),
+	mShuttingDown(false),
+	mInitialized(false),
+	mDebugMode(false),
+	mSQLiteDB(NULL),
+	mDatabaseName(NULL)
 {
    gSQLICount++;
 }
 
-SQLiteInterface::~SQLiteInterface()
+SQLite::Interface::~Interface(void)
 {
    // We need to perform some clean-up!
-   Mutex::destroyMutex(m_SQLiteExclusiveMutex);
-   Mutex::destroyMutex(m_SQLiteMutex);
-   SAFE_DELETE(m_ActionSemaphore);
-   SAFE_FREE(mDatabase);
+   Mutex::destroyMutex(mExclusiveMutex);
+   Mutex::destroyMutex(mQueueMutex);
+   SAFE_DELETE(mActionSemaphore);
+   SAFE_FREE(mDatabaseName);
+
    gSQLICount--;
 }
 
-class sqliCheckForOldResultsEvent : public SimEvent
+namespace SQLite
 {
-public:
-   sqliCheckForOldResultsEvent() { };
-   ~sqliCheckForOldResultsEvent() { };
-   void process(SimObject *obj)
-   {
-      if(obj == NULL) return;
-      SQLiteInterface *sqli = (SQLiteInterface*)(obj);
-      if(!sqli) return;
-      for( SimObjectList::iterator i = sqli->begin(); i != sqli->end(); i++ )
-      {
-         SQLiteRecordSet *rs = (SQLiteRecordSet*)(*i);
-         // Check if the object expired
-         rs->checkExpiryStatus();
-      }
-      Sim::postEvent(sqli, new sqliCheckForOldResultsEvent(), Sim::getTargetTime() + SQLITE_RECORDSET_EXPIRE_TIMEOUT_MS);
-   }
-};
+	class sqliCheckForOldResultsEvent : public SimEvent
+	{
+	public:
+	   sqliCheckForOldResultsEvent(void) { };
+	   ~sqliCheckForOldResultsEvent(void) { };
 
-bool SQLiteInterface::onAdd()
+	   void process(SimObject* object)
+	   {
+		  if(object == NULL) 
+			  return;
+
+		  SQLite::Interface *sqli = dynamic_cast<SQLite::Interface*>(object);
+
+		  if(!sqli) 
+			  return;
+
+		  for(SimObjectList::iterator i = sqli->begin(); i != sqli->end(); i++)
+		  {
+			 SQLite::RecordSet* rs = (SQLite::RecordSet*)(*i);
+			 // Check if the object expired
+			 rs->checkExpiryStatus();
+		  }
+		  Sim::postEvent(sqli, new sqliCheckForOldResultsEvent(), Sim::getTargetTime() + SQLITE_RECORDSET_EXPIRE_TIMEOUT_MS);
+	   }
+	};
+}
+
+bool SQLite::Interface::onAdd(void)
 {
-   if (!Parent::onAdd())
+   if(!Parent::onAdd())
       return false;
 
    // Issue the initial event. It will re-submit itself again and again.
@@ -74,16 +85,17 @@ bool SQLiteInterface::onAdd()
    return true;
 }
 
-void SQLiteInterface::onRemove()
+void SQLite::Interface::onRemove(void)
 {
    if(isInitialized())
    {
       if(isDebug())
-         Con::warnf("Shutting down the SQLiteInterface [%d] (%s)", getId(), getName());
+         Con::warnf("Shutting down the SQLite::Interface [%d] (%s)", getId(), getName());
+
       // We need to shutdown the worker thread
-      dCompareAndSwap(mv_ShuttingDown, false, true);
+      dCompareAndSwap(mShuttingDown, false, true);
       // We need to move thread out of the semaphore block, so it can get out and shutdown properly
-      m_ActionSemaphore->release();
+      mActionSemaphore->release();
       // Cleanup!
       _closeSQLiteDB();
       setInitialized(false);
@@ -92,24 +104,29 @@ void SQLiteInterface::onRemove()
    // Check if we have any SQLiteRecordSet objects
    if(size())
    {
-      Con::errorf("SQLiteInterface has been removed from the Sim, but it still contains %d objects!", size());
-      Con::warnf("All of the SQLiteRecordSet objects found has been moved to the `SQLiteResultsGroup` (SimGroup).");
+      Con::errorf("SQLite::Interface has been removed from the Sim, but it still contains %d objects!", size());
+      Con::warnf("All of the SQLite::RecordSet objects found has been moved to the `SQLiteResultsGroup` (SimGroup).");
+
       SimGroup *sqliResultsGroup = NULL;
       if(!Sim::findObject("SQLiteResultsGroup", sqliResultsGroup))
       {
          sqliResultsGroup = new SimGroup();
          sqliResultsGroup->registerObject("SQLiteResultsGroup");
+
          while(size())
-            sqliResultsGroup->addObject( (*this)[0] );
+            sqliResultsGroup->addObject((*this)[0]);
       }
    }
 
    Parent::onRemove();
 }
 
-void SQLiteInterface::consoleInit()
+void SQLite::Interface::consoleInit(void)
 {
 	/*
+
+	//TODO!
+
    Con::addConstant("$SQLITE::UNKNOWNERROR", -1, "Unknown/unrecognized error\n" "@ingroup SQLiteInterface");
    // Error codes retrieved from sqlite3 engine
    Con::addConstant("$SQLITE::OK", SQLITE_OK, "Successful result\n" "@ingroup SQLiteInterface");
@@ -146,257 +163,286 @@ void SQLiteInterface::consoleInit()
    Parent::consoleInit();
 }
 
-void SQLiteInterface::_closeSQLiteDB()
+void SQLite::Interface::_closeSQLiteDB(void)
 {
    // Perform some clean-up
-   Mutex::lockMutex(m_SQLiteExclusiveMutex);
-   Mutex::lockMutex(m_SQLiteMutex);
+   Mutex::lockMutex(mExclusiveMutex);
+   Mutex::lockMutex(mQueueMutex);
 
-   for(U32 i=0; i < m_SQLiteEventQueue1.size(); i++)
+   for(U32 i=0; i < mEventQueue1.size(); i++)
    {
-      SAFE_FREE(m_SQLiteEventQueue1[i]);
+      SAFE_FREE(mEventQueue1[i]);
    }
-   m_SQLiteEventQueue1.clear();
+   mEventQueue1.clear();
 
-   for(U32 i=0; i < m_SQLiteEventQueue2.size(); i++)
+   for(U32 i=0; i < mEventQueue2.size(); i++)
    {
-      SAFE_FREE(m_SQLiteEventQueue2[i]);
+      SAFE_FREE(mEventQueue2[i]);
    }
-   m_SQLiteEventQueue2.clear();
+   mEventQueue2.clear();
 
-   Mutex::unlockMutex(m_SQLiteMutex);
+   Mutex::unlockMutex(mQueueMutex);
+
    if(mSQLiteDB)
       sqlite3_close(mSQLiteDB);
-   Mutex::unlockMutex(m_SQLiteExclusiveMutex);
+
+   Mutex::unlockMutex(mExclusiveMutex);
    mSQLiteDB = NULL;
 }
 
-class SQLiteCantOpenEvent : public SimEvent
+namespace SQLite
 {
-   S32 mErrorCode;
-   const char *mError;
-public:
-   SQLiteCantOpenEvent(S32 errorCode = -1, const char *errorMessage = NULL)
-   {
-      mErrorCode = errorCode;
-      if(errorMessage)
-      {
-         mError = (char *)dMalloc(dStrlen(errorMessage)+1);
-         dMemset((void*)mError, 0, dStrlen(errorMessage)+1);
-         dMemcpy((void*)mError, (void*)errorMessage, dStrlen(errorMessage));
-      }
-      else
-         mError = NULL;
+	class sqliCantOpenEvent : public SimEvent
+	{
+	public:
+	   sqliCantOpenEvent(S32 errorCode = -1, const char *errorMessage = NULL)
+	   {
+		  mErrorCode = errorCode;
+		  if(errorMessage)
+		  {
+			 mError = (char *)dMalloc(dStrlen(errorMessage)+1);
+			 dMemset((void*)mError, 0, dStrlen(errorMessage)+1);
+			 dMemcpy((void*)mError, (void*)errorMessage, dStrlen(errorMessage));
+		  }
+		  else
+			 mError = NULL;
+	   }
 
-   }
-   ~SQLiteCantOpenEvent()
-   {
-      SAFE_FREE(mError);
-   }
-   virtual void process( SimObject *object )
-   {
-      SQLiteInterface *sqli = dynamic_cast<SQLiteInterface*>(object);
-      if(sqli)
-      {
-         if(sqli->isMethod("onOpenFailed"))
-            Con::executef(sqli, 3, "onOpenFailed", avar("%d", mErrorCode), mError);
-         else
-            Con::errorf("SQLiteInterface [%d] (%s) error: can't open database!", sqli->getId(), sqli->getName());
-      }
-      else
-         Con::errorf("Error: SQLiteInterface object not found!");
-   }
-};
+	   ~sqliCantOpenEvent(void)
+	   {
+		  SAFE_FREE(mError);
+	   }
 
-class SQLiteOpenEvent : public SimEvent
-{
-public:
-   SQLiteOpenEvent() {}
-   ~SQLiteOpenEvent() {}
-   virtual void process( SimObject *object )
-   {
-      SQLiteInterface *sqli = dynamic_cast<SQLiteInterface*>(object);
-      if(sqli)
-      {
-         if(sqli->isMethod("onInitialized"))
-            Con::executef(sqli, 1, "onInitialized");
-         else
-            Con::printf("SQLiteInterface [%d] (%s) initialized", sqli->getId(), sqli->getName());
-      }
-      else
-         Con::errorf("Error: SQLiteInterface object not found!");
-   }
-};
+	   virtual void process(SimObject* object)
+	   {
+		  SQLite::Interface *sqli = dynamic_cast<SQLite::Interface*>(object);
+		  if(sqli)
+		  {
+			 if(sqli->isMethod("onOpenFailed"))
+				Con::executef(sqli, 3, "onOpenFailed", avar("%d", mErrorCode), mError);
+			 else
+				Con::errorf("SQLite::Interface [%d] (%s) error: can't open database!", sqli->getId(), sqli->getName());
+		  }
+		  else
+			 Con::errorf("Error: SQLite::Interface object not found!");
+	   }
 
-class SQLiteGeneralErrorEvent : public SimEvent
-{
-   S32 mErrorCode;
-   const char *mError;
-public:
-   SQLiteGeneralErrorEvent(S32 errorCode = -1, const char *errorMessage = NULL)
-   {
-      mErrorCode = errorCode;
-      if(errorMessage)
-      {
-         mError = (char *)dMalloc(dStrlen(errorMessage)+1);
-         dMemset((void*)mError, 0, dStrlen(errorMessage)+1);
-         dMemcpy((void*)mError, (void*)errorMessage, dStrlen(errorMessage));
-      }
-      else
-         mError = NULL;
+	private:
+	   	S32 mErrorCode;
+		const char *mError;
+	};
 
-   }
-   ~SQLiteGeneralErrorEvent()
-   {
-      SAFE_FREE(mError);
-   }
-   virtual void process( SimObject *object )
-   {
-      SQLiteInterface *sqli = dynamic_cast<SQLiteInterface*>(object);
-      if(sqli)
-      {
-         if(sqli->isMethod("onError"))
-            Con::executef(sqli, 3, "onError", avar("%d", mErrorCode), mError);
-         else
-            Con::errorf("SQLiteInterface [%d] (%s) error!", sqli->getId(), sqli->getName());
-      }
-      else
-         Con::errorf("Error: SQLiteInterface object not found!");
-   }
-};
+	class sqliOpenEvent : public SimEvent
+	{
+	public:
+	   sqliOpenEvent(void) {}
+	   ~sqliOpenEvent(void) {}
 
-void SQLiteInterface::_dumpError( S32 errorCode )
+	   virtual void process(SimObject* object)
+	   {
+		  SQLite::Interface *sqli = dynamic_cast<SQLite::Interface*>(object);
+		  if(sqli)
+		  {
+			 if(sqli->isMethod("onInitialized"))
+				Con::executef(sqli, 1, "onInitialized");
+			 else
+				Con::printf("SQLite::Interface [%d] (%s) initialized", sqli->getId(), sqli->getName());
+		  }
+		  else
+			 Con::errorf("Error: SQLite::Interface object not found!");
+	   }
+	};
+
+	class sqliGeneralErrorEvent : public SimEvent
+	{
+	public:
+	   sqliGeneralErrorEvent(S32 errorCode = -1, const char *errorMessage = NULL)
+	   {
+		  mErrorCode = errorCode;
+		  if(errorMessage)
+		  {
+			 mError = (char *)dMalloc(dStrlen(errorMessage)+1);
+			 dMemset((void*)mError, 0, dStrlen(errorMessage)+1);
+			 dMemcpy((void*)mError, (void*)errorMessage, dStrlen(errorMessage));
+		  }
+		  else
+			 mError = NULL;
+	   }
+
+	   ~sqliGeneralErrorEvent(void)
+	   {
+		  SAFE_FREE(mError);
+	   }
+
+	   virtual void process(SimObject* object)
+	   {
+		  SQLite::Interface *sqli = dynamic_cast<SQLite::Interface*>(object);
+		  if(sqli)
+		  {
+			 if(sqli->isMethod("onError"))
+				Con::executef(sqli, 3, "onError", avar("%d", mErrorCode), mError);
+			 else
+				Con::errorf("SQLite::Interface [%d] (%s) error!", sqli->getId(), sqli->getName());
+		  }
+		  else
+			 Con::errorf("Error: SQLite::Interface object not found!");
+	   }
+
+	private:
+	   S32 mErrorCode;
+	   const char *mError;
+	};
+}
+
+void SQLite::Interface::_dumpError(S32 errorCode)
 {
    char* errorMsg = (char *)sqlite3_errmsg(mSQLiteDB);
-   Sim::postEvent(this, new SQLiteGeneralErrorEvent(errorCode, errorMsg), Sim::getTargetTime());
+   Sim::postEvent(this, new sqliGeneralErrorEvent(errorCode, errorMsg), Sim::getTargetTime());
    sqlite3_free(errorMsg);
 }
 
-S32 SQLiteInterface::_openSQLiteDB()
+S32 SQLite::Interface::_openSQLiteDB()
 {
-   S32 result = sqlite3_open(mDatabase, &mSQLiteDB);
+   S32 result = sqlite3_open(mDatabaseName, &mSQLiteDB);
+
    if(result != SQLITE_OK)
    {
       char* errorMsg = (char *)sqlite3_errmsg(mSQLiteDB);
-      Sim::postEvent(this, new SQLiteCantOpenEvent(result, errorMsg), Sim::getTargetTime());
+      Sim::postEvent(this, new sqliCantOpenEvent(result, errorMsg), Sim::getTargetTime());
       sqlite3_free(errorMsg);
    }
    else
    {
       setInitialized(true);
-      Sim::postEvent(this, new SQLiteOpenEvent(), Sim::getTargetTime());
+      Sim::postEvent(this, new sqliOpenEvent(), Sim::getTargetTime());
    }
+
    return result;
 }
 
-void SQLiteInterface::postSQLEvent( SQLiteRequest &event )
+void SQLite::Interface::postSQLEvent(Request& event)
 {
    if(!isInitialized())
    {
-      Con::errorf("Can't post SQLiteRequest as the SQLiteInterface [%d] is not initialized!", this->getId());
+      Con::errorf("Can't post SQLite::Request as the SQLite::Interface [%d] is not initialized!", this->getId());
       return;
    }
+
    if(isShuttingDown())
    {
-      Con::errorf("Can't post SQLiteRequest as the SQLiteInterface [%d] is shutting down!", this->getId());
+      Con::errorf("Can't post SQLite::Request as the SQLite::Interface [%d] is shutting down!", this->getId());
       return;
    }
+
    if(isDebug())
-      Con::errorf("SQLiteRequest::postSQLEvent: %d", S32(event.type));
-   Mutex::lockMutex(m_SQLiteMutex);
+      Con::errorf("SQLite::Request::postSQLEvent: %d", S32(event.type));
+
+   Mutex::lockMutex(mQueueMutex);
    // Create a deep copy of event, and save a pointer to the copy in a vector.
-   SQLiteRequest* copy = (SQLiteRequest*)dMalloc(event.size);
+   SQLite::Request* copy = (SQLite::Request*)dMalloc(event.size);
    dMemcpy(copy, &event, event.size);
-   mp_CurrentEventQueue->push_back(copy);
-   Mutex::unlockMutex(m_SQLiteMutex);
+   mCurrentEventQueue->push_back(copy);
+   Mutex::unlockMutex(mQueueMutex);
    // Trigger the semaphore, so the thread can process the event
-   m_ActionSemaphore->release();
+   mActionSemaphore->release();
 }
 
-void SQLiteInterface::processLoop()
+void SQLite::Interface::processLoop()
 {
-   while(!mv_ShuttingDown)
+   while(!mShuttingDown)
    {
       // Wait for the event to be signaled, so we don't run for nothing
-      m_ActionSemaphore->acquire();
+      mActionSemaphore->acquire();
 
-      Mutex::lockMutex(m_SQLiteMutex);
+      Mutex::lockMutex(mQueueMutex);
 
       // swap event queue pointers
-      Vector<SQLiteRequest*> &fullEventQueue = *mp_CurrentEventQueue;
-      if(mp_CurrentEventQueue == &m_SQLiteEventQueue1)
-         mp_CurrentEventQueue = &m_SQLiteEventQueue2;
+      Vector<SQLite::Request*>& fullEventQueue = *mCurrentEventQueue;
+
+      if(mCurrentEventQueue == &mEventQueue1)
+         mCurrentEventQueue = &mEventQueue2;
       else
-         mp_CurrentEventQueue = &m_SQLiteEventQueue1;
+         mCurrentEventQueue = &mEventQueue1;
 
       if(isDebug())
-         Con::printf("SQLiteInterface::processLoop -- processing %d elements from the %s queue.", (mp_CurrentEventQueue == &m_SQLiteEventQueue1) ? "first" : "second");
+         Con::printf("SQLite::Interface::processLoop -- processing %d elements from the %s queue.", (mCurrentEventQueue == &mEventQueue1) ? "first" : "second");
 
-      Mutex::unlockMutex(m_SQLiteMutex);
+      Mutex::unlockMutex(mQueueMutex);
 
       // Keep track of the original size
       const int size = fullEventQueue.size();
       // Walk the event queue in fifo order, processing the events, then clear the queue.
       for(S32 i=0; i < size; i++)
       {
-         Mutex::lockMutex(m_SQLiteExclusiveMutex);
-         S32 result = processSQLiteEvent(fullEventQueue[i]);
+         Mutex::lockMutex(mExclusiveMutex);
+         S32 result = processEvent(fullEventQueue[i]);
+
          if(result != SQLITE_OK)
             _dumpError(result);
+
          SAFE_FREE(fullEventQueue[i]);
-         Mutex::unlockMutex(m_SQLiteExclusiveMutex);
+         Mutex::unlockMutex(mExclusiveMutex);
       }
+
       fullEventQueue.clear();
    }
 }
 
-void SQLiteInterface::processThread( void *udata )
+void SQLite::Interface::processThread(void* udata)
 {
-   SQLiteInterface* pThis = (SQLiteInterface *)udata;
+   SQLite::Interface* pThis = (SQLite::Interface*)udata;
    const S32 result = pThis->_openSQLiteDB();
+
    if(pThis->isDebug())
-      Con::printf("SQLiteInterface [%d] (%s) initialization status: %d", pThis->getId(), pThis->getName(), result);
+      Con::printf("SQLite::Interface [%d] (%s) initialization status: %d", pThis->getId(), pThis->getName(), result);
+
    if(result != SQLITE_OK)
    {
       pThis->_dumpError(result);
       return;
    }
+
    pThis->processLoop();
 }
 
-void SQLiteInterface::initialize( const char *database )
+void SQLite::Interface::initialize(const char *database)
 {
    if(isInitialized())
    {
-      Con::errorf("SQLiteInterface::initialize() error: SQLiteInterface is already initialized!");
+      Con::errorf("SQLite::Interface::initialize() error: SQLite::Interface is already initialized!");
       return;
    }
+
    if(isShuttingDown())
    {
-      Con::errorf("SQLiteInterface::initialize() error: SQLiteInterface [%d] is shutting down!", this->getId());
+      Con::errorf("SQLite::Interface::initialize() error: SQLite::Interface [%d] is shutting down!", this->getId());
       return;
    }
+
    // Sanity check
    if(!Platform::isFile(database))
    {
-      Con::errorf("SQLiteInterface::initialize() failed: can't find %s", database);
+      Con::errorf("SQLite::Interface::initialize() failed: can't find %s", database);
       return;
    }
 
    // Save the path to the database file
-   mDatabase = (char*)dMalloc(dStrlen(database)+1);
-   dMemset((void*)mDatabase, 0, dStrlen(database)+1);
-   dMemcpy((void*)mDatabase, (void*)database, dStrlen(database));
+   mDatabaseName = (char*)dMalloc(dStrlen(database)+1);
+   dMemset((void*)mDatabaseName, 0, dStrlen(database)+1);
+   dMemcpy((void*)mDatabaseName, (void*)database, dStrlen(database));
 
    // Create a new thread
-   m_SQLiteProcessThread = new Thread((ThreadRunFunction)processThread, this);
+   mProcessThread = new Thread((ThreadRunFunction)processThread, this);
    // Auto-delete thread when finished.
-   m_SQLiteProcessThread->autoDelete = true;
+   mProcessThread->autoDelete = true;
    // Ready, steady, go!
-   m_SQLiteProcessThread->start();
+   mProcessThread->start();
 }
 
 /*
+
+//TODO!
+
 ConsoleFunction(getSQLiteInterfaceCount, S32, (),,
                       "Returns a total amount of SQLiteInterface objects created in engine.\n"
                       "@return total amount of SQLiteInterface objects created in engine"
